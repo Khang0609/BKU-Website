@@ -1,0 +1,69 @@
+# ------------------- FRONTEND -------------------
+
+# dependencies
+frontend/node_modules
+frontend/.pnp
+frontend/.pnp.js
+frontend/.yarn/install-state.gz
+
+# testing
+frontend/coverage
+
+# next.js
+frontend/.next/
+frontend/out/
+
+# production
+frontend/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+frontend/.env
+frontend/.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# MD
+frontend/*.md
+
+# --------------- BACKEND ---------------
+# Python
+backend/__pycache__/
+backend/*.py[cod]
+backend/.venv/
+backend/.env
+
+# Database
+*.db
+*.sqlite3
+
+# OS files
+.DS_Store
+
+# Data
+backend/data/profile/
+postgres_data/
+
+# Scripts
+backend/scripts/web_crawling.py
+
+# --------------- DESIGN ---------------
+design/
+
+# --------------- DOCKER ---------------
+.env
+docker-compose.override.yml
+.vscode/

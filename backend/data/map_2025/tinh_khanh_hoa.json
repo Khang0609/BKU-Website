@@ -1,0 +1,344 @@
+{
+  "name": "tỉnh Khánh Hòa",
+  "old_province": [
+    "tỉnh Ninh Thuận",
+    "tỉnh Khánh Hòa"
+  ],
+  "ward": {
+    "xã Anh Dũng": [
+      "Xã Ma Nới",
+      "Xã Hòa Sơn"
+    ],
+    "phường Ba Ngòi": [
+      "Phường Ba Ngòi",
+      "Xã Cam Phước Đông"
+    ],
+    "xã Bác Ái": [
+      "Xã Phước Tiến",
+      "Xã Phước Thắng",
+      "Xã Phước Chính"
+    ],
+    "xã Bác Ái Đông": [
+      "Xã Phước Đại",
+      "Xã Phước Thành"
+    ],
+    "xã Bác Ái Tây": [
+      "Xã Phước Hòa",
+      "Xã Phước Tân",
+      "Xã Phước Bình"
+    ],
+    "phường Bắc Cam Ranh": [
+      "Phường Cam Nghĩa",
+      "Phường Cam Phúc Bắc",
+      "Xã Cam Thành Nam"
+    ],
+    "xã Bắc Khánh Vĩnh": [
+      "Xã Khánh Bình",
+      "Xã Khánh Đông"
+    ],
+    "phường Bắc Nha Trang": [
+      "Phường Vĩnh Hòa",
+      "Phường Vĩnh Hải",
+      "Phường Vĩnh Phước",
+      "Phường Vĩnh Thọ",
+      "Xã Vĩnh Lương",
+      "Xã Vĩnh Phương"
+    ],
+    "xã Bắc Ninh Hòa": [
+      "Xã Ninh An",
+      "Xã Ninh Sơn",
+      "Xã Ninh Thọ"
+    ],
+    "phường Bảo An": [
+      "Phường Phước Mỹ",
+      "Phường Bảo An",
+      "Xã Thành Hải"
+    ],
+    "xã Cà Ná": [
+      "Xã Phước Diêm",
+      "Xã Cà Ná"
+    ],
+    "xã Cam An": [
+      "Xã Cam Phước Tây",
+      "Xã Cam An Bắc",
+      "Xã Cam An Nam"
+    ],
+    "xã Cam Hiệp": [
+      "Xã Sơn Tân",
+      "Xã Cam Hiệp Bắc",
+      "Xã Cam Hiệp Nam",
+      "Xã Cam Hòa",
+      "Xã Cam Tân",
+      "Xã Suối Tân"
+    ],
+    "xã Cam Lâm": [
+      "Thị trấn Cam Đức",
+      "Xã Cam Hải Đông",
+      "Xã Cam Hải Tây",
+      "Xã Cam Thành Bắc",
+      "Xã Cam Hiệp Bắc",
+      "Xã Cam Hiệp Nam",
+      "Xã Cam Hòa",
+      "Xã Cam Tân",
+      "Xã Cam An Bắc",
+      "Xã Cam An Nam",
+      "Xã Suối Tân"
+    ],
+    "phường Cam Linh": [
+      "Phường Cam Thuận",
+      "Phường Cam Lợi",
+      "Phường Cam Linh"
+    ],
+    "phường Cam Ranh": [
+      "Phường Cam Phú",
+      "Phường Cam Lộc",
+      "Phường Cam Phúc Nam"
+    ],
+    "xã Công Hải": [
+      "Xã Phước Chiến",
+      "Xã Công Hải"
+    ],
+    "xã Đại Lãnh": [
+      "Xã Vạn Thạnh",
+      "Xã Vạn Thọ",
+      "Xã Đại Lãnh"
+    ],
+    "xã Diên Điền": [
+      "Xã Diên Sơn",
+      "Xã Diên Phú",
+      "Xã Diên Điền"
+    ],
+    "xã Diên Khánh": [
+      "Thị trấn Diên Khánh",
+      "Xã Diên An",
+      "Xã Diên Toàn"
+    ],
+    "xã Diên Lạc": [
+      "Xã Diên Thạnh",
+      "Xã Diên Lạc",
+      "Xã Diên Hòa"
+    ],
+    "xã Diên Lâm": [
+      "Xã Xuân Đồng",
+      "Xã Diên Lâm"
+    ],
+    "xã Diên Thọ": [
+      "Xã Diên Tân",
+      "Xã Diên Phước",
+      "Xã Diên Thọ"
+    ],
+    "phường Đô Vinh": [
+      "Phường Đô Vinh",
+      "Xã Nhơn Sơn"
+    ],
+    "phường Đông Hải": [
+      "Phường Mỹ Bình",
+      "Phường Mỹ Đông",
+      "Phường Mỹ Hải",
+      "Phường Đông Hải"
+    ],
+    "xã Đông Khánh Sơn": [
+      "Xã Sơn Trung",
+      "Xã Ba Cụm Bắc",
+      "Xã Ba Cụm Nam"
+    ],
+    "phường Đông Ninh Hòa": [
+      "Phường Ninh Diêm",
+      "Phường Ninh Hải",
+      "Phường Ninh Thủy",
+      "Xã Ninh Phước"
+    ],
+    "phường Hòa Thắng": [
+      "Phường Ninh Giang",
+      "Phường Ninh Hà",
+      "Xã Ninh Phú"
+    ],
+    "xã Hòa Trí": [
+      "Xã Ninh Thượng",
+      "Xã Ninh Trung",
+      "Xã Ninh Thân"
+    ],
+    "xã Khánh Sơn": [
+      "Thị trấn Tô Hạp",
+      "Xã Sơn Hiệp",
+      "Xã Sơn Bình"
+    ],
+    "xã Khánh Vĩnh": [
+      "Thị trấn Khánh Vĩnh",
+      "Xã Sông Cầu",
+      "Xã Khánh Phú"
+    ],
+    "xã Lâm Sơn": [
+      "Xã Lương Sơn",
+      "Xã Lâm Sơn"
+    ],
+    "xã Mỹ Sơn": [
+      "Xã Phước Trung",
+      "Xã Mỹ Sơn"
+    ],
+    "xã Nam Cam Ranh": [
+      "Xã Cam Lập",
+      "Xã Cam Bình",
+      "Xã Cam Thịnh Đông",
+      "Xã Cam Thịnh Tây"
+    ],
+    "xã Nam Khánh Vĩnh": [
+      "Xã Cầu Bà",
+      "Xã Khánh Thành",
+      "Xã Liên Sang",
+      "Xã Sơn Thái"
+    ],
+    "phường Nam Nha Trang": [
+      "Phường Phước Hải",
+      "Phường Phước Long",
+      "Phường Vĩnh Trường",
+      "Xã Vĩnh Thái",
+      "Xã Phước Đồng"
+    ],
+    "xã Nam Ninh Hòa": [
+      "Xã Ninh Lộc",
+      "Xã Ninh Ích",
+      "Xã Ninh Hưng",
+      "Xã Ninh Tân"
+    ],
+    "phường Nha Trang": [
+      "Phường Vạn Thạnh",
+      "Phường Lộc Thọ",
+      "Phường Vĩnh Nguyên",
+      "Phường Tân Tiến",
+      "Phường Phước Hòa"
+    ],
+    "phường Ninh Chử": [
+      "Phường Văn Hải",
+      "Thị trấn Khánh Hải"
+    ],
+    "xã Ninh Hải": [
+      "Xã Phương Hải",
+      "Xã Tri Hải",
+      "Xã Bắc Sơn"
+    ],
+    "phường Ninh Hòa": [
+      "Phường Ninh Hiệp",
+      "Phường Ninh Đa",
+      "Xã Ninh Đông",
+      "Xã Ninh Phụng"
+    ],
+    "xã Ninh Phước": [
+      "Thị trấn Phước Dân",
+      "Xã Phước Thuận",
+      "Xã Phước Hải"
+    ],
+    "xã Ninh Sơn": [
+      "Thị trấn Tân Sơn",
+      "Xã Quảng Sơn"
+    ],
+    "phường Phan Rang": [
+      "Phường Kinh Dinh",
+      "Phường Phủ Hà",
+      "Phường Đài Sơn",
+      "Phường Đạo Long"
+    ],
+    "xã Phước Dinh": [
+      "Xã An Hải",
+      "Xã Phước Dinh",
+      "Phường Đông Hải"
+    ],
+    "xã Phước Hà": [
+      "Xã Nhị Hà",
+      "Xã Phước Hà"
+    ],
+    "xã Phước Hậu": [
+      "Xã Phước Vinh",
+      "Xã Phước Sơn",
+      "Xã Phước Hậu"
+    ],
+    "xã Phước Hữu": [
+      "Xã Phước Thái",
+      "Xã Phước Hữu"
+    ],
+    "xã Suối Dầu": [
+      "Xã Suối Cát",
+      "Xã Cam Hòa",
+      "Xã Cam Tân",
+      "Xã Suối Tân"
+    ],
+    "xã Suối Hiệp": [
+      "Xã Suối Tiên",
+      "Xã Bình Lộc",
+      "Xã Suối Hiệp"
+    ],
+    "xã Tân Định": [
+      "Xã Ninh Xuân",
+      "Xã Ninh Quang",
+      "Xã Ninh Bình"
+    ],
+    "xã Tây Khánh Sơn": [
+      "Xã Sơn Lâm",
+      "Xã Thành Sơn"
+    ],
+    "xã Tây Khánh Vĩnh": [
+      "Xã Giang Ly",
+      "Xã Khánh Thượng",
+      "Xã Khánh Nam"
+    ],
+    "phường Tây Nha Trang": [
+      "Phường Ngọc Hiệp",
+      "Phường Phương Sài",
+      "Xã Vĩnh Ngọc",
+      "Xã Vĩnh Thạnh",
+      "Xã Vĩnh Hiệp",
+      "Xã Vĩnh Trung"
+    ],
+    "xã Tây Ninh Hòa": [
+      "Xã Ninh Tây",
+      "Xã Ninh Sim"
+    ],
+    "xã Thuận Bắc": [
+      "Xã Bắc Phong",
+      "Xã Phước Kháng",
+      "Xã Lợi Hải"
+    ],
+    "xã Thuận Nam": [
+      "Xã Phước Nam",
+      "Xã Phước Ninh",
+      "Xã Phước Minh"
+    ],
+    "xã Trung Khánh Vĩnh": [
+      "Xã Khánh Trung",
+      "Xã Khánh Hiệp"
+    ],
+    "đặc khu Trường Sa": [
+      "Thị trấn Trường Sa",
+      "Xã Song Tử Tây",
+      "Xã Sinh Tồn"
+    ],
+    "xã Tu Bông": [
+      "Xã Vạn Khánh",
+      "Xã Vạn Long",
+      "Xã Vạn Phước"
+    ],
+    "xã Vạn Hưng": [
+      "Xã Xuân Sơn",
+      "Xã Vạn Hưng"
+    ],
+    "xã Vạn Ninh": [
+      "Thị trấn Vạn Giã",
+      "Xã Vạn Phú",
+      "Xã Vạn Lương"
+    ],
+    "xã Vạn Thắng": [
+      "Xã Vạn Bình",
+      "Xã Vạn Thắng"
+    ],
+    "xã Vĩnh Hải": [
+      "Xã Nhơn Hải",
+      "Xã Thanh Hải",
+      "Xã Vĩnh Hải"
+    ],
+    "xã Xuân Hải": [
+      "Xã Hộ Hải",
+      "Xã Tân Hải",
+      "Xã Xuân Hải"
+    ]
+  }
+}

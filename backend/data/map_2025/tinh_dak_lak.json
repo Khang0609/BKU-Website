@@ -1,0 +1,507 @@
+{
+  "name": "tỉnh Đắk Lắk",
+  "old_province": [
+    "tỉnh Phú Yên",
+    "tỉnh Đắk Lắk"
+  ],
+  "ward": {
+    "phường Bình Kiến": [
+      "Xã An Phú",
+      "Xã Hòa Kiến",
+      "Xã Bình Kiến",
+      "Phường 9"
+    ],
+    "xã Buôn Đôn": [
+      "Krông Na"
+    ],
+    "phường Buôn Hồ": [
+      "Phường Đạt Hiếu",
+      "Phường An Bình",
+      "Phường An Lạc",
+      "Phường Thiện An",
+      "Phường Thống Nhất",
+      "Phường Đoàn Kết"
+    ],
+    "phường Buôn Ma Thuột": [
+      "Phường Thành Công",
+      "Phường Tân Tiến",
+      "Phường Tân Thành",
+      "Phường Tự An",
+      "Phường Tân Lợi",
+      "Xã Cư Êbur"
+    ],
+    "phường Cư Bao": [
+      "Phường Bình Tân",
+      "Xã Bình Thuận",
+      "Xã Cư Bao"
+    ],
+    "xã Cư M’gar": [
+      "Xã Ea H’đing",
+      "Xã Ea Kpam",
+      "Xã Cư M’gar"
+    ],
+    "xã Cư M’ta": [
+      "Xã Cư Króa",
+      "Xã Cư M’ta"
+    ],
+    "xã Cư Pơng": [
+      "Xã Ea Sin",
+      "Xã Cư Pơng"
+    ],
+    "xã Cư Prao": [
+      "Xã Ea Pil",
+      "Xã Cư Prao"
+    ],
+    "xã Cư Pui": [
+      "Xã Hòa Phong",
+      "Xã Cư Pui"
+    ],
+    "xã Cư Yang": [
+      "Xã Cư Bông",
+      "Xã Cư Yang"
+    ],
+    "xã Cuôr Đăng": [
+      "Xã Ea Drơng",
+      "Xã Cuôr Đăng"
+    ],
+    "xã Đắk Liêng": [
+      "Xã Buôn Tría",
+      "Xã Buôn Triết",
+      "Xã Đắk Liêng"
+    ],
+    "xã Đắk Phơi": [
+      "Xã Đắk Nuê",
+      "Xã Đắk Phơi"
+    ],
+    "xã Dang Kang": [
+      "Xã Hòa Thành",
+      "Xã Cư Kty",
+      "Xã Dang Kang"
+    ],
+    "xã Dliê Ya": [
+      "Xã Ea Tóh",
+      "Xã Ea Tân",
+      "Xã Dliê Ya"
+    ],
+    "phường Đông Hòa": [
+      "Phường Hòa Vinh",
+      "Phường Hòa Xuân Tây",
+      "Xã Hòa Tân Đông"
+    ],
+    "xã Đồng Xuân": [
+      "Thị trấn La Hai",
+      "Xã Xuân Sơn Nam",
+      "Xã Xuân Sơn Bắc",
+      "Xã Xuân Long",
+      "Xã Xuân Quang 2"
+    ],
+    "xã Dray Bhăng": [
+      "Xã Hòa Hiệp",
+      "Xã Dray Bhăng",
+      "Xã Ea Bhốk"
+    ],
+    "xã Đức Bình": [
+      "Xã Sơn Giang",
+      "Xã Đức Bình Đông",
+      "Xã Đức Bình Tây",
+      "Xã Ea Bia"
+    ],
+    "xã Dur Kmăl": [
+      "Xã Băng A Drênh",
+      "Xã Dur Kmăl"
+    ],
+    "xã Ea Bá": [
+      "Xã Ea Bá",
+      "Xã Ea Bar"
+    ],
+    "xã Ea Bung": [
+      "Xã Ya Tờ Mốt",
+      "Xã Ea Bung"
+    ],
+    "xã Ea Drăng": [
+      "Thị trấn Ea Drăng",
+      "Xã Ea Ral",
+      "Xã Dliê Yang"
+    ],
+    "xã Ea Drông": [
+      "Xã Ea Siên",
+      "Xã Ea Drông"
+    ],
+    "xã Ea H’Leo": [
+      "xã Ea H’Leo"
+    ],
+    "xã Ea Hiao": [
+      "Xã Ea Sol",
+      "Xã Ea Hiao"
+    ],
+    "phường Ea Kao": [
+      "Phường Ea Tam",
+      "Xã Ea Kao"
+    ],
+    "xã Ea Kar": [
+      "Thị trấn Ea Kar",
+      "Xã Cư Huê",
+      "Xã Ea Đar",
+      "Xã Ea Kmút",
+      "Xã Cư Ni",
+      "Xã Xuân Phú"
+    ],
+    "xã Ea Khăl": [
+      "Xã Ea Nam",
+      "Xã Ea Tir",
+      "Xã Ea Khăl"
+    ],
+    "xã Ea Kiết": [
+      "Xã Ea Kuêh",
+      "Xã Ea Kiết"
+    ],
+    "xã Ea Kly": [
+      "Xã Krông Búk",
+      "Xã Ea Kly"
+    ],
+    "xã Ea Knốp": [
+      "Thị trấn Ea Knốp",
+      "Xã Ea Tih",
+      "Xã Ea Sô",
+      "Xã Ea Sar"
+    ],
+    "xã Ea Knuếc": [
+      "Xã Hòa Đông",
+      "Xã Ea Kênh",
+      "Xã Ea Knuếc"
+    ],
+    "xã Ea Ktur": [
+      "Xã Ea Tiêu",
+      "Xã Ea Ktur",
+      "Xã Ea Bhốk"
+    ],
+    "xã Ea Ly": [
+      "Xã Ea Lâm",
+      "Xã Ea Ly",
+      "Xã Ea Bar"
+    ],
+    "xã Ea M’Droh": [
+      "Xã Quảng Hiệp",
+      "Xã Ea M’nang",
+      "Xã Ea M’Droh"
+    ],
+    "xã Ea Na": [
+      "Xã Ea Bông",
+      "Xã Dray Sáp",
+      "Xã Ea Na"
+    ],
+    "xã Ea Ning": [
+      "Xã Cư Êwi",
+      "Xã Ea Hu",
+      "Xã Ea Ning"
+    ],
+    "xã Ea Nuôl": [
+      "Xã Ea Bar",
+      "Xã Cuôr Knia",
+      "Xã Ea Nuôl"
+    ],
+    "xã Ea Ô": [
+      "Xã Cư Elang",
+      "Xã Ea Ô"
+    ],
+    "xã Ea Păl": [
+      "Xã Cư Prông",
+      "Xã Ea Păl"
+    ],
+    "xã Ea Phê": [
+      "Xã Ea Kuăng",
+      "Xã Ea Hiu",
+      "Xã Ea Phê"
+    ],
+    "xã Ea Riêng": [
+      "Xã Ea H’Mlay",
+      "Xã Ea M’Doal",
+      "Xã Ea Riêng"
+    ],
+    "xã Ea Rốk": [
+      "Xã Ia Jlơi",
+      "Xã Cư Kbang",
+      "Xã Ea Rốk"
+    ],
+    "xã Ea Súp": [
+      "Thị trấn Ea Súp",
+      "Xã Cư M’Lan",
+      "Xã Ea Lê"
+    ],
+    "xã Ea Trang": [
+      "xã Ea Trang"
+    ],
+    "xã Ea Tul": [
+      "Xã Ea Tar",
+      "Xã Cư Dliê Mnông",
+      "Xã Ea Tul"
+    ],
+    "xã Ea Wer": [
+      "Xã Ea Huar",
+      "Xã Tân Hòa",
+      "Xã Ea Wer"
+    ],
+    "xã Ea Wy": [
+      "Xã Cư A Mung",
+      "Xã Cư Mốt",
+      "Xã Ea Wy"
+    ],
+    "phường Hòa Hiệp": [
+      "Phường Hòa Hiệp Trung",
+      "Phường Hòa Hiệp Nam",
+      "Phường Hòa Hiệp Bắc"
+    ],
+    "xã Hòa Mỹ": [
+      "Xã Hòa Mỹ Đông",
+      "Xã Hòa Mỹ Tây"
+    ],
+    "xã Hòa Phú": [
+      "Xã Hòa Phú",
+      "Xã Hòa Xuân",
+      "Xã Hòa Khánh"
+    ],
+    "xã Hòa Sơn": [
+      "Xã Yang Reh",
+      "Xã Ea Trul",
+      "Xã Hòa Sơn"
+    ],
+    "xã Hòa Thịnh": [
+      "Xã Hòa Đồng",
+      "Xã Hòa Thịnh"
+    ],
+    "xã Hòa Xuân": [
+      "Xã Hòa Tâm",
+      "Xã Hòa Xuân Đông",
+      "Xã Hòa Xuân Nam"
+    ],
+    "xã Ia Lốp": [
+      "xã Ia Lốp"
+    ],
+    "xã Ia Rvê": [
+      "xã Ia Rvê"
+    ],
+    "xã Krông Á": [
+      "Xã Cư San",
+      "Xã Krông Á"
+    ],
+    "xã Krông Ana": [
+      "Thị trấn Buôn Trấp",
+      "Xã Bình Hòa",
+      "Xã Quảng Điền"
+    ],
+    "xã Krông Bông": [
+      "Thị trấn Krông Kmar",
+      "Xã Hòa Lễ",
+      "Xã Khuê Ngọc Điền"
+    ],
+    "xã Krông Búk": [
+      "Xã Cư Né",
+      "Xã Chứ Kbô"
+    ],
+    "xã Krông Năng": [
+      "Thị trấn Krông Năng",
+      "Xã Phú Lộc",
+      "Xã Ea Hồ"
+    ],
+    "xã Krông Nô": [
+      "xã Krông Nô"
+    ],
+    "xã Krông Pắc": [
+      "Thị trấn Phước An",
+      "Xã Hòa An",
+      "Xã Ea Yông",
+      "Xã Hòa Tiến"
+    ],
+    "xã Liên Sơn Lắk": [
+      "Thị trấn Liên Sơn",
+      "Xã Yang Tao",
+      "Xã Bông Krang"
+    ],
+    "xã M’Drắk": [
+      "Thị trấn M’Drắk",
+      "Xã Krông Jing",
+      "Xã Ea Lai"
+    ],
+    "xã Nam Ka": [
+      "Xã Ea Rbin",
+      "Xã Nam Ka"
+    ],
+    "xã Ô Loan": [
+      "Xã An Hiệp",
+      "Xã An Hòa Hải",
+      "Xã An Cư"
+    ],
+    "xã Phú Hòa 1": [
+      "Thị trấn Phú Hòa",
+      "Xã Hòa Thắng",
+      "Xã Hòa Định Đông",
+      "Xã Hòa Định Tây",
+      "Xã Hòa Hội",
+      "Xã Hòa An"
+    ],
+    "xã Phú Hòa 2": [
+      "Xã Hòa Quang Nam",
+      "Xã Hòa Quang Bắc",
+      "Xã Hòa Trị"
+    ],
+    "xã Phú Mỡ": [
+      "Xã Xuân Quang 1",
+      "Xã Phú Mỡ"
+    ],
+    "xã Phú Xuân": [
+      "Xã Ea Púk",
+      "Xã Ea Dăh",
+      "Xã Phú Xuân"
+    ],
+    "phường Phú Yên": [
+      "Phường Phú Đông",
+      "Phường Phú Lâm",
+      "Phường Phú Thạnh",
+      "Xã Hòa Thành",
+      "Phường Hòa Hiệp Bắc",
+      "Xã Hòa Bình 1"
+    ],
+    "xã Pơng Drang": [
+      "Thị trấn Pơng Drang",
+      "Xã Ea Ngai",
+      "Xã Tân Lập"
+    ],
+    "xã Quảng Phú": [
+      "Thị trấn Quảng Phú",
+      "Thị trấn Ea Pốk",
+      "Xã Cư Suê",
+      "Xã Quảng Tiến"
+    ],
+    "xã Sơn Hòa": [
+      "Thị trấn Củng Sơn",
+      "Xã Suối Bạc",
+      "Xã Sơn Hà",
+      "Xã Sơn Nguyên",
+      "Xã Sơn Phước"
+    ],
+    "xã Sơn Thành": [
+      "Xã Hòa Phú",
+      "Xã Sơn Thành Đông",
+      "Xã Sơn Thành Tây"
+    ],
+    "phường Sông Cầu": [
+      "Phường Xuân Yên",
+      "Phường Xuân Phú",
+      "Xã Xuân Phương",
+      "Xã Xuân Thịnh"
+    ],
+    "xã Sông Hinh": [
+      "Thị trấn Hai Riêng",
+      "Xã Ea Trol",
+      "Xã Sông Hinh",
+      "Xã Ea Bia"
+    ],
+    "xã Suối Trai": [
+      "Xã Ea Chà Rang",
+      "Xã Krông Pa",
+      "Xã Suối Trai"
+    ],
+    "xã Tam Giang": [
+      "Xã Ea Tam",
+      "Xã Cư Klông",
+      "Xã Tam Giang"
+    ],
+    "phường Tân An": [
+      "Phường Tân An",
+      "Xã Ea Tu",
+      "Xã Hòa Thuận"
+    ],
+    "phường Tân Lập": [
+      "Phường Tân Hòa",
+      "Phường Tân Lập",
+      "Xã Hòa Thắng"
+    ],
+    "xã Tân Tiến": [
+      "Xã Ea Yiêng",
+      "Xã Ea Uy",
+      "Xã Tân Tiến"
+    ],
+    "xã Tây Hòa": [
+      "Thị trấn Phú Thứ",
+      "Xã Hòa Phong",
+      "Xã Hòa Tân Tây",
+      "Xã Hòa Bình 1"
+    ],
+    "xã Tây Sơn": [
+      "Xã Sơn Hội",
+      "Xã Cà Lúi",
+      "Xã Phước Tân"
+    ],
+    "phường Thành Nhất": [
+      "Phường Khánh Xuân",
+      "Phường Thành Nhất"
+    ],
+    "xã Tuy An Bắc": [
+      "Thị trấn Chí Thạnh",
+      "Xã An Dân",
+      "Xã An Định"
+    ],
+    "xã Tuy An Đông": [
+      "Xã An Ninh Đông",
+      "Xã An Ninh Tây",
+      "Xã An Thạch"
+    ],
+    "xã Tuy An Nam": [
+      "Xã An Thọ",
+      "Xã An Mỹ",
+      "Xã An Chấn"
+    ],
+    "xã Tuy An Tây": [
+      "Xã An Nghiệp",
+      "Xã An Xuân",
+      "Xã An Lĩnh"
+    ],
+    "phường Tuy Hòa": [
+      "Phường 1",
+      "Phường 2",
+      "Phường 4",
+      "Phường 5",
+      "Phường 7",
+      "Phường 9",
+      "Xã Hòa An",
+      "Xã Hòa Trị"
+    ],
+    "xã Vân Hòa": [
+      "Xã Sơn Long",
+      "Xã Sơn Xuân",
+      "Xã Sơn Định"
+    ],
+    "xã Vụ Bổn": [
+      "xã Vụ Bổn"
+    ],
+    "xã Xuân Cảnh": [
+      "Xã Xuân Bình",
+      "Xã Xuân Cảnh"
+    ],
+    "phường Xuân Đài": [
+      "Phường Xuân Thành",
+      "Phường Xuân Đài"
+    ],
+    "xã Xuân Lãnh": [
+      "Xã Đa Lộc",
+      "Xã Xuân Lãnh"
+    ],
+    "xã Xuân Lộc": [
+      "Xã Xuân Hải",
+      "Xã Xuân Lộc"
+    ],
+    "xã Xuân Phước": [
+      "Xã Xuân Quang 3",
+      "Xã Xuân Phước"
+    ],
+    "xã Xuân Thọ": [
+      "Xã Xuân Lâm",
+      "Xã Xuân Thọ 1",
+      "Xã Xuân Thọ 2"
+    ],
+    "xã Yang Mao": [
+      "Xã Cư Drăm",
+      "Xã Yang Mao"
+    ]
+  }
+}

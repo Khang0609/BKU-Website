@@ -1,0 +1,430 @@
+{
+  "name": "tỉnh Quảng Trị",
+  "old_province": [
+    "tỉnh Quảng Bình",
+    "tỉnh Quảng Trị"
+  ],
+  "ward": {
+    "xã A Dơi": [
+      "Xã Ba Tầng",
+      "Xã Xy",
+      "Xã A Dơi"
+    ],
+    "xã Ái Tử": [
+      "Xã Triệu Ái",
+      "Xã Triệu Giang",
+      "Xã Triệu Long"
+    ],
+    "phường Ba Đồn": [
+      "Phường Quảng Phong",
+      "Phường Quảng Long",
+      "Phường Ba Đồn",
+      "Xã Quảng Hải"
+    ],
+    "xã Ba Lòng": [
+      "Xã Triệu Nguyên",
+      "Xã Ba Lòng"
+    ],
+    "phường Bắc Gianh": [
+      "Phường Quảng Phúc",
+      "Phường Quảng Thọ",
+      "Phường Quảng Thuận"
+    ],
+    "xã Bắc Trạch": [
+      "Xã Thanh Trạch",
+      "Xã Hạ Mỹ",
+      "Xã Liên Trạch",
+      "Xã Bắc Trạch"
+    ],
+    "xã Bến Hải": [
+      "Xã Trung Hải",
+      "Xã Trung Giang",
+      "Xã Trung Sơn"
+    ],
+    "xã Bến Quan": [
+      "Thị trấn Bến Quan",
+      "Xã Vĩnh Ô",
+      "Xã Vĩnh Hà",
+      "Xã Vĩnh Khê"
+    ],
+    "xã Bố Trạch": [
+      "Xã Hưng Trạch",
+      "Xã Cự Nẫm",
+      "Xã Vạn Trạch",
+      "Xã Phú Định"
+    ],
+    "xã Cam Hồng": [
+      "Xã Cam Thủy",
+      "Xã Thanh Thủy",
+      "Xã Hồng Thủy",
+      "Xã Ngư Thủy Bắc"
+    ],
+    "xã Cam Lộ": [
+      "Thị trấn Cam Lộ",
+      "Xã Cam Thành",
+      "Xã Cam Chính",
+      "Xã Cam Nghĩa"
+    ],
+    "đặc khu Cồn Cỏ": [
+      "Huyện Cồn Cỏ"
+    ],
+    "xã Cồn Tiên": [
+      "Xã Hải Thái",
+      "Xã Linh Trường",
+      "Xã Gio An",
+      "Xã Gio Sơn"
+    ],
+    "xã Cửa Tùng": [
+      "Thị trấn Cửa Tùng",
+      "Xã Vĩnh Giang",
+      "Xã Hiền Thành",
+      "Xã Kim Thạch"
+    ],
+    "xã Cửa Việt": [
+      "Thị trấn Cửa Việt",
+      "Xã Gio Mai",
+      "Xã Gio Hải"
+    ],
+    "xã Đakrông": [
+      "Xã Ba Nang",
+      "Xã Tà Long",
+      "Xã Đakrông"
+    ],
+    "xã Dân Hóa": [
+      "Xã Trọng Hóa",
+      "Xã Dân Hóa"
+    ],
+    "xã Diên Sanh": [
+      "Thị trấn Diên Sanh",
+      "Xã Hải Trường",
+      "Xã Hải Định"
+    ],
+    "phường Đông Hà": [
+      "Phường 1",
+      "Phường 3",
+      "Phường 4",
+      "Phường Đông Giang",
+      "Phường Đông Thanh"
+    ],
+    "phường Đồng Hới": [
+      "Phường Đức Ninh Đông",
+      "Phường Đồng Hải",
+      "Phường Đồng Phú",
+      "Phường Phú Hải",
+      "Phường Hải Thành",
+      "Phường Nam Lý",
+      "Xã Bảo Ninh",
+      "Xã Đức Ninh"
+    ],
+    "xã Đồng Lê": [
+      "Thị trấn Đồng Lê",
+      "Xã Kim Hóa",
+      "Xã Lê Hóa",
+      "Xã Thuận Hóa",
+      "Xã Sơn Hóa"
+    ],
+    "phường Đồng Sơn": [
+      "Phường Bắc Nghĩa",
+      "Phường Đồng Sơn",
+      "Xã Nghĩa Ninh",
+      "Xã Thuận Đức"
+    ],
+    "phường Đồng Thuận": [
+      "Phường Bắc Lý",
+      "Xã Lộc Ninh",
+      "Xã Quang Phú"
+    ],
+    "xã Đông Trạch": [
+      "Xã Hải Phú",
+      "Xã Sơn Lộc",
+      "Xã Đức Trạch",
+      "Xã Đồng Trạch"
+    ],
+    "xã Gio Linh": [
+      "Thị trấn Gio Linh",
+      "Xã Gio Quang",
+      "Xã Gio Mỹ",
+      "Xã Phong Bình"
+    ],
+    "xã Hải Lăng": [
+      "Xã Hải Phú",
+      "Xã Hải Lâm",
+      "Xã Hải Thượng"
+    ],
+    "xã Hiếu Giang": [
+      "Xã Cam Thủy",
+      "Xã Cam Hiếu",
+      "Xã Cam Tuyền",
+      "Xã Thanh An"
+    ],
+    "xã Hòa Trạch": [
+      "Xã Quảng Châu",
+      "Xã Quảng Tùng",
+      "Xã Cảnh Dương"
+    ],
+    "xã Hoàn Lão": [
+      "Thị trấn Hoàn Lão",
+      "Xã Trung Trạch",
+      "Xã Đại Trạch",
+      "Xã Tây Trạch",
+      "Xã Hòa Trạch"
+    ],
+    "xã Hướng Hiệp": [
+      "Thị trấn Krông Klang",
+      "Xã Mò Ó",
+      "Xã Hướng Hiệp"
+    ],
+    "xã Hướng Lập": [
+      "Xã Hướng Việt",
+      "Xã Hướng Lập"
+    ],
+    "xã Hướng Phùng": [
+      "Xã Hướng Sơn",
+      "Xã Hướng Linh",
+      "Xã Hướng Phùng"
+    ],
+    "xã Khe Sanh": [
+      "Thị trấn Khe Sanh",
+      "Xã Tân Hợp",
+      "Xã Húc",
+      "Xã Hướng Tân"
+    ],
+    "xã Kim Điền": [
+      "Xã Hóa Sơn",
+      "Xã Hóa Hợp"
+    ],
+    "xã Kim Ngân": [
+      "Xã Kim Thủy",
+      "Xã Ngân Thủy",
+      "Xã Lâm Thủy"
+    ],
+    "xã Kim Phú": [
+      "Xã Thượng Hóa",
+      "Xã Trung Hóa",
+      "Xã Minh Hóa",
+      "Xã Tân Hóa"
+    ],
+    "xã La Lay": [
+      "Xã A Bung",
+      "Xã A Ngo"
+    ],
+    "xã Lao Bảo": [
+      "Xã Tân Thành",
+      "Xã Tân Long",
+      "Thị trấn Lao Bảo"
+    ],
+    "xã Lệ Ninh": [
+      "Thị trấn Nông trường Lệ Ninh",
+      "Xã Sơn Thủy",
+      "Xã Hoa Thủy"
+    ],
+    "xã Lệ Thủy": [
+      "Thị trấn Kiến Giang",
+      "Xã Liên Thủy",
+      "Xã Xuân Thủy",
+      "Xã An Thủy",
+      "Xã Phong Thủy",
+      "Xã Lộc Thủy"
+    ],
+    "xã Lìa": [
+      "Xã Thanh",
+      "Xã Thuận",
+      "Xã Lìa"
+    ],
+    "xã Minh Hóa": [
+      "Thị trấn Quy Đạt",
+      "Xã Xuân Hóa",
+      "Xã Yên Hóa",
+      "Xã Hồng Hóa"
+    ],
+    "xã Mỹ Thủy": [
+      "Xã Hải Dương",
+      "Xã Hải An",
+      "Xã Hải Khê"
+    ],
+    "xã Nam Ba Đồn": [
+      "Xã Quảng Tân",
+      "Xã Quảng Trung",
+      "Xã Quảng Tiên",
+      "Xã Quảng Sơn",
+      "Xã Quảng Thủy"
+    ],
+    "xã Nam Cửa Việt": [
+      "Xã Triệu Trạch",
+      "Xã Triệu Phước",
+      "Xã Triệu Tân"
+    ],
+    "phường Nam Đông Hà": [
+      "Phường 2",
+      "Phường 5",
+      "Phường Đông Lễ",
+      "Phường Đông Lương"
+    ],
+    "xã Nam Gianh": [
+      "Xã Quảng Hòa",
+      "Xã Quảng Lộc",
+      "Xã Quảng Văn",
+      "Xã Quảng Minh"
+    ],
+    "xã Nam Hải Lăng": [
+      "Xã Hải Sơn",
+      "Xã Hải Phong",
+      "Xã Hải Chánh"
+    ],
+    "xã Nam Trạch": [
+      "Thị trấn Nông trường Việt Trung",
+      "Xã Nhân Trạch",
+      "Xã Lý Nam"
+    ],
+    "xã Ninh Châu": [
+      "Xã Tân Ninh",
+      "Xã Gia Ninh",
+      "Xã Duy Ninh",
+      "Xã Hải Ninh"
+    ],
+    "xã Phong Nha": [
+      "Thị trấn Phong Nha",
+      "Xã Lâm Trạch",
+      "Xã Xuân Trạch",
+      "Xã Phúc Trạch"
+    ],
+    "xã Phú Trạch": [
+      "Xã Quảng Đông",
+      "Xã Quảng Phú",
+      "Xã Quảng Kim",
+      "Xã Quảng Hợp"
+    ],
+    "xã Quảng Ninh": [
+      "Thị trấn Quán Hàu",
+      "Xã Vĩnh Ninh",
+      "Xã Võ Ninh",
+      "Xã Hàm Ninh"
+    ],
+    "xã Quảng Trạch": [
+      "Xã Quảng Phương",
+      "Xã Quảng Xuân",
+      "Xã Quảng Hưng"
+    ],
+    "phường Quảng Trị": [
+      "Phường 1",
+      "Phường 2",
+      "Phường 3",
+      "Phường An Đôn",
+      "Xã Hải Lệ"
+    ],
+    "xã Sen Ngư": [
+      "Xã Hưng Thủy",
+      "Xã Sen Thủy",
+      "Xã Ngư Thủy"
+    ],
+    "xã Tà Rụt": [
+      "Xã A Vao",
+      "Xã Húc Nghì",
+      "Xã Tà Rụt"
+    ],
+    "xã Tân Gianh": [
+      "Xã Phù Cảnh",
+      "Xã Liên Trường",
+      "Xã Quảng Thanh"
+    ],
+    "xã Tân Lập": [
+      "Xã Tân Liên",
+      "Xã Hướng Lộc",
+      "Xã Tân Lập"
+    ],
+    "xã Tân Mỹ": [
+      "Xã Tân Thủy",
+      "Xã Dương Thủy",
+      "Xã Mỹ Thủy",
+      "Xã Thái Thủy"
+    ],
+    "xã Tân Thành": [
+      "xã Tân Thành"
+    ],
+    "xã Thượng Trạch": [
+      "Xã Tân Trạch",
+      "Xã Thượng Trạch"
+    ],
+    "xã Triệu Bình": [
+      "Xã Triệu Độ",
+      "Xã Triệu Thuận",
+      "Xã Triệu Hòa",
+      "Xã Triệu Đại"
+    ],
+    "xã Triệu Cơ": [
+      "Xã Triệu Trung",
+      "Xã Triệu Tài",
+      "Xã Triệu Cơ"
+    ],
+    "xã Triệu Phong": [
+      "Thị trấn Ái Tử",
+      "Xã Triệu Thành",
+      "Xã Triệu Thượng"
+    ],
+    "xã Trung Thuần": [
+      "Xã Quảng Lưu",
+      "Xã Quảng Thạch",
+      "Xã Quảng Tiến"
+    ],
+    "xã Trường Ninh": [
+      "Xã Vạn Ninh",
+      "Xã An Ninh",
+      "Xã Xuân Ninh",
+      "Xã Hiền Ninh"
+    ],
+    "xã Trường Phú": [
+      "Xã Trường Thủy",
+      "Xã Mai Thủy",
+      "Xã Phú Thủy"
+    ],
+    "xã Trường Sơn": [
+      "Xã Trường Xuân",
+      "Xã Trường Sơn"
+    ],
+    "xã Tuyên Bình": [
+      "Xã Phong Hóa",
+      "Xã Ngư Hóa",
+      "Xã Mai Hóa"
+    ],
+    "xã Tuyên Hóa": [
+      "Xã Tiến Hóa",
+      "Xã Châu Hóa",
+      "Xã Cao Quảng",
+      "Xã Văn Hóa"
+    ],
+    "xã Tuyên Lâm": [
+      "Xã Lâm Hóa",
+      "Xã Thanh Hóa"
+    ],
+    "xã Tuyên Phú": [
+      "Xã Đồng Hóa",
+      "Xã Thạch Hóa",
+      "Xã Đức Hóa"
+    ],
+    "xã Tuyên Sơn": [
+      "Xã Thanh Thạch",
+      "Xã Hương Hóa"
+    ],
+    "xã Vĩnh Định": [
+      "Xã Hải Quy",
+      "Xã Hải Hưng",
+      "Xã Hải Bình"
+    ],
+    "xã Vĩnh Hoàng": [
+      "Xã Vĩnh Thái",
+      "Xã Trung Nam",
+      "Xã Vĩnh Hòa",
+      "Xã Vĩnh Tú"
+    ],
+    "xã Vĩnh Linh": [
+      "Thị trấn Hồ Xá",
+      "Xã Vĩnh Long",
+      "Xã Vĩnh Chấp"
+    ],
+    "xã Vĩnh Thủy": [
+      "Xã Vĩnh Lâm",
+      "Xã Vĩnh Sơn",
+      "Xã Vĩnh Thủy"
+    ]
+  }
+}

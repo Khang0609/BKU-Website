@@ -1,0 +1,358 @@
+{
+  "name": "tỉnh Sơn La",
+  "old_province": [
+    "tỉnh Sơn La"
+  ],
+  "ward": {
+    "xã Bắc Yên": [
+      "Thị trấn Bắc Yên",
+      "Xã Phiêng Ban",
+      "Xã Hồng Ngài",
+      "Xã Song Pe"
+    ],
+    "xã Bình Thuận": [
+      "Xã Phổng Lái",
+      "Xã Chiềng Pha"
+    ],
+    "xã Bó Sinh": [
+      "Xã Pú Bẩu",
+      "Xã Chiềng En",
+      "Xã Bó Sinh"
+    ],
+    "phường Chiềng An": [
+      "Phường Chiềng An",
+      "Xã Chiềng Xôm",
+      "Xã Chiềng Đen"
+    ],
+    "phường Chiềng Cơi": [
+      "Phường Chiềng Cơi",
+      "Xã Hua La",
+      "Xã Chiềng Cọ"
+    ],
+    "xã Chiềng Hặc": [
+      "Xã Tú Nang",
+      "Xã Mường Lựm",
+      "Xã Chiềng Hặc"
+    ],
+    "xã Chiềng Hoa": [
+      "Xã Chiềng Ân",
+      "Xã Chiềng Công",
+      "Xã Chiềng Hoa"
+    ],
+    "xã Chiềng Khoong": [
+      "Xã Mường Cai",
+      "Xã Chiềng Khoong"
+    ],
+    "xã Chiềng Khương": [
+      "Xã Mường Sai",
+      "Xã Chiềng Khương"
+    ],
+    "xã Chiềng La": [
+      "Xã Chiềng Ngàm",
+      "Xã Nong Lay",
+      "Xã Tông Cọ",
+      "Xã Chiềng La"
+    ],
+    "xã Chiềng Lao": [
+      "Xã Nậm Giôn",
+      "Xã Hua Trai",
+      "Xã Chiềng Lao"
+    ],
+    "xã Chiềng Mai": [
+      "Xã Chiềng Ban",
+      "Xã Chiềng Kheo",
+      "Xã Chiềng Dong",
+      "Xã Chiềng Ve",
+      "Xã Chiềng Mai"
+    ],
+    "xã Chiềng Mung": [
+      "Xã Mường Bằng",
+      "Xã Mường Bon",
+      "Xã Chiềng Mung"
+    ],
+    "xã Chiềng Sại": [
+      "Xã Phiêng Côn",
+      "Xã Chiềng Sại"
+    ],
+    "phường Chiềng Sinh": [
+      "Phường Chiềng Sinh",
+      "Xã Chiềng Ngần"
+    ],
+    "xã Chiềng Sơ": [
+      "Xã Yên Hưng",
+      "Xã Chiềng Sơ"
+    ],
+    "xã Chiềng Sơn": [
+      "Xã Chiềng Xuân",
+      "Xã Chiềng Sơn"
+    ],
+    "xã Chiềng Sung": [
+      "Xã Chiềng Chăn",
+      "Xã Chiềng Sung"
+    ],
+    "xã Co Mạ": [
+      "Xã Co Tòng",
+      "Xã Pá Lông",
+      "Xã Co Mạ"
+    ],
+    "xã Đoàn Kết": [
+      "Xã Chiềng Chung",
+      "Xã Đoàn Kết"
+    ],
+    "xã Gia Phù": [
+      "Xã Tường Phù",
+      "Xã Suối Bau",
+      "Xã Sập Xa",
+      "Xã Gia Phù"
+    ],
+    "xã Huổi Một": [
+      "Xã Nậm Mằn",
+      "Xã Huổi Một"
+    ],
+    "xã Kim Bon": [
+      "Xã Đá Đỏ",
+      "Xã Kim Bon"
+    ],
+    "xã Long Hẹ": [
+      "Xã É Tòng",
+      "Xã Long Hẹ"
+    ],
+    "xã Lóng Phiêng": [
+      "Xã Chiềng Tương",
+      "Xã Lóng Phiêng"
+    ],
+    "xã Lóng Sập": [
+      "Xã Chiềng Khừa",
+      "Xã Lóng Sập"
+    ],
+    "xã Mai Sơn": [
+      "Thị trấn Hát Lót",
+      "Xã Hát Lót",
+      "Xã Cò Nòi"
+    ],
+    "phường Mộc Châu": [
+      "Phường Mộc Lỵ",
+      "Phường Mường Sang",
+      "Xã Chiềng Hắc"
+    ],
+    "phường Mộc Sơn": [
+      "Phường Đông Sang",
+      "Phường Mộc Sơn"
+    ],
+    "xã Muổi Nọi": [
+      "Xã Bản Lầm",
+      "Xã Bon Phặng",
+      "Xã Muổi Nọi"
+    ],
+    "xã Mường Bám": [
+      "xã Mường Bám"
+    ],
+    "xã Mường Bang": [
+      "Xã Mường Do",
+      "Xã Mường Lang",
+      "Xã Mường Bang"
+    ],
+    "xã Mường Bú": [
+      "Xã Mường Chùm",
+      "Xã Tạ Bú",
+      "Xã Mường Bú"
+    ],
+    "xã Mường Chanh": [
+      "Xã Chiềng Chung",
+      "Xã Mường Chanh"
+    ],
+    "xã Mường Chiên": [
+      "Xã Chiềng Khay",
+      "Xã Cà Nàng",
+      "Xã Mường Chiên"
+    ],
+    "xã Mường Cơi": [
+      "Xã Mường Thải",
+      "Xã Tân Lang",
+      "Xã Mường Cơi"
+    ],
+    "xã Mường É": [
+      "Xã Phổng Lập",
+      "Xã Mường É"
+    ],
+    "xã Mường Giôn": [
+      "Xã Pá Ma Pha Khinh",
+      "Xã Mường Giôn"
+    ],
+    "xã Mường Hung": [
+      "Xã Chiềng Cang",
+      "Xã Mường Hung"
+    ],
+    "xã Mường Khiêng": [
+      "Xã Liệp Tè",
+      "Xã Bó Mười",
+      "Xã Mường Khiêng"
+    ],
+    "xã Mường La": [
+      "Thị trấn Ít Ong",
+      "Xã Nặm Păm",
+      "Xã Chiềng San",
+      "Xã Chiềng Muôn",
+      "Xã Mường Trai",
+      "Xã Pi Toong"
+    ],
+    "xã Mường Lầm": [
+      "Xã Đứa Mòn",
+      "Xã Mường Lầm"
+    ],
+    "xã Mường Lạn": [
+      "xã Mường Lạn"
+    ],
+    "xã Mường Lèo": [
+      "xã Mường Lèo"
+    ],
+    "xã Mường Sại": [
+      "Xã Nặm Ét",
+      "Xã Mường Sại"
+    ],
+    "xã Nậm Lầu": [
+      "Xã Chiềng Bôm",
+      "Xã Púng Tra",
+      "Xã Nậm Lầu"
+    ],
+    "xã Nậm Ty": [
+      "Xã Chiềng Phung",
+      "Xã Nậm Ty"
+    ],
+    "xã Ngọc Chiến": [
+      "xã Ngọc Chiến"
+    ],
+    "xã Pắc Ngà": [
+      "Xã Chim Vàn",
+      "Xã Pắc Ngà"
+    ],
+    "xã Phiêng Cằm": [
+      "Xã Chiềng Nơi",
+      "Xã Phiêng Cằm"
+    ],
+    "xã Phiêng Khoài": [
+      "xã Phiêng Khoài"
+    ],
+    "xã Phiêng Pằn": [
+      "Xã Nà Ớt",
+      "Xã Chiềng Lương",
+      "Xã Phiêng Pằn"
+    ],
+    "xã Phù Yên": [
+      "Thị trấn Quang Huy",
+      "Xã Huy Hạ",
+      "Xã Huy Tường",
+      "Xã Huy Tân",
+      "Xã Huy Thượng"
+    ],
+    "xã Púng Bánh": [
+      "Xã Dồm Cang",
+      "Xã Sam Kha",
+      "Xã Púng Bánh"
+    ],
+    "xã Quỳnh Nhai": [
+      "Thị trấn Mường Giàng",
+      "Xã Chiềng Bằng",
+      "Xã Chiềng Khoang",
+      "Xã Chiềng Ơn"
+    ],
+    "xã Song Khủa": [
+      "Xã Mường Tè",
+      "Xã Liên Hòa",
+      "Xã Quang Minh",
+      "Xã Song Khủa"
+    ],
+    "xã Sông Mã": [
+      "Thị trấn Sông Mã",
+      "Xã Nà Nghịu"
+    ],
+    "xã Sốp Cộp": [
+      "Xã Mường Và",
+      "Xã Nậm Lạnh",
+      "Xã Sốp Cộp"
+    ],
+    "xã Suối Tọ": [
+      "xã Suối Tọ"
+    ],
+    "xã Tà Hộc": [
+      "Xã Nà Bó",
+      "Xã Tà Hộc"
+    ],
+    "xã Tạ Khoa": [
+      "Xã Mường Khoa",
+      "Xã Hua Nhàn",
+      "Xã Tạ Khoa"
+    ],
+    "xã Tà Xùa": [
+      "Xã Làng Chếu",
+      "Xã Háng Đồng",
+      "Xã Tà Xùa"
+    ],
+    "xã Tân Phong": [
+      "Xã Bắc Phong",
+      "Xã Nam Phong",
+      "Xã Tân Phong"
+    ],
+    "xã Tân Yên": [
+      "xã Tân Yên"
+    ],
+    "phường Thảo Nguyên": [
+      "Phường Cờ Đỏ",
+      "Phường Thảo Ngu yên"
+    ],
+    "xã Thuận Châu": [
+      "Thị trấn Thuận Châu",
+      "Xã Phổng Ly",
+      "Xã Thôm Mòn",
+      "Xã Tông Lạnh",
+      "Xã Chiềng Pấc"
+    ],
+    "phường Tô Hiệu": [
+      "Phường Quyết Thắng",
+      "Phường Quyết Tâm",
+      "Phường Chiềng Lề",
+      "Phường Tô Hiệu"
+    ],
+    "xã Tô Múa": [
+      "Xã Chiềng Khoa",
+      "Xã Suối Bàng",
+      "Xã Tô Múa"
+    ],
+    "xã Tường Hạ": [
+      "Xã Tường Thượng",
+      "Xã Tường Phong",
+      "Xã Tường Tiến",
+      "Xã Tường Hạ"
+    ],
+    "xã Vân Hồ": [
+      "Xã Lóng Luông",
+      "Xã Chiềng Yên",
+      "Xã Mường Men",
+      "Xã Vân Hồ"
+    ],
+    "phường Vân Sơn": [
+      "Phường Bình Minh",
+      "Phường Vân Sơn"
+    ],
+    "xã Xím Vàng": [
+      "Xã Hang Chú",
+      "Xã Xí m Vàng"
+    ],
+    "xã Xuân Nha": [
+      "Xã Tân Xuân",
+      "Xã Xuân Nha"
+    ],
+    "xã Yên Châu": [
+      "Thị trấn Yên Châu",
+      "Xã Chiềng Đông",
+      "Xã Chiềng Sàng",
+      "Xã Chiềng Pằn",
+      "Xã Chiềng Khoi",
+      "Xã Sặp Vạt"
+    ],
+    "xã Yên Sơn": [
+      "Xã Chiềng On",
+      "Xã Yên Sơn"
+    ]
+  }
+}

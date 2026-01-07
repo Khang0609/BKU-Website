@@ -1,0 +1,190 @@
+{
+  "name": "tỉnh Lai Châu",
+  "old_province": [
+    "tỉnh Lai Châu"
+  ],
+  "ward": {
+    "xã Bản Bo": [
+      "Xã Nà Tăm",
+      "Xã Bản Bo"
+    ],
+    "xã Bình Lư": [
+      "Thị trấn Tam Đường",
+      "Xã Sơn Bình",
+      "Xã Bình Lư"
+    ],
+    "xã Bum Nưa": [
+      "Xã Pa Vệ Sủ",
+      "Xã Bum Nưa"
+    ],
+    "xã Bum Tở": [
+      "Thị trấn Mường Tè",
+      "Xã Can Hồ",
+      "Xã Bum Tở"
+    ],
+    "xã Dào San": [
+      "Xã Tung Qua Lìn",
+      "Xã Mù Sang",
+      "Xã Dào San"
+    ],
+    "phường Đoàn Kết": [
+      "Phường Đoàn Kết",
+      "Phường Quyết Tiến",
+      "Phường Quyết Thắng",
+      "Xã Lản Nhì Thàng",
+      "Xã Sùng Phài"
+    ],
+    "xã Hồng Thu": [
+      "Xã Phìn Hồ",
+      "Xã Ma Quai",
+      "Xã Hồng Thu"
+    ],
+    "xã Hua Bum": [
+      "Xã Vàng San",
+      "Xã Hua Bum"
+    ],
+    "xã Khoen On": [
+      "Xã Ta Gia",
+      "Xã Khoen On"
+    ],
+    "xã Khổng Lào": [
+      "Xã Hoang Thèn",
+      "Xã Bản Lang",
+      "Xã Khổng Lào"
+    ],
+    "xã Khun Há": [
+      "Xã Bản Hon",
+      "Xã Khun Há"
+    ],
+    "xã Lê Lợi": [
+      "Xã Nậm Pì",
+      "Xã Pú Đao",
+      "Xã Chăn Nưa",
+      "Xã Lê Lợi"
+    ],
+    "xã Mù Cả": [
+      "xã Mù Cả"
+    ],
+    "xã Mường Khoa": [
+      "Xã Phúc Khoa",
+      "Xã Mường Khoa"
+    ],
+    "xã Mường Kim": [
+      "Xã Tà Mung",
+      "Xã Tà Hừa",
+      "Xã Pha Mu",
+      "Xã Mường Kim"
+    ],
+    "xã Mường Mô": [
+      "Xã Nậm Chà",
+      "Xã Mường Mô"
+    ],
+    "xã Mường Tè": [
+      "Xã Nậm Khao",
+      "Xã Mường Tè"
+    ],
+    "xã Mường Than": [
+      "Xã Phúc Than",
+      "Xã Mường Mít"
+    ],
+    "xã Nậm Cuổi": [
+      "Xã Nậm Hăn",
+      "Xã Nậm Cuổi"
+    ],
+    "xã Nậm Hàng": [
+      "Thị trấn Nậm Nhùn",
+      "Xã Nậm Manh",
+      "Xã Nậm Hàng"
+    ],
+    "xã Nậm Mạ": [
+      "Xã Căn Co",
+      "Xã Nậm Mạ"
+    ],
+    "xã Nậm Sỏ": [
+      "Xã Tà Mít",
+      "Xã Nậm Sỏ"
+    ],
+    "xã Nậm Tăm": [
+      "Xã Lùng Thàng",
+      "Xã Nậm Cha",
+      "Xã Nậm Tăm"
+    ],
+    "xã Pa Tần": [
+      "Xã Nậm Ban",
+      "Xã Trung Chải",
+      "Xã Pa Tần"
+    ],
+    "xã Pa Ủ": [
+      "Xã Tá Bạ",
+      "Xã Pa Ủ"
+    ],
+    "xã Pắc Ta": [
+      "Xã Hố Mít",
+      "Xã Pắc Ta"
+    ],
+    "xã Phong Thổ": [
+      "Thị trấn Phong Thổ",
+      "Xã Huổi Luông",
+      "Xã Ma Li Pho",
+      "Xã Mường So"
+    ],
+    "xã Pu Sam Cáp": [
+      "Xã Pa Khóa",
+      "Xã Noong Hẻo",
+      "Xã Pu Sam Cáp"
+    ],
+    "xã Sì Lở Lầu": [
+      "Xã Vàng Ma Chải",
+      "Xã Mồ Sì San",
+      "Xã Pa Vây Sử",
+      "Xã Sì Lở Lầu"
+    ],
+    "xã Sìn Hồ": [
+      "Thị trấn Sìn Hồ",
+      "Xã Sà Dề Phìn",
+      "Xã Phăng Sô Lin",
+      "Xã Tả Phìn"
+    ],
+    "xã Sin Suối Hồ": [
+      "Xã Nậm Xe",
+      "Xã Thèn Sin",
+      "Xã Sin Suối Hồ"
+    ],
+    "xã Tả Lèng": [
+      "Xã Giang Ma",
+      "Xã Hồ Thầu",
+      "Xã Tả Lèng"
+    ],
+    "xã Tà Tổng": [
+      "xã Tà Tổng"
+    ],
+    "phường Tân Phong": [
+      "Phường Tân Phong",
+      "Phường Đông Phong",
+      "Xã San Thàng",
+      "Xã Nùng Nàng",
+      "Xã Bản Giang"
+    ],
+    "xã Tân Uyên": [
+      "Thị trấn Tân Uyên",
+      "Xã Trung Đồng",
+      "Xã Thân Thuộc",
+      "Xã Nậm Cần"
+    ],
+    "xã Than Uyên": [
+      "Thị trấn Than Uyên",
+      "Xã Mường Than",
+      "Xã Hua Nà",
+      "Xã Mường Cang"
+    ],
+    "xã Thu Lũm": [
+      "Xã Ka Lăng",
+      "Xã Thu Lũm"
+    ],
+    "xã Tủa Sín Chải": [
+      "Xã Làng Mô",
+      "Xã Tả Ngảo",
+      "Xã Tủa Sín Chải"
+    ]
+  }
+}

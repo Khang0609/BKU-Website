@@ -1,0 +1,358 @@
+{
+  "name": "tỉnh Hà Tĩnh",
+  "old_province": [
+    "tỉnh Hà Tĩnh"
+  ],
+  "ward": {
+    "phường Bắc Hồng Lĩnh": [
+      "Phường Bắc Hồng",
+      "Phường Đức Thuận",
+      "Phường Trung Lương",
+      "Xã Xuân Lam"
+    ],
+    "xã Cẩm Bình": [
+      "Xã Cẩm Vịnh",
+      "Xã Thạch Bình",
+      "Xã Cẩm Thành",
+      "Xã Cẩm Bình"
+    ],
+    "xã Cẩm Duệ": [
+      "Xã Cẩm Mỹ",
+      "Xã Cẩm Thạch",
+      "Xã Cẩm Duệ"
+    ],
+    "xã Cẩm Hưng": [
+      "Xã Cẩm Thịnh",
+      "Xã Cẩm Hà",
+      "Xã Cẩm Hưng"
+    ],
+    "xã Cẩm Lạc": [
+      "Xã Cẩm Minh",
+      "Xã Cẩm Sơn",
+      "Xã Cẩm Lạc"
+    ],
+    "xã Cẩm Trung": [
+      "Xã Cẩm Lĩnh",
+      "Xã Cẩm Lộc",
+      "Xã Cẩm Trung"
+    ],
+    "xã Cẩm Xuyên": [
+      "Thị trấn Cẩm Xuyên",
+      "Xã Cẩm Quang",
+      "Xã Cẩm Quan"
+    ],
+    "xã Can Lộc": [
+      "Thị trấn Nghèn",
+      "Xã Thiên Lộc",
+      "Xã Vượng Lộc"
+    ],
+    "xã Cổ Đạm": [
+      "Xã Cương Gián",
+      "Xã Xuân Liên",
+      "Xã Cổ Đạm"
+    ],
+    "xã Đan Hải": [
+      "Xã Đan Trường",
+      "Xã Xuân Hải",
+      "Xã Xuân Hội",
+      "Xã Xuân Phổ"
+    ],
+    "xã Đông Kinh": [
+      "Xã Thạch Kênh",
+      "Xã Thạch Liên",
+      "Xã Ích Hậu"
+    ],
+    "xã Đồng Lộc": [
+      "Thị trấn Đồng Lộc",
+      "Xã Thượng Lộc",
+      "Xã Mỹ Lộc"
+    ],
+    "xã Đồng Tiến": [
+      "Xã Thạch Trị",
+      "Xã Thạch Hội",
+      "Xã Thạch Văn"
+    ],
+    "xã Đức Đồng": [
+      "Xã Đức Lạng",
+      "Xã Tân Hương",
+      "Xã Đức Đồng"
+    ],
+    "xã Đức Minh": [
+      "Xã Trường Sơn",
+      "Xã Tùng Châu",
+      "Xã Liên Minh"
+    ],
+    "xã Đức Quang": [
+      "Xã Quang Vĩnh",
+      "Xã Bùi La Nhân",
+      "Xã Yên Hồ"
+    ],
+    "xã Đức Thịnh": [
+      "Xã Thanh Bình Thịnh",
+      "Xã Lâm Trung Thủy",
+      "Xã An Dũng"
+    ],
+    "xã Đức Thọ": [
+      "Thị trấn Đức Thọ",
+      "Xã Tùng Ảnh",
+      "Xã Hòa Lạc",
+      "Xã Tân Dân"
+    ],
+    "xã Gia Hanh": [
+      "Xã Khánh Vĩnh Yên",
+      "Xã Thanh Lộc",
+      "Xã Gia Hanh"
+    ],
+    "phường Hà Huy Tập": [
+      "Xã Tân Lâm Hương",
+      "Xã Thạch Đài",
+      "Phường Đại Nài"
+    ],
+    "xã Hà Linh": [
+      "Xã Điền Mỹ",
+      "Xã Hà Linh"
+    ],
+    "phường Hải Ninh": [
+      "Phường Kỳ Ninh",
+      "Xã Kỳ Hà",
+      "Xã Kỳ Hải"
+    ],
+    "phường Hoành Sơn": [
+      "Phường Kỳ Nam",
+      "Phường Kỳ Phương",
+      "Phường Kỳ Liên",
+      "Xã Kỳ Lợi"
+    ],
+    "xã Hồng Lộc": [
+      "Xã Tân Lộc",
+      "Xã Hồng Lộc"
+    ],
+    "xã Hương Bình": [
+      "Xã Hòa Hải",
+      "Xã Phúc Đồng",
+      "Xã Hương Bình"
+    ],
+    "xã Hương Đô": [
+      "Xã Lộc Yên",
+      "Xã Hương Trà",
+      "Xã Hương Đô"
+    ],
+    "xã Hương Khê": [
+      "Thị trấn Hương Khê",
+      "Xã Hương Long",
+      "Xã Phú Gia"
+    ],
+    "xã Hương Phố": [
+      "Xã Hương Giang",
+      "Xã Hương Thủy",
+      "Xã Gia Phố"
+    ],
+    "xã Hương Sơn": [
+      "Thị trấn Phố Châu",
+      "Xã Sơn Phú",
+      "Xã Sơn Bằng",
+      "Xã Sơn Ninh",
+      "Xã Sơn Trung"
+    ],
+    "xã Hương Xuân": [
+      "Xã Hương Lâm",
+      "Xã Hương Vĩnh",
+      "Xã Hương Xuân"
+    ],
+    "xã Kim Hoa": [
+      "Xã Hàm Trường",
+      "Xã Kim Hoa"
+    ],
+    "xã Kỳ Anh": [
+      "Thị trấn Kỳ Đồng",
+      "Xã Kỳ Giang",
+      "Xã Kỳ Tiến",
+      "Xã Kỳ Phú"
+    ],
+    "xã Kỳ Hoa": [
+      "Xã Kỳ Tân",
+      "Xã Kỳ Hoa"
+    ],
+    "xã Kỳ Khang": [
+      "Xã Kỳ Thọ",
+      "Xã Kỳ Thư",
+      "Xã Kỳ Khang"
+    ],
+    "xã Kỳ Lạc": [
+      "Xã Lâm Hợp",
+      "Xã Kỳ Lạc"
+    ],
+    "xã Kỳ Thượng": [
+      "Xã Kỳ Sơn",
+      "Xã Kỳ Thượng"
+    ],
+    "xã Kỳ Văn": [
+      "Xã Kỳ Tây",
+      "Xã Kỳ Trung",
+      "Xã Kỳ Văn"
+    ],
+    "xã Kỳ Xuân": [
+      "Xã Kỳ Phong",
+      "Xã Kỳ Bắc",
+      "Xã Kỳ Xuân"
+    ],
+    "xã Lộc Hà": [
+      "Thị trấn Lộc Hà",
+      "Xã Bình An",
+      "Xã Thịnh Lộc",
+      "Xã Thạch Kim"
+    ],
+    "xã Mai Hoa": [
+      "Xã Ân Phú",
+      "Xã Đức Giang",
+      "Xã Đức Lĩnh"
+    ],
+    "xã Mai Phụ": [
+      "Xã Thạch Mỹ",
+      "Xã Thạch Châu",
+      "Xã Phù Lưu",
+      "Xã Mai Phụ"
+    ],
+    "phường Nam Hồng Lĩnh": [
+      "Phường Nam Hồng",
+      "Phường Đậu Liêu",
+      "Xã Thuận Lộc"
+    ],
+    "xã Nghi Xuân": [
+      "Thị trấn Xuân An",
+      "Xã Xuân Giang",
+      "Xã Xuân Hồng",
+      "Xã Xuân Viên",
+      "Xã Xuân Lĩnh"
+    ],
+    "xã Phúc Trạch": [
+      "Xã Hương Trạch",
+      "Xã Hương Liên",
+      "Xã Phúc Trạch"
+    ],
+    "xã Sơn Giang": [
+      "Xã Sơn Lâm",
+      "Xã Quang Diệm",
+      "Xã Sơn Giang"
+    ],
+    "xã Sơn Hồng": [
+      "Xã Sơn Lĩnh",
+      "Xã Sơn Hồng"
+    ],
+    "xã Sơn Kim 1": [
+      "xã Sơn Kim 1"
+    ],
+    "xã Sơn Kim 2": [
+      "xã Sơn Kim 2"
+    ],
+    "xã Sơn Tây": [
+      "Thị trấn Tây Sơn",
+      "Xã Sơn Tây"
+    ],
+    "xã Sơn Tiến": [
+      "Xã Sơn Lễ",
+      "Xã An Hòa Thịnh",
+      "Xã Sơn Tiến"
+    ],
+    "phường Sông Trí": [
+      "Phường Hưng Trí",
+      "Phường Kỳ Trinh",
+      "Xã Kỳ Châu",
+      "Xã Kỳ Lợi"
+    ],
+    "xã Thạch Hà": [
+      "Thị trấn Thạch Hà",
+      "Xã Thạch Long",
+      "Xã Thạch Sơn"
+    ],
+    "xã Thạch Khê": [
+      "Xã Đỉnh Bàn",
+      "Xã Thạch Hải",
+      "Xã Thạch Khê"
+    ],
+    "xã Thạch Lạc": [
+      "Xã Tượng Sơn",
+      "Xã Thạch Thắng",
+      "Xã Thạch Lạc"
+    ],
+    "xã Thạch Xuân": [
+      "Xã Nam Điền",
+      "Xã Thạch Xuân"
+    ],
+    "phường Thành Sen": [
+      "Phường Bắc Hà",
+      "Phường Thạch Quý",
+      "Phường Tân Giang",
+      "Phường Thạch Hưng",
+      "Phường Nam Hà",
+      "Phường Trần Phú",
+      "Phường Hà Huy Tập",
+      "Phường Văn Yên",
+      "Phường Đại Nài"
+    ],
+    "xã Thiên Cầm": [
+      "Thị trấn Thiên Cầm",
+      "Xã Nam Phúc Thăng",
+      "Xã Cẩm Nhượng"
+    ],
+    "xã Thượng Đức": [
+      "Xã Đức Bồng",
+      "Xã Đức Hương",
+      "Xã Đức Liên"
+    ],
+    "xã Tiên Điền": [
+      "Thị trấn Tiên Điền",
+      "Xã Xuân Yên",
+      "Xã Xuân Mỹ",
+      "Xã Xuân Thành"
+    ],
+    "xã Toàn Lưu": [
+      "Xã Ngọc Sơn",
+      "Xã Lưu Vĩnh Sơn"
+    ],
+    "phường Trần Phú": [
+      "Phường Thạch Trung",
+      "Phường Đồng Môn",
+      "Phường Thạch Hạ",
+      "Xã Hộ Độ"
+    ],
+    "xã Trường Lưu": [
+      "Xã Kim Song Trường",
+      "Xã Thường Nga",
+      "Xã Phú Lộc"
+    ],
+    "xã Tứ Mỹ": [
+      "Xã Châu Bình",
+      "Xã Tân Mỹ Hà",
+      "Xã Mỹ Long"
+    ],
+    "xã Tùng Lộc": [
+      "Xã Thuần Thiện",
+      "Xã Tùng Lộc"
+    ],
+    "xã Việt Xuyên": [
+      "Xã Việt Tiến",
+      "Xã Thạch Ngọc"
+    ],
+    "xã Vũ Quang": [
+      "Thị trấn Vũ Quang",
+      "Xã Hương Minh",
+      "Xã Quang Thọ",
+      "Xã Thọ Điền"
+    ],
+    "phường Vũng Áng": [
+      "Phường Kỳ Long",
+      "Phường Kỳ Thịnh",
+      "Xã Kỳ Lợi"
+    ],
+    "xã Xuân Lộc": [
+      "Xã Sơn Lộc",
+      "Xã Quang Lộc",
+      "Xã Xuân Lộc"
+    ],
+    "xã Yên Hòa": [
+      "Xã Cẩm Dương",
+      "Xã Yên Hòa"
+    ]
+  }
+}

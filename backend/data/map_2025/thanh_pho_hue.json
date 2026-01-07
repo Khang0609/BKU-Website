@@ -1,0 +1,221 @@
+{
+  "name": "thành phố Huế",
+  "old_province": [
+    "thành phố Huế"
+  ],
+  "ward": {
+    "xã A Lưới 1": [
+      "Xã Hồng Thủy",
+      "Xã Hồng Vân",
+      "Xã Trung Sơn",
+      "Xã Hồng Kim"
+    ],
+    "xã A Lưới 2": [
+      "Thị trấn A Lưới",
+      "Xã Hồng Bắc",
+      "Xã Quảng Nhâm",
+      "Xã A Ngo"
+    ],
+    "xã A Lưới 3": [
+      "Xã Sơn Thủy",
+      "Xã Hồng Thượng",
+      "Xã Phú Vinh",
+      "Xã Hồng Thái"
+    ],
+    "xã A Lưới 4": [
+      "Xã Hương Phong",
+      "Xã A Roàng",
+      "Xã Đông Sơn",
+      "Xã Lâm Đớt"
+    ],
+    "xã A Lưới 5": [
+      "Xã Hương Nguyên",
+      "Xã Hồng Hạ"
+    ],
+    "phường An Cựu": [
+      "Phường An Đông",
+      "Phường An Tây",
+      "Phường An Cựu"
+    ],
+    "xã Bình Điền": [
+      "Xã Hương Bình",
+      "Xã Bình Thành",
+      "Xã Bình Tiến"
+    ],
+    "xã Chân Mây - Lăng Cô": [
+      "Thị trấn Lăng Cô",
+      "Xã Lộc Tiến",
+      "Xã Lộc Vĩnh",
+      "Xã Lộc Thủy"
+    ],
+    "xã Đan Điền": [
+      "Xã Quảng Thái",
+      "Xã Quảng Lợi",
+      "Xã Quảng Vinh",
+      "Xã Quảng Phú"
+    ],
+    "phường Dương Nỗ": [
+      "phường Dương Nỗ"
+    ],
+    "phường Hóa Châu": [
+      "Phường Hương Phong",
+      "Phường Hương Vinh",
+      "Xã Quảng Thành"
+    ],
+    "xã Hưng Lộc": [
+      "Thị trấn Lộc Sơn",
+      "Xã Lộc Bổn",
+      "Xã Xuân Lộc"
+    ],
+    "phường Hương An": [
+      "Phường An Hòa",
+      "Phường Hương Sơ",
+      "Phường Hương An"
+    ],
+    "phường Hương Thủy": [
+      "Phường Thủy Lương",
+      "Phường Thủy Châu",
+      "Xã Thủy Tân"
+    ],
+    "phường Hương Trà": [
+      "Phường Tứ Hạ",
+      "Phường Hương Văn",
+      "Phường Hương Vân"
+    ],
+    "xã Khe Tre": [
+      "Thị trấn Khe Tre",
+      "Xã Hương Phú",
+      "Xã Hương Lộc",
+      "Xã Thượng Lộ"
+    ],
+    "phường Kim Long": [
+      "Phường Long Hồ",
+      "Phường Hương Long",
+      "Phường Kim Long"
+    ],
+    "phường Kim Trà": [
+      "Phường Hương Xuân",
+      "Phường Hương Chữ",
+      "Xã Hương Toàn"
+    ],
+    "xã Lộc An": [
+      "Xã Lộc Hòa",
+      "Xã Lộc Điền",
+      "Xã Lộc An"
+    ],
+    "xã Long Quảng": [
+      "Xã Thượng Quảng",
+      "Xã Thượng Long",
+      "Xã Hương Hữu"
+    ],
+    "phường Mỹ Thượng": [
+      "Phường Phú Thượng",
+      "Xã Phú An",
+      "Xã Phú Mỹ"
+    ],
+    "xã Nam Đông": [
+      "Xã Hương Xuân",
+      "Xã Thượng Nhật",
+      "Xã Hương Sơn"
+    ],
+    "phường Phong Điền": [
+      "Phường Phong Thu",
+      "Xã Phong Mỹ",
+      "Xã Phong Xuân"
+    ],
+    "phường Phong Dinh": [
+      "Phường Phong Hòa",
+      "Xã Phong Bình",
+      "Xã Phong Chương"
+    ],
+    "phường Phong Phú": [
+      "Phường Phong Phú",
+      "Xã Phong Thạnh"
+    ],
+    "phường Phong Quảng": [
+      "Phường Phong Hải",
+      "Xã Quảng Công",
+      "Xã Quảng Ngạn"
+    ],
+    "phường Phong Thái": [
+      "Phường Phong An",
+      "Phường Phong Hiền",
+      "Xã Phong Sơn"
+    ],
+    "phường Phú Bài": [
+      "Phường Phú Bài",
+      "Xã Thủy Phù",
+      "Xã Phú Sơn",
+      "Xã Dương Hòa"
+    ],
+    "xã Phú Hồ": [
+      "Xã Phú Xuân",
+      "Xã Phú Lương",
+      "Xã Phú Hồ"
+    ],
+    "xã Phú Lộc": [
+      "Thị trấn Phú Lộc",
+      "Xã Lộc Trì",
+      "Xã Lộc Bình"
+    ],
+    "xã Phú Vang": [
+      "Thị trấn Phú Đa",
+      "Xã Phú Gia",
+      "Xã Vinh Hà"
+    ],
+    "xã Phú Vinh": [
+      "Xã Phú Diên",
+      "Xã Vinh Xuân",
+      "Xã Vinh An",
+      "Xã Vinh Thanh"
+    ],
+    "phường Phú Xuân": [
+      "Phường Gia Hội",
+      "Phường Phú Hậu",
+      "Phường Tây Lộc",
+      "Phường Thuận Lộc",
+      "Phường Thuận Hòa",
+      "Phường Đông Ba"
+    ],
+    "xã Quảng Điền": [
+      "Thị trấn Sịa",
+      "Xã Quảng Phước",
+      "Xã Quảng An",
+      "Xã Quảng Thọ"
+    ],
+    "phường Thanh Thủy": [
+      "Phường Thủy Dương",
+      "Phường Thủy Phương",
+      "Xã Thủy Thanh"
+    ],
+    "phường Thuận An": [
+      "Phường Thuận An",
+      "Xã Phú Hải",
+      "Xã Phú Thuận"
+    ],
+    "phường Thuận Hóa": [
+      "Phường Phú Hội",
+      "Phường Phú Nhuận",
+      "Phường Đúc",
+      "Phường Vĩnh Ninh",
+      "Phường Phước Vĩnh",
+      "Phường Trường An"
+    ],
+    "phường Thủy Xuân": [
+      "Phường Thủy Biều",
+      "Phường Thủy Bằng",
+      "Phường Thủy Xuân"
+    ],
+    "xã Vinh Lộc": [
+      "Xã Vinh Hưng",
+      "Xã Vinh Mỹ",
+      "Xã Giang Hải",
+      "Xã Vinh Hiền"
+    ],
+    "phường Vỹ Dạ": [
+      "Phường Thủy Vân",
+      "Phường Xuân Phú",
+      "Phường Vỹ Dạ"
+    ]
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "name": "tỉnh Điện Biên",
+  "old_province": [
+    "tỉnh Điện Biên"
+  ],
+  "ward": {
+    "xã Búng Lao": [
+      "Xã Ẳng Tở",
+      "Xã Chiềng Đông",
+      "Xã Búng Lao"
+    ],
+    "xã Chà Tở": [
+      "Xã Nậm Khăn",
+      "Xã Chà Tở"
+    ],
+    "xã Chiềng Sinh": [
+      "Xã Nà Sáy",
+      "Xã Mường Thín",
+      "Xã Mường Khong",
+      "Xã Chiềng Sinh"
+    ],
+    "phường Điện Biên Phủ": [
+      "Phường Him Lam",
+      "Phường Tân Thanh",
+      "Phường Mường Thanh",
+      "Phường Thanh Bình",
+      "Phường Thanh Trường",
+      "Xã Thanh Minh"
+    ],
+    "xã Mường Ảng": [
+      "Thị trấn Mường Ảng",
+      "Xã Ẳng Nưa",
+      "Xã Ẳng Cang"
+    ],
+    "xã Mường Chà": [
+      "Xã Chà Cang",
+      "Xã Chà Nưa",
+      "Xã Nậm Tin",
+      "Xã Pa Tần"
+    ],
+    "xã Mường Lạn": [
+      "Xã Nặm Lịch",
+      "Xã Xuân Lao",
+      "Xã Mường Lạn"
+    ],
+    "phường Mường Lay": [
+      "Phường Sông Đà",
+      "Phường Na Lay",
+      "Xã Lay Nưa",
+      "Xã Sá Tổng"
+    ],
+    "xã Mường Luân": [
+      "Xã Chiềng Sơ",
+      "Xã Luân Giói",
+      "Xã Mường Luân"
+    ],
+    "xã Mường Mùn": [
+      "Xã Mùn Chung",
+      "Xã Pú Xi",
+      "Xã Mường Mùn"
+    ],
+    "xã Mường Nhà": [
+      "Xã Mường Lói",
+      "Xã Phu Luông",
+      "Xã Mường Nhà"
+    ],
+    "xã Mường Nhé": [
+      "Xã Nậm Vì",
+      "Xã Chung Chải",
+      "Xã Mường Nhé"
+    ],
+    "xã Mường Phăng": [
+      "Xã Nà Nhạn",
+      "Xã Pá Khoang",
+      "Xã Mường Phăng"
+    ],
+    "xã Mường Pồn": [
+      "Xã Mường Mươn",
+      "Xã Mường Pồn"
+    ],
+    "phường Mường Thanh": [
+      "Phường Noong Bua",
+      "Phường Nam Thanh",
+      "Xã Thanh Xương"
+    ],
+    "xã Mường Toong": [
+      "Xã Huổi Lếch",
+      "Xã Mường Toong"
+    ],
+    "xã Mường Tùng": [
+      "Xã Huổi Lèng",
+      "Xã Mường Tùng"
+    ],
+    "xã Nà Bủng": [
+      "Xã Vàng Đán",
+      "Xã Nà Bủng"
+    ],
+    "xã Nà Hỳ": [
+      "Xã Nà Khoa",
+      "Xã Nậm Nhừ",
+      "Xã Nậm Chua",
+      "Xã Nà Hỳ"
+    ],
+    "xã Na Sang": [
+      "Thị trấn Mường Chà",
+      "Xã Ma Thì Hồ",
+      "Xã Sa Lông",
+      "Xã Na Sang"
+    ],
+    "xã Na Son": [
+      "Thị trấn Điện Biên Đông",
+      "Xã Keo Lôm",
+      "Xã Na Son"
+    ],
+    "xã Nà Tấu": [
+      "Xã Mường Đăng",
+      "Xã Ngối Cáy",
+      "Xã Nà Tấu"
+    ],
+    "xã Nậm Kè": [
+      "Xã Pá Mỳ",
+      "Xã Nậm Kè"
+    ],
+    "xã Nậm Nèn": [
+      "Xã Huổi Mí",
+      "Xã Nậm Nèn"
+    ],
+    "xã Núa Ngam": [
+      "Xã Hẹ Muông",
+      "Xã Na Tông",
+      "Xã Núa Ngam"
+    ],
+    "xã Pa Ham": [
+      "Xã Hừa Ngài",
+      "Xã Pa Ham"
+    ],
+    "xã Phình Giàng": [
+      "Xã Pú Hồng",
+      "Xã Phình Giàng"
+    ],
+    "xã Pu Nhi": [
+      "Xã Nong U",
+      "Xã Pu Nhi"
+    ],
+    "xã Pú Nhung": [
+      "Xã Rạng Đông",
+      "Xã Ta Ma",
+      "Xã Pú Nhung"
+    ],
+    "xã Quài Tở": [
+      "Xã Tỏa Tình",
+      "Xã Tênh Phông",
+      "Xã Quài Tở"
+    ],
+    "xã Quảng Lâm": [
+      "Xã Na Cô Sa",
+      "Xã Quảng Lâm"
+    ],
+    "xã Sam Mứn": [
+      "Xã Pom Lót",
+      "Xã Na Ư"
+    ],
+    "xã Sáng Nhè": [
+      "Xã Xá Nhè",
+      "Xã Mường Đun",
+      "Xã Phình Sáng"
+    ],
+    "xã Si Pa Phìn": [
+      "Xã Phìn Hồ",
+      "Xã Si Pa Phìn"
+    ],
+    "xã Sín Chải": [
+      "Xã Tả Sìn Thàng",
+      "Xã Lao Xả Phình",
+      "Xã Sín Chải"
+    ],
+    "xã Sín Thầu": [
+      "Xã Sen Thượng",
+      "Xã Leng Su Sìn",
+      "Xã Sín Thầu"
+    ],
+    "xã Sính Phình": [
+      "Xã Trung Thu",
+      "Xã Tả Phìn",
+      "Xã Sính Phình"
+    ],
+    "xã Thanh An": [
+      "Xã Noong Hẹt",
+      "Xã Sam Mứn",
+      "Xã Thanh An"
+    ],
+    "xã Thanh Nưa": [
+      "Xã Hua Thanh",
+      "Xã Thanh Luông",
+      "Xã Thanh Hưng",
+      "Xã Thanh Chăn",
+      "Xã Thanh Nưa"
+    ],
+    "xã Thanh Yên": [
+      "Xã Noong Luống",
+      "Xã Pa Thơm",
+      "Xã Thanh Yên"
+    ],
+    "xã Tìa Dình": [
+      "Xã Háng Lìa",
+      "Xã Tìa Dình"
+    ],
+    "xã Tủa Chùa": [
+      "Thị trấn Tủa Chùa",
+      "Xã Mường Báng",
+      "Xã Nà Tòng"
+    ],
+    "xã Tủa Thàng": [
+      "Xã Huổi Só",
+      "Xã Tủa Thàng"
+    ],
+    "xã Tuần Giáo": [
+      "Thị trấn Tuần Giáo",
+      "Xã Quài Cang",
+      "Xã Quài Nưa"
+    ],
+    "xã Xa Dung": [
+      "Xã Phì Nhừ",
+      "Xã Xa Dung"
+    ]
+  }
+}

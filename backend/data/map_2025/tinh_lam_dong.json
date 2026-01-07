@@ -1,0 +1,589 @@
+{
+  "name": "tỉnh Lâm Đồng",
+  "old_province": [
+    "tỉnh Đắk Nông",
+    "tỉnh Bình Thuận",
+    "tỉnh Lâm Đồng"
+  ],
+  "ward": {
+    "phường 1 Bảo Lộc": [
+      "Phường 1",
+      "Phường Lộc Phát",
+      "Xã Lộc Thanh"
+    ],
+    "phường 2 Bảo Lộc": [
+      "Phường 2",
+      "Xã Lộc Tân",
+      "Xã ĐamBri"
+    ],
+    "phường 3 Bảo Lộc": [
+      "Phường Lộc Tiến",
+      "Xã Lộc Châu",
+      "Xã Đại Lào"
+    ],
+    "phường B’Lao": [
+      "Phường Lộc Sơn",
+      "Phường B’Lao",
+      "Xã Lộc Nga"
+    ],
+    "xã Bắc Bình": [
+      "Thị trấn Chợ Lầu",
+      "Xã Phan Hòa",
+      "Xã Phan Hiệp",
+      "Xã Phan Rí Thành"
+    ],
+    "phường Bắc Gia Nghĩa": [
+      "Phường Quảng Thành",
+      "Phường Nghĩa Thành",
+      "Phường Nghĩa Đức",
+      "Xã Đắk Ha"
+    ],
+    "xã Bắc Ruộng": [
+      "Xã Măng Tố",
+      "Xã Bắc Ruộng"
+    ],
+    "xã Bảo Lâm 1": [
+      "Thị trấn Lộc Thắng",
+      "Xã Lộc Quảng",
+      "Xã Lộc Ngãi"
+    ],
+    "xã Bảo Lâm 2": [
+      "Xã Lộc An",
+      "Xã Lộc Đức",
+      "Xã Tân Lạc"
+    ],
+    "xã Bảo Lâm 3": [
+      "Xã Lộc Thành",
+      "Xã Lộc Nam"
+    ],
+    "xã Bảo Lâm 4": [
+      "Xã Lộc Phú",
+      "Xã Lộc Lâm",
+      "Xã B’Lá"
+    ],
+    "xã Bảo Lâm 5": [
+      "Xã Lộc Bảo",
+      "Xã Lộc Bắc"
+    ],
+    "xã Bảo Thuận": [
+      "Xã Đinh Lạc",
+      "Xã Tân Nghĩa",
+      "Xã Bảo Thuận"
+    ],
+    "phường Bình Thuận": [
+      "Phường Phú Tài",
+      "Xã Phong Nẫm",
+      "Xã Hàm Hiệp"
+    ],
+    "phường Cam Ly - Đà Lạt": [
+      "Phường 5",
+      "Phường 6",
+      "Xã Tà Nung"
+    ],
+    "xã Cát Tiên": [
+      "Thị trấn Cát Tiên",
+      "Xã Nam Ninh",
+      "Xã Quảng Ngãi"
+    ],
+    "xã Cát Tiên 2": [
+      "Thị trấn Phước Cát",
+      "Xã Phước Cát 2",
+      "Xã Đức Phổ"
+    ],
+    "xã Cát Tiên 3": [
+      "Xã Gia Viễn",
+      "Xã Tiên Hoàng",
+      "Xã Đồng Nai Thượng"
+    ],
+    "xã Cư Jút": [
+      "Thị trấn Ea T’ling",
+      "Xã Trúc Sơn",
+      "Xã Tâm Thắng",
+      "Xã Cư K’nia"
+    ],
+    "xã D’Ran": [
+      "Thị trấn D’Ran",
+      "Xã Lạc Xuân"
+    ],
+    "xã Đạ Huoai": [
+      "Thị trấn Mađaguôi",
+      "Xã Mađaguôi",
+      "Xã Đạ Oai"
+    ],
+    "xã Đạ Huoai 2": [
+      "Thị trấn Đạ M’ri",
+      "Xã Hà Lâm"
+    ],
+    "xã Đạ Huoai 3": [
+      "xã Bà Gia"
+    ],
+    "xã Đạ Tẻh": [
+      "Thị trấn Đạ Tẻh",
+      "Xã An Nhơn",
+      "Xã Đạ Lây"
+    ],
+    "xã Đạ Tẻh 2": [
+      "Xã Quảng Trị",
+      "Xã Đạ Pal",
+      "Xã Đạ Kho"
+    ],
+    "xã Đạ Tẻh 3": [
+      "Xã Mỹ Đức",
+      "Xã Quốc Oai"
+    ],
+    "xã Đắk Mil": [
+      "Xã Đắk Gằn",
+      "Xã Đắk N’Drót",
+      "Xã Đắk R’La"
+    ],
+    "xã Đắk Sắk": [
+      "Xã Nam Xuân",
+      "Xã Long Sơn",
+      "Xã Đắk Sắk"
+    ],
+    "xã Đắk Song": [
+      "Xã Đắk Môl",
+      "Xã Đắk Hòa"
+    ],
+    "xã Đắk Wil": [
+      "Xã Ea Pô",
+      "Xã Đắk Wil"
+    ],
+    "xã Đam Rông 1": [
+      "Xã Phi Liêng",
+      "Xã Đạ K’Nàng"
+    ],
+    "xã Đam Rông 2": [
+      "Xã Rô Men",
+      "Xã Liêng Srônh"
+    ],
+    "xã Đam Rông 3": [
+      "Xã Đạ Rsal",
+      "Xã Đạ M’Rông"
+    ],
+    "xã Đam Rông 4": [
+      "Xã Đạ Tông",
+      "Xã Đạ Long",
+      "Xã Đưng K’Nớ"
+    ],
+    "xã Di Linh": [
+      "Thị trấn Di Linh",
+      "Xã Liên Đầm",
+      "Xã Tân Châu",
+      "Xã Gung Ré"
+    ],
+    "xã Đinh Trang Thượng": [
+      "Xã Tân Lâm",
+      "Xã Tân Thượng",
+      "Xã Đinh Trang Thượng"
+    ],
+    "xã Đinh Văn Lâm Hà": [
+      "Xã Bình Thạnh",
+      "Xã Tân Văn",
+      "Thị trấn Đinh Văn"
+    ],
+    "xã Đơn Dương": [
+      "Thị trấn Thạnh Mỹ",
+      "Xã Đạ Ròn",
+      "Xã Tu Tra"
+    ],
+    "phường Đông Gia Nghĩa": [
+      "Phường Nghĩa Trung",
+      "Xã Đắk Nia"
+    ],
+    "xã Đông Giang": [
+      "Xã Đông Tiến",
+      "Xã Đông Giang"
+    ],
+    "xã Đồng Kho": [
+      "Xã Huy Khiêm",
+      "Xã La Ngâu",
+      "Xã Đức Bình",
+      "Xã Đồng Kho"
+    ],
+    "xã Đức An": [
+      "Thị trấn Đức An",
+      "Xã Đắk N’Drung",
+      "Xã Nam Bình"
+    ],
+    "xã Đức Lập": [
+      "Thị trấn Đắk Mil",
+      "Xã Đức Mạnh",
+      "Xã Đức Minh"
+    ],
+    "xã Đức Linh": [
+      "Thị trấn Võ Xu",
+      "Xã Nam Chính",
+      "Xã Vũ Hòa"
+    ],
+    "xã Đức Trọng": [
+      "Thị trấn Liên Nghĩa",
+      "Xã Phú Hội"
+    ],
+    "xã Gia Hiệp": [
+      "Xã Tam Bố",
+      "Xã Gia Hiệp"
+    ],
+    "xã Hải Ninh": [
+      "Xã Bình An",
+      "Xã Phan Điền",
+      "Xã Hải Ninh"
+    ],
+    "xã Hàm Kiệm": [
+      "Xã Mương Mán",
+      "Xã Hàm Cường",
+      "Xã Hàm Kiệm"
+    ],
+    "xã Hàm Liêm": [
+      "Xã Hàm Chính",
+      "Xã Hàm Liêm"
+    ],
+    "xã Hàm Tân": [
+      "Xã Tân Hà",
+      "Xã Tân Xuân",
+      "Thị trấn Tân Nghĩa"
+    ],
+    "phường Hàm Thắng": [
+      "Phường Xuân An",
+      "Thị trấn Phú Long",
+      "Xã Hàm Thắng"
+    ],
+    "xã Hàm Thạnh": [
+      "Xã Mỹ Thạnh",
+      "Xã Hàm Cần",
+      "Xã Hàm Thạnh"
+    ],
+    "xã Hàm Thuận": [
+      "Thị trấn Ma Lâm",
+      "Xã Thuận Minh",
+      "Xã Hàm Đức"
+    ],
+    "xã Hàm Thuận Bắc": [
+      "Xã Thuận Hòa",
+      "Xã Hàm Trí",
+      "Xã Hàm Phú"
+    ],
+    "xã Hàm Thuận Nam": [
+      "Thị trấn Thuận Nam",
+      "Xã Hàm Minh"
+    ],
+    "xã Hiệp Thạnh": [
+      "Xã Hiệp An",
+      "Xã Liên Hiệp",
+      "Xã Hiệp Thạnh"
+    ],
+    "xã Hòa Bắc": [
+      "Xã Hòa Nam",
+      "Xã Hòa Bắc"
+    ],
+    "xã Hòa Ninh": [
+      "Xã Đinh Trang Hòa",
+      "Xã Hòa Trung",
+      "Xã Hòa Ninh"
+    ],
+    "xã Hòa Thắng": [
+      "Xã Hồng Phong",
+      "Xã Hòa Thắng"
+    ],
+    "xã Hoài Đức": [
+      "Thị trấn Đức Tài",
+      "Xã Đức Tín",
+      "Xã Đức Hạnh"
+    ],
+    "xã Hồng Sơn": [
+      "Xã Hồng Liêm",
+      "Xã Hồng Sơn"
+    ],
+    "xã Hồng Thái": [
+      "Xã Phan Thanh",
+      "Xã Hồng Thái",
+      "Xã Hòa Thắng"
+    ],
+    "xã Ka Đô": [
+      "Xã Lạc Lâm",
+      "Xã Ka Đô"
+    ],
+    "xã Kiến Đức": [
+      "Thị trấn Kiến Đức",
+      "Xã Đạo Nghĩa",
+      "Xã Nghĩa Thắng",
+      "Xã Kiến Thành"
+    ],
+    "xã Krông Nô": [
+      "Xã Tân Thành",
+      "Xã Đắk Drô",
+      "Thị trấn Đắk Mâm"
+    ],
+    "xã La Dạ": [
+      "Xã Đa Mi",
+      "Xã La Dạ"
+    ],
+    "phường La Gi": [
+      "Phường Tân An",
+      "Phường Bình Tân",
+      "Phường Tân Thiện",
+      "Xã Tân Bình"
+    ],
+    "xã Lạc Dương": [
+      "Xã Đạ Sar",
+      "Xã Đạ Nhim",
+      "Xã Đạ Chais"
+    ],
+    "phường Lâm Viên - Đà Lạt": [
+      "Phường 8",
+      "Phường 9",
+      "Phường 12"
+    ],
+    "phường Lang Biang - Đà Lạt": [
+      "Phường 7",
+      "Thị trấn Lạc Dương",
+      "Xã Lát"
+    ],
+    "xã Liên Hương": [
+      "Thị trấn Liên Hương",
+      "Xã Bình Thạnh",
+      "Xã Phước Thể",
+      "Xã Phú Lạc"
+    ],
+    "xã Lương Sơn": [
+      "Thị trấn Lương Sơn",
+      "Xã Sông Bình"
+    ],
+    "phường Mũi Né": [
+      "Phường Hàm Tiến",
+      "Phường Mũi Né",
+      "Xã Thiện Nghiệp"
+    ],
+    "xã Nam Ban Lâm Hà": [
+      "Thị trấn Nam Ban",
+      "Xã Đông Thanh",
+      "Xã Mê Linh",
+      "Xã Gia Lâm"
+    ],
+    "xã Nam Đà": [
+      "Xã Buôn Choáh",
+      "Xã Đắk Sôr",
+      "Xã Nam Đà"
+    ],
+    "xã Nam Dong": [
+      "Xã Đắk D’rông",
+      "Xã Nam Dong"
+    ],
+    "phường Nam Gia Nghĩa": [
+      "Phường Nghĩa Phú",
+      "Phường Nghĩa Tân",
+      "Xã Đắk R’Moan"
+    ],
+    "xã Nam Hà Lâm Hà": [
+      "Xã Nam Hà",
+      "Xã Phi Tô"
+    ],
+    "xã Nâm Nung": [
+      "Xã Nâm N’Đir",
+      "Xã Nâm Nung"
+    ],
+    "xã Nam Thành": [
+      "Xã Mê Pu",
+      "Xã Sùng Nhơn",
+      "Xã Đa Kai"
+    ],
+    "xã Nghị Đức": [
+      "Xã Đức Phú",
+      "Xã Nghị Đức"
+    ],
+    "xã Nhân Cơ": [
+      "Xã Nhân Đạo",
+      "Xã Đắk Wer",
+      "Xã Nhân Cơ"
+    ],
+    "xã Ninh Gia": [
+      "xã Ninh Gia"
+    ],
+    "xã Phan Rí Cửa": [
+      "Thị trấn Phan Rí Cửa",
+      "Xã Chí Công",
+      "Xã Hòa Minh",
+      "Xã Phong Phú"
+    ],
+    "xã Phan Sơn": [
+      "Xã Phan Lâm",
+      "Xã Phan Sơn"
+    ],
+    "phường Phan Thiết": [
+      "Phường Phú Trinh",
+      "Phường Lạc Đạo",
+      "Phường Bình Hưng"
+    ],
+    "đặc khu Phú Quý": [
+      "Xã Long Hải",
+      "Xã Ngũ Phụng",
+      "Xã Tam Thanh"
+    ],
+    "xã Phú Sơn Lâm Hà": [
+      "Xã Phú Sơn",
+      "Xã Đạ Đờn"
+    ],
+    "phường Phú Thủy": [
+      "Phường Thanh Hải",
+      "Phường Phú Hài",
+      "Phường Phú Thủy"
+    ],
+    "xã Phúc Thọ Lâm Hà": [
+      "Xã Phúc Thọ",
+      "Xã Tân Thanh"
+    ],
+    "phường Phước Hội": [
+      "Phường Phước Lộc",
+      "Phường Phước Hội",
+      "Xã Tân Phước"
+    ],
+    "xã Quảng Hòa": [
+      "xã Quảng Hòa"
+    ],
+    "xã Quảng Khê": [
+      "Xã Đắk Plao",
+      "Xã Quảng Khê"
+    ],
+    "xã Quảng Lập": [
+      "Xã Ka Đơn",
+      "Xã Quảng Lập"
+    ],
+    "xã Quảng Phú": [
+      "Xã Đức Xuyên",
+      "Xã Đắk Nang",
+      "Xã Quảng Phú"
+    ],
+    "xã Quảng Sơn": [
+      "xã Quảng Sơn"
+    ],
+    "xã Quảng Tân": [
+      "Xã Đắk Ngo",
+      "Xã Quảng Tân"
+    ],
+    "xã Quảng Tín": [
+      "Xã Đắk Sin",
+      "Xã Hưng Bình",
+      "Xã Đắk Ru",
+      "Xã Quảng Tín"
+    ],
+    "xã Quảng Trực": [
+      "xã Quảng Trực"
+    ],
+    "xã Sơn Điền": [
+      "Xã Gia Bắc",
+      "Xã Sơn Điền"
+    ],
+    "xã Sơn Mỹ": [
+      "Xã Tân Thắng",
+      "Xã Thắng Hải",
+      "Xã Sơn Mỹ"
+    ],
+    "xã Sông Lũy": [
+      "Xã Phan Tiến",
+      "Xã Bình Tân",
+      "Xã Sông Lũy"
+    ],
+    "xã Suối Kiết": [
+      "Xã Gia Huynh",
+      "Xã Suối Kiết"
+    ],
+    "xã Tà Đùng": [
+      "Xã Đắk Som",
+      "Xã Đắk R’Măng"
+    ],
+    "xã Tà Hine": [
+      "Xã Ninh Loan",
+      "Xã Đà Loan",
+      "Xã Tà Hine"
+    ],
+    "xã Tà Năng": [
+      "Xã Đa Quyn",
+      "Xã Tà Năng"
+    ],
+    "xã Tân Hà Lâm Hà": [
+      "Xã Tân Hà",
+      "Xã Hoài Đức",
+      "Xã Đan Phượng",
+      "Xã Liên Hà"
+    ],
+    "xã Tân Hải": [
+      "Xã Tân Tiến",
+      "Xã Tân Hải"
+    ],
+    "xã Tân Hội": [
+      "Xã Tân Thành",
+      "Xã N’ Thôn Hạ",
+      "Xã Tân Hội"
+    ],
+    "xã Tân Lập": [
+      "Xã Sông Phan",
+      "Xã Tân Lập"
+    ],
+    "xã Tân Minh": [
+      "Thị trấn Tân Minh",
+      "Xã Tân Đức",
+      "Xã Tân Phúc"
+    ],
+    "xã Tân Thành": [
+      "Xã Tân Thành",
+      "Xã Thuận Quý",
+      "Xã Tân Thuận"
+    ],
+    "xã Tánh Linh": [
+      "Thị trấn Lạc Tánh",
+      "Xã Gia An",
+      "Xã Đức Thuận"
+    ],
+    "xã Thuận An": [
+      "Xã Đắk Lao",
+      "Xã Thuận An"
+    ],
+    "xã Thuận Hạnh": [
+      "Xã Thuận Hà",
+      "Xã Thuận Hạnh"
+    ],
+    "phường Tiến Thành": [
+      "Phường Đức Long",
+      "Xã Tiến Thành"
+    ],
+    "xã Trà Tân": [
+      "Xã Tân Hà",
+      "Xã Đông Hà",
+      "Xã Trà Tân"
+    ],
+    "xã Trường Xuân": [
+      "Xã Nâm N’Jang",
+      "Xã Trường Xuân"
+    ],
+    "xã Tuy Đức": [
+      "Xã Quảng Tâm",
+      "Xã Đắk R’Tíh",
+      "Xã Đắk Búk So"
+    ],
+    "xã Tuy Phong": [
+      "Xã Phan Dũng",
+      "Xã Phong Phú"
+    ],
+    "xã Tuyên Quang": [
+      "Xã Tiến Lợi",
+      "Xã Hàm Mỹ"
+    ],
+    "xã Vĩnh Hảo": [
+      "Xã Vĩnh Tân",
+      "Xã Vĩnh Hảo"
+    ],
+    "phường Xuân Hương - Đà Lạt": [
+      "Phường 1",
+      "Phường 2",
+      "Phường 3",
+      "Phường 4",
+      "Phường 10"
+    ],
+    "phường Xuân Trường - Đà Lạt": [
+      "Phường 11",
+      "Xã Xuân Thọ",
+      "Xã Xuân Trường",
+      "Xã Trạm Hành"
+    ]
+  }
+}

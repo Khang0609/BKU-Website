@@ -1,0 +1,475 @@
+{
+  "name": "tỉnh Quảng Ngãi",
+  "old_province": [
+    "tỉnh Kon Tum",
+    "tỉnh Quảng Ngãi"
+  ],
+  "ward": {
+    "xã An Phú": [
+      "Xã Nghĩa Hà",
+      "Xã Nghĩa Dõng",
+      "Xã Nghĩa Dũng",
+      "Xã An Phú"
+    ],
+    "xã Ba Dinh": [
+      "Xã Ba Giang",
+      "Xã Ba Dinh"
+    ],
+    "xã Ba Động": [
+      "Xã Ba Liên",
+      "Xã Ba Thành",
+      "Xã Ba Động"
+    ],
+    "xã Ba Gia": [
+      "Xã Tịnh Bắc",
+      "Xã Tịnh Hiệp",
+      "Xã Tịnh Trà"
+    ],
+    "xã Ba Tô": [
+      "Xã Ba Lế",
+      "Xã Ba Nam",
+      "Xã Ba Tô"
+    ],
+    "xã Ba Tơ": [
+      "Thị trấn Ba Tơ",
+      "Xã Ba Cung",
+      "Xã Ba Bích"
+    ],
+    "xã Ba Vì": [
+      "Xã Ba Tiêu",
+      "Xã Ba Ngạc",
+      "Xã Ba Vì"
+    ],
+    "xã Ba Vinh": [
+      "Xã Ba Điền",
+      "Xã Ba Vinh"
+    ],
+    "xã Ba Xa": [
+      "xã Ba Xa"
+    ],
+    "xã Bình Chương": [
+      "Xã Bình Mỹ",
+      "Xã Bình Chương"
+    ],
+    "xã Bình Minh": [
+      "Xã Bình Khương",
+      "Xã Bình An",
+      "Xã Bình Minh"
+    ],
+    "xã Bình Sơn": [
+      "Thị trấn Châu Ổ",
+      "Xã Bình Thạnh",
+      "Xã Bình Chánh",
+      "Xã Bình Dương",
+      "Xã Bình Nguyên",
+      "Xã Bình Trung",
+      "Xã Bình Long"
+    ],
+    "xã Bờ Y": [
+      "Thị trấn Plei Kần",
+      "Xã Đăk Xú",
+      "Xã Pờ Y"
+    ],
+    "xã Cà Đam": [
+      "Xã Trà Tân",
+      "Xã Trà Bùi"
+    ],
+    "phường Cẩm Thành": [
+      "Phường Nguyễn Nghiêm",
+      "Phường Trần Hưng Đạo",
+      "Phường Nghĩa Chánh",
+      "Phường Chánh Lộ"
+    ],
+    "phường Đăk Bla": [
+      "Phường Trần Hưng Đạo",
+      "Lê Lợi",
+      "Nguyễn Trãi"
+    ],
+    "phường Đăk Cấm": [
+      "Phường Ngô Mây",
+      "Phường Duy Tân",
+      "Xã Đăk Cấm"
+    ],
+    "xã Đăk Hà": [
+      "Thị trấn Đăk Hà",
+      "Xã Hà Mòn",
+      "Xã Đăk La"
+    ],
+    "xã Đăk Kôi": [
+      "Xã Đăk Tơ Lung",
+      "Xã Đăk Kôi"
+    ],
+    "xã Đăk Long": [
+      "xã Đăk Long"
+    ],
+    "xã Đăk Mar": [
+      "Xã Đăk Hring",
+      "Xã Đăk Mar"
+    ],
+    "xã Đăk Môn": [
+      "Xã Đăk Kroong",
+      "Xã Đăk Môn"
+    ],
+    "xã Đăk Pék": [
+      "Thị trấn Đăk Glei",
+      "Xã Đăk Pék"
+    ],
+    "xã Đăk Plô": [
+      "Xã Đăk Nhoong",
+      "Xã Đăk Man",
+      "Xã Đăk Plô"
+    ],
+    "xã Đăk Pxi": [
+      "Xã Đăk Long",
+      "Xã Đăk Pxi"
+    ],
+    "xã Đăk Rơ Wa": [
+      "Xã Hòa Bình",
+      "Xã Chư Hreng",
+      "Xã Đăk Blà",
+      "Xã Đăk Rơ Wa"
+    ],
+    "xã Đăk Rve": [
+      "Thị trấn Đăk Rve",
+      "Xã Đăk Pne"
+    ],
+    "xã Đăk Sao": [
+      "Xã Đăk Na",
+      "Xã Đăk Sao"
+    ],
+    "xã Đăk Tô": [
+      "Thị trấn Đăk Tô",
+      "Xã Tân Cảnh",
+      "Xã Pô Kô",
+      "Xã Diên Bình"
+    ],
+    "xã Đăk Tờ Kan": [
+      "Xã Đăk Rơ Ông",
+      "Xã Đăk Tờ Kan"
+    ],
+    "xã Đăk Ui": [
+      "Xã Đăk Ngọk",
+      "Xã Đăk Ui"
+    ],
+    "xã Đặng Thùy Trâm": [
+      "Xã Ba Trang",
+      "Xã Ba Khâm"
+    ],
+    "xã Đình Cương": [
+      "Xã Hành Đức",
+      "Xã Hành Phước",
+      "Xã Hành Thịnh"
+    ],
+    "xã Đông Sơn": [
+      "Xã Bình Hiệp",
+      "Xã Bình Thanh",
+      "Xã Bình Tân Phú",
+      "Xã Bình Châu",
+      "Xã Tịnh Hòa"
+    ],
+    "xã Đông Trà Bồng": [
+      "Xã Trà Bình",
+      "Xã Trà Phú",
+      "Xã Trà Giang"
+    ],
+    "xã Dục Nông": [
+      "Xã Đăk Ang",
+      "Xã Đăk Dục",
+      "Xã Đăk Nông"
+    ],
+    "phường Đức Phổ": [
+      "Phường Nguyễn Nghiêm",
+      "Phổ Hòa",
+      "Phổ Minh",
+      "Phổ Vinh",
+      "Phổ Ninh"
+    ],
+    "xã Ia Chim": [
+      "Xã Đoàn Kết",
+      "Xã Đăk Năng",
+      "Xã Ia Chim"
+    ],
+    "xã Ia Đal": [
+      "xã Ia Đal"
+    ],
+    "xã Ia Tơi": [
+      "Xã Ia Dom",
+      "Xã Ia Tơi"
+    ],
+    "xã Khánh Cường": [
+      "Xã Phổ Khánh",
+      "Xã Phổ Cường"
+    ],
+    "xã Kon Braih": [
+      "Xã Đăk Tờ Re",
+      "Xã Đăk Ruồng",
+      "Xã Tân Lập"
+    ],
+    "xã Kon Đào": [
+      "Xã Văn Lem",
+      "Xã Đăk Trăm",
+      "Xã Kon Đào"
+    ],
+    "xã Kon Plông": [
+      "Xã Ngọk Tem",
+      "Xã Hiếu",
+      "Xã Pờ Ê"
+    ],
+    "phường Kon Tum": [
+      "Phường Quang Trung",
+      "Phường Quyết Thắng",
+      "Phường Thắng Lợi",
+      "Phường Trường Chinh",
+      "Phường Thống Nhất"
+    ],
+    "xã Lân Phong": [
+      "Xã Đức Phong",
+      "Xã Đức Lân"
+    ],
+    "xã Long Phụng": [
+      "Xã Thắng Lợi",
+      "Xã Đức Nhuận",
+      "Xã Đức Hiệp"
+    ],
+    "đặc khu Lý Sơn": [
+      "Huyện Lý Sơn"
+    ],
+    "xã Măng Bút": [
+      "Xã Đăk Nên",
+      "Xã Đăk Ring",
+      "Xã Măng Bút"
+    ],
+    "xã Măng Đen": [
+      "Thị trấn Măng Đen",
+      "Xã Măng Cành",
+      "Xã Đăk Tăng"
+    ],
+    "xã Măng Ri": [
+      "Xã Ngọk Yêu",
+      "Xã Văn Xuôi",
+      "Xã Tê Xăng",
+      "Xã Ngọk Lây",
+      "Xã Măng Ri"
+    ],
+    "xã Minh Long": [
+      "Xã Long Hiệp",
+      "Xã Thanh An",
+      "Xã Long Môn"
+    ],
+    "xã Mỏ Cày": [
+      "Xã Đức Chánh",
+      "Xã Đức Thạnh",
+      "Xã Đức Minh"
+    ],
+    "xã Mộ Đức": [
+      "Thị trấn Mộ Đức",
+      "Xã Đức Hòa",
+      "Xã Đức Phú",
+      "Xã Đức Tân"
+    ],
+    "xã Mô Rai": [
+      "xã Mô Rai"
+    ],
+    "xã Nghĩa Giang": [
+      "Xã Nghĩa Thuận",
+      "Xã Nghĩa Kỳ",
+      "Xã Nghĩa Điền"
+    ],
+    "xã Nghĩa Hành": [
+      "Thị trấn Chợ Chùa",
+      "Xã Hành Thuận",
+      "Xã Hành Trung"
+    ],
+    "phường Nghĩa Lộ": [
+      "Phường Lê Hồng Phong",
+      "Phường Trần Phú",
+      "Phường Quảng Phú",
+      "Phường Nghĩa Lộ"
+    ],
+    "xã Ngọc Linh": [
+      "Xã Mường Hoong",
+      "Xã Ngọc Linh"
+    ],
+    "xã Ngọk Bay": [
+      "Xã Kroong",
+      "Xã Vinh Quang",
+      "Xã Ngọk Bay"
+    ],
+    "xã Ngọk Réo": [
+      "Xã Ngọk Wang",
+      "Xã Ngọk Réo"
+    ],
+    "xã Ngọk Tụ": [
+      "Xã Đăk Rơ Nga",
+      "Xã Ngọk Tụ"
+    ],
+    "xã Nguyễn Nghiêm": [
+      "Xã Phổ Nhơn",
+      "Xã Phổ Phong"
+    ],
+    "xã Phước Giang": [
+      "Xã Hành Dũng",
+      "Xã Hành Nhân",
+      "Xã Hành Minh"
+    ],
+    "xã Rờ Kơi": [
+      "xã Rờ Kơi"
+    ],
+    "xã Sa Bình": [
+      "Xã Sa Nghĩa",
+      "Xã Hơ Moong",
+      "Xã Sa Bình"
+    ],
+    "phường Sa Huỳnh": [
+      "Phường Phổ Thạnh",
+      "Xã Phổ Châu"
+    ],
+    "xã Sa Loong": [
+      "Xã Đăk Kan",
+      "Xã Sa Loong"
+    ],
+    "xã Sa Thầy": [
+      "Thị trấn Sa Thầy",
+      "Xã Sa Sơn",
+      "Xã Sa Nhơn"
+    ],
+    "xã Sơn Hà": [
+      "Thị trấn Di Lăng",
+      "Xã Sơn Bao",
+      "Xã Sơn Thượng"
+    ],
+    "xã Sơn Hạ": [
+      "Xã Sơn Thành",
+      "Xã Sơn Nham",
+      "Xã Sơn Hạ"
+    ],
+    "xã Sơn Kỳ": [
+      "Xã Sơn Ba",
+      "Xã Sơn Kỳ"
+    ],
+    "xã Sơn Linh": [
+      "Xã Sơn Giang",
+      "Xã Sơn Cao",
+      "Xã Sơn Linh"
+    ],
+    "xã Sơn Mai": [
+      "Xã Long Mai",
+      "Xã Long Sơn"
+    ],
+    "xã Sơn Tây": [
+      "Xã Sơn Long",
+      "Xã Sơn Tân",
+      "Xã Sơn Dung"
+    ],
+    "xã Sơn Tây Hạ": [
+      "Xã Sơn Tinh",
+      "Xã Sơn Lập",
+      "Xã Sơn Màu"
+    ],
+    "xã Sơn Tây Thượng": [
+      "Xã Sơn Mùa",
+      "Xã Sơn Liên",
+      "Xã Sơn Bua"
+    ],
+    "xã Sơn Thủy": [
+      "Xã Sơn Trung",
+      "Xã Sơn Hải",
+      "Xã Sơn Thủy"
+    ],
+    "xã Sơn Tịnh": [
+      "Thị trấn Tịnh Hà",
+      "Xã Tịnh Bình",
+      "Xã Tịnh Sơn"
+    ],
+    "xã Tây Trà": [
+      "Xã Sơn Trà",
+      "Xã Trà Phong",
+      "Xã Trà Xinh"
+    ],
+    "xã Tây Trà Bồng": [
+      "Xã Hương Trà",
+      "Xã Trà Tây",
+      "Xã Trà Bùi"
+    ],
+    "xã Thanh Bồng": [
+      "Xã Trà Lâm",
+      "Xã Trà Hiệp",
+      "Xã Trà Thanh"
+    ],
+    "xã Thiện Tín": [
+      "Xã Hành Thiện",
+      "Xã Hành Tín Tây",
+      "Xã Hành Tín Đông"
+    ],
+    "xã Thọ Phong": [
+      "Xã Tịnh Phong",
+      "Xã Tịnh Thọ"
+    ],
+    "xã Tịnh Khê": [
+      "Xã Tịnh Kỳ",
+      "Xã Tịnh Châu",
+      "Xã Tịnh Long",
+      "Xã Tịnh Thiện",
+      "Xã Tịnh Khê"
+    ],
+    "xã Trà Bồng": [
+      "Thị trấn Trà Xuân",
+      "Xã Trà Sơn",
+      "Xã Trà Thủy"
+    ],
+    "phường Trà Câu": [
+      "Phường Phổ Văn",
+      "Phường Phổ Quang",
+      "Xã Phổ An",
+      "Xã Phổ Thuận"
+    ],
+    "xã Trà Giang": [
+      "Xã Nghĩa Sơn",
+      "Xã Nghĩa Lâm",
+      "Xã Nghĩa Thắng"
+    ],
+    "xã Trường Giang": [
+      "Xã Tịnh Giang",
+      "Xã Tịnh Đông",
+      "Xã Tịnh Minh"
+    ],
+    "phường Trương Quang Trọng": [
+      "Phường Trương Quang Trọng",
+      "Xã Tịnh Ấn Tây",
+      "Xã Tịnh Ấn Đông",
+      "Xã Tịnh An"
+    ],
+    "xã Tu Mơ Rông": [
+      "Xã Đăk Hà",
+      "Xã Tu Mơ Rông"
+    ],
+    "xã Tư Nghĩa": [
+      "Thị trấn La Hà",
+      "Xã Nghĩa Trung",
+      "Xã Nghĩa Thương",
+      "Xã Nghĩa Hòa"
+    ],
+    "xã Vạn Tường": [
+      "Xã Bình Thuận",
+      "Xã Bình Đông",
+      "Xã Bình Trị",
+      "Xã Bình Hải",
+      "Xã Bình Hòa",
+      "Xã Bình Phước"
+    ],
+    "xã Vệ Giang": [
+      "Thị trấn Sông Vệ",
+      "Xã Nghĩa Hiệp",
+      "Xã Nghĩa Phương"
+    ],
+    "xã Xốp": [
+      "Xã Đăk Choong",
+      "Xã Xốp"
+    ],
+    "xã Ya Ly": [
+      "Xã Ya Xiêr",
+      "Xã Ya Tăng",
+      "Xã Ya Ly"
+    ]
+  }
+}

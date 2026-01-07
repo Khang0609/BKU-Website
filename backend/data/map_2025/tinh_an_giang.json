@@ -1,0 +1,512 @@
+{
+  "name": "tỉnh An Giang",
+  "old_province": [
+    "tỉnh Kiên Giang",
+    "tỉnh An Giang"
+  ],
+  "ward": {
+    "xã An Biên": [
+      "Thị trấn Thứ Ba",
+      "Xã Đông Yên",
+      "Xã Hưng Yên"
+    ],
+    "xã An Châu": [
+      "Thị trấn An Châu",
+      "Xã Hòa Bình Thạnh",
+      "Xã Vĩnh Thành"
+    ],
+    "xã An Cư": [
+      "Xã Văn Giáo",
+      "Xã Vĩnh Trung",
+      "Xã An Cư"
+    ],
+    "xã An Minh": [
+      "Thị trấn Thứ Mười Một",
+      "Xã Đông Hưng",
+      "Xã Đông Hưng B"
+    ],
+    "xã An Phú": [
+      "Thị trấn An Phú",
+      "Xã Vĩnh Hội Đông",
+      "Xã Phú Hội",
+      "Xã Phước Hưng"
+    ],
+    "xã Ba Chúc": [
+      "Thị trấn Ba Chúc",
+      "Xã Lạc Quới",
+      "Xã Lê Trì"
+    ],
+    "xã Bình An": [
+      "Xã Bình An",
+      "Xã Vĩnh Hòa Hiệp",
+      "Xã Vĩnh Hòa Phú"
+    ],
+    "phường Bình Đức": [
+      "Phường Bình Khánh",
+      "Phường Bình Đức",
+      "Xã Mỹ Khánh"
+    ],
+    "xã Bình Giang": [
+      "xã Bình Giang"
+    ],
+    "xã Bình Hòa": [
+      "Xã Bình Thạnh",
+      "Xã An Hòa",
+      "Xã Bình Hòa"
+    ],
+    "xã Bình Mỹ": [
+      "Xã Bình Thủy",
+      "Xã Bình Chánh",
+      "Xã Bình Mỹ"
+    ],
+    "xã Bình Sơn": [
+      "xã Bình Sơn"
+    ],
+    "xã Bình Thạnh Đông": [
+      "Xã Hiệp Xương",
+      "Xã Phú Bình",
+      "Xã Bình Thạnh Đông"
+    ],
+    "xã Cần Đăng": [
+      "Xã Vĩnh Lợi",
+      "Xã Cần Đăng"
+    ],
+    "phường Châu Đốc": [
+      "Phường Vĩnh Nguơn",
+      "Phường Châu Phú A",
+      "Phường Châu Phú B",
+      "Phường Vĩnh Mỹ",
+      "Xã Vĩnh Châu"
+    ],
+    "xã Châu Phong": [
+      "Xã Phú Vĩnh",
+      "Xã Lê Chánh",
+      "Xã Châu Phong"
+    ],
+    "xã Châu Phú": [
+      "Thị trấn Cái Dầu",
+      "Xã Bình Long",
+      "Xã Bình Phú"
+    ],
+    "xã Châu Thành": [
+      "Thị trấn Minh Lương",
+      "Xã Minh Hòa",
+      "Xã Giục Tượng"
+    ],
+    "phường Chi Lăng": [
+      "Phường Núi Voi",
+      "Phường Chi Lăng",
+      "Xã Tân Lợi"
+    ],
+    "xã Chợ Mới": [
+      "Thị trấn Chợ Mới",
+      "Xã Kiến An",
+      "Xã Kiến Thành"
+    ],
+    "xã Chợ Vàm": [
+      "Thị trấn Chợ Vàm",
+      "Xã Phú Thạnh",
+      "Xã Phú Thành"
+    ],
+    "xã Cô Tô": [
+      "Thị trấn Cô Tô",
+      "Xã Tà Đảnh",
+      "Xã Tân Tuyến"
+    ],
+    "xã Cù Lao Giêng": [
+      "Xã Tấn Mỹ",
+      "Xã Mỹ Hiệp",
+      "Xã Bình Phước Xuân"
+    ],
+    "xã Định Hòa": [
+      "Xã Thới Quản",
+      "Xã Thủy Liễu",
+      "Xã Định Hòa"
+    ],
+    "xã Định Mỹ": [
+      "Xã Vĩnh Phú",
+      "Xã Định Thành",
+      "Xã Định Mỹ"
+    ],
+    "xã Đông Hòa": [
+      "Xã Đông Thạnh",
+      "Xã Đông Hòa"
+    ],
+    "xã Đông Hưng": [
+      "Xã Vân Khánh Đông",
+      "Xã Đông Hưng A"
+    ],
+    "xã Đông Thái": [
+      "Xã Nam Thái",
+      "Xã Nam Thái A",
+      "Xã Đông Thái"
+    ],
+    "xã Giang Thành": [
+      "Xã Tân Khánh Hòa",
+      "Xã Phú Lợi",
+      "Xã Phú Mỹ"
+    ],
+    "xã Giồng Riềng": [
+      "Thị trấn Giồng Riềng",
+      "Xã Bàn Tân Định",
+      "Xã Thạnh Hòa",
+      "Xã Bàn Thạch",
+      "Xã Thạnh Bình"
+    ],
+    "xã Gò Quao": [
+      "Thị trấn Gò Quao",
+      "Xã Vĩnh Phước B",
+      "Xã Định An"
+    ],
+    "phường Hà Tiên": [
+      "Phường Pháo Đài",
+      "Phường Bình San",
+      "Phường Mỹ Đức",
+      "Phường Đông Hồ"
+    ],
+    "xã Hòa Điền": [
+      "Xã Kiên Bình",
+      "Xã Hòa Điền"
+    ],
+    "xã Hòa Hưng": [
+      "Xã Hòa An",
+      "Xã Hòa Lợi",
+      "Xã Hòa Hưng"
+    ],
+    "xã Hòa Lạc": [
+      "Xã Phú Hiệp",
+      "Xã Hòa Lạc"
+    ],
+    "xã Hòa Thuận": [
+      "Xã Ngọc Hòa",
+      "Xã Hòa Thuận"
+    ],
+    "xã Hội An": [
+      "Thị trấn Hội An",
+      "Xã Hòa An",
+      "Xã Hòa Bình"
+    ],
+    "xã Hòn Đất": [
+      "Thị trấn Hòn Đất",
+      "Xã Lình Huỳnh",
+      "Xã Thổ Sơn",
+      "Xã Nam Thái Sơn"
+    ],
+    "xã Hòn Nghệ": [
+      "xã Hòn Nghệ"
+    ],
+    "xã Khánh Bình": [
+      "Thị trấn Long Bình",
+      "Xã Khánh An",
+      "Xã Khánh Bình"
+    ],
+    "đặc khu Kiên Hải": [
+      "Huyện Kiên Hải"
+    ],
+    "xã Kiên Lương": [
+      "Thị trấn Kiên Lương",
+      "Xã Bình An",
+      "Xã Bình Trị"
+    ],
+    "xã Long Điền": [
+      "Thị trấn Mỹ Luông",
+      "Xã Long Điền A",
+      "Xã Long Điền B"
+    ],
+    "xã Long Kiến": [
+      "Xã An Thạnh Trung",
+      "Xã Mỹ An",
+      "Xã Long Kiến"
+    ],
+    "phường Long Phú": [
+      "Phường Long Hưng",
+      "Phường Long Châu",
+      "Phường Long Phú"
+    ],
+    "xã Long Thạnh": [
+      "Xã Vĩnh Phú",
+      "Xã Vĩnh Thạnh",
+      "Xã Long Thạnh"
+    ],
+    "phường Long Xuyên": [
+      "Phường Mỹ Bình",
+      "Phường Mỹ Long",
+      "Phường Mỹ Xuyên",
+      "Phường Mỹ Phước",
+      "Phường Mỹ Quý",
+      "Phường Mỹ Hòa"
+    ],
+    "xã Mỹ Đức": [
+      "Xã Khánh Hòa",
+      "Xã Mỹ Đức"
+    ],
+    "xã Mỹ Hòa Hưng": [
+      "xã Mỹ Hòa Hưng"
+    ],
+    "phường Mỹ Thới": [
+      "Phường Mỹ Thạnh",
+      "Phường Mỹ Thới"
+    ],
+    "xã Mỹ Thuận": [
+      "Thị trấn Sóc Sơn",
+      "Xã Mỹ Hiệp Sơn",
+      "Xã Mỹ Phước",
+      "Xã Mỹ Thuận"
+    ],
+    "xã Ngọc Chúc": [
+      "Xã Ngọc Thuận",
+      "Xã Ngọc Thành",
+      "Xã Ngọc Chúc"
+    ],
+    "xã Nhơn Hội": [
+      "Xã Quốc Thái",
+      "Xã Nhơn Hội",
+      "Xã Phước Hưng",
+      "Xã Phú Hội"
+    ],
+    "xã Nhơn Mỹ": [
+      "Xã Mỹ Hội Đông",
+      "Xã Long Giang",
+      "Xã Nhơn Mỹ"
+    ],
+    "xã Núi Cấm": [
+      "Xã Tân Lập",
+      "Xã An Hảo"
+    ],
+    "xã Ô Lâm": [
+      "Xã An Tức",
+      "Xã Lương Phi",
+      "Xã Ô Lâm"
+    ],
+    "xã Óc Eo": [
+      "Thị trấn Óc Eo",
+      "Xã Vọng Thê",
+      "Xã Vọng Đông"
+    ],
+    "xã Phú An": [
+      "Xã Phú Thọ",
+      "Xã Phú Xuân",
+      "Xã Phú An"
+    ],
+    "xã Phú Hòa": [
+      "Thị trấn Phú Hòa",
+      "Xã Phú Thuận",
+      "Xã Vĩnh Chánh"
+    ],
+    "xã Phú Hữu": [
+      "Xã Phú Hữu",
+      "Xã Vĩnh Lộc",
+      "Xã Phước Hưng"
+    ],
+    "xã Phú Lâm": [
+      "Xã Long Hòa",
+      "Xã Phú Long",
+      "Xã Phú Lâm"
+    ],
+    "đặc khu Phú Quốc": [
+      "Phường Dương Đông",
+      "Phường An Thới",
+      "Xã Dương Tơ",
+      "Xã Hàm Ninh",
+      "Xã Cửa Dương",
+      "Xã Bãi Thơm",
+      "Xã Gành Dầu",
+      "Xã Cửa Cạn"
+    ],
+    "xã Phú Tân": [
+      "Thị trấn Phú Mỹ",
+      "Xã Tân Hòa",
+      "Xã Tân Trung",
+      "Xã Phú Hưng"
+    ],
+    "phường Rạch Giá": [
+      "Phường Vĩnh Quang",
+      "Phường Vĩnh Thanh",
+      "Phường Vĩnh Thanh Vân",
+      "Phường Vĩnh Lạc",
+      "Phường An Hòa",
+      "Phường Vĩnh Hiệp",
+      "Phường An Bình",
+      "Phường Rạch Sỏi",
+      "Phường Vĩnh Lợi"
+    ],
+    "xã Sơn Hải": [
+      "xã Sơn Hải"
+    ],
+    "xã Sơn Kiên": [
+      "Xã Sơn Bình",
+      "Xã Mỹ Thái",
+      "Xã Sơn Kiên"
+    ],
+    "xã Tân An": [
+      "Xã Tân An",
+      "Xã Tân Thạnh",
+      "Xã Long An"
+    ],
+    "phường Tân Châu": [
+      "Phường Long Thạnh",
+      "Phường Long Sơn"
+    ],
+    "xã Tân Hiệp": [
+      "Thị trấn Tân Hiệp",
+      "Xã Tân Hiệp B",
+      "Xã Thạnh Đông B",
+      "Xã Thạnh Đông"
+    ],
+    "xã Tân Hội": [
+      "Xã Tân Hòa",
+      "Xã Tân An",
+      "Xã Tân Thành",
+      "Xã Tân Hội"
+    ],
+    "xã Tân Thạnh": [
+      "Xã Tân Thạnh",
+      "Xã Thuận Hòa"
+    ],
+    "xã Tây Phú": [
+      "Xã An Bình",
+      "Xã Mỹ Phú Đông",
+      "Xã Tây Phú"
+    ],
+    "xã Tây Yên": [
+      "Xã Tây Yên A",
+      "Xã Nam Yên",
+      "Xã Tây Yên"
+    ],
+    "xã Thạnh Đông": [
+      "Xã Tân Hiệp A",
+      "Xã Thạnh Trị",
+      "Xã Thạnh Đông A"
+    ],
+    "xã Thạnh Hưng": [
+      "Xã Thạnh Lộc",
+      "Xã Thạnh Phước",
+      "Xã Thạnh Hưng"
+    ],
+    "xã Thạnh Lộc": [
+      "Xã Thạnh Lộc",
+      "Xã Mong Thọ",
+      "Xã Mong Thọ A",
+      "Xã Mong Thọ B"
+    ],
+    "xã Thạnh Mỹ Tây": [
+      "Xã Đào Hữu Cảnh",
+      "Xã Ô Long Vĩ",
+      "Xã Thạnh Mỹ Tây"
+    ],
+    "đặc khu Thổ Châu": [
+      "Xã Thổ Châu"
+    ],
+    "xã Thoại Sơn": [
+      "Thị trấn Núi Sập",
+      "Xã Thoại Giang",
+      "Xã Bình Thành"
+    ],
+    "phường Thới Sơn": [
+      "Phường Nhơn Hưng",
+      "Phường Nhà Bàng",
+      "Phường Thới Sơn"
+    ],
+    "xã Tiên Hải": [
+      "xã Tiên Hải"
+    ],
+    "phường Tịnh Biên": [
+      "Phường An Phú",
+      "Phường Tịnh Biên",
+      "Xã An Nông"
+    ],
+    "phường Tô Châu": [
+      "Phường Tô Châu",
+      "Xã Thuận Yên",
+      "Xã Dương Hòa"
+    ],
+    "xã Tri Tôn": [
+      "Thị trấn Tri Tôn",
+      "Xã Núi Tô",
+      "Xã Châu Lăng"
+    ],
+    "xã U Minh Thượng": [
+      "Xã An Minh Bắc",
+      "Xã Minh Thuận"
+    ],
+    "xã Vân Khánh": [
+      "Xã Vân Khánh Tây",
+      "Xã Vân Khánh"
+    ],
+    "xã Vĩnh An": [
+      "Thị trấn Vĩnh Bình",
+      "Xã Tân Phú",
+      "Xã Vĩnh An"
+    ],
+    "xã Vĩnh Bình": [
+      "Xã Vĩnh Bình Bắc",
+      "Xã Vĩnh Bình Nam",
+      "Xã Bình Minh"
+    ],
+    "xã Vĩnh Điều": [
+      "Xã Vĩnh Phú",
+      "Xã Vĩnh Điều"
+    ],
+    "xã Vĩnh Gia": [
+      "Xã Vĩnh Phước",
+      "Xã Lương An Trà",
+      "Xã Vĩnh Gia"
+    ],
+    "xã Vĩnh Hanh": [
+      "Xã Vĩnh Nhuận",
+      "Xã Vĩnh Hanh"
+    ],
+    "xã Vĩnh Hậu": [
+      "Thị trấn Đa Phước",
+      "Xã Vĩnh Trường",
+      "Xã Vĩnh Hậu"
+    ],
+    "xã Vĩnh Hòa": [
+      "Xã Vĩnh Hòa",
+      "Xã Thạnh Yên A",
+      "Xã Hòa Chánh",
+      "Xã Thạnh Yên"
+    ],
+    "xã Vĩnh Hòa Hưng": [
+      "Xã Vĩnh Hòa Hưng Bắc",
+      "Xã Vĩnh Hòa Hưng Nam"
+    ],
+    "xã Vĩnh Phong": [
+      "Thị trấn Vĩnh Thuận",
+      "Xã Phong Đông",
+      "Xã Vĩnh Phong"
+    ],
+    "phường Vĩnh Tế": [
+      "Phường Núi Sam",
+      "Xã Vĩnh Tế",
+      "Xã Vĩnh Châu"
+    ],
+    "xã Vĩnh Thạnh Trung": [
+      "Thị trấn Vĩnh Thạnh Trung",
+      "Xã Mỹ Phú"
+    ],
+    "phường Vĩnh Thông": [
+      "Phường Vĩnh Thông",
+      "Xã Phi Thông",
+      "Xã Mỹ Lâm"
+    ],
+    "xã Vĩnh Thuận": [
+      "Xã Tân Thuận",
+      "Xã Vĩnh Thuận"
+    ],
+    "xã Vĩnh Trạch": [
+      "Xã Vĩnh Khánh",
+      "Xã Vĩnh Trạch"
+    ],
+    "xã Vĩnh Tuy": [
+      "Xã Vĩnh Thắng",
+      "Xã Vĩnh Phước A",
+      "Xã Vĩnh Tuy"
+    ],
+    "xã Vĩnh Xương": [
+      "Xã Vĩnh Hòa",
+      "Xã Phú Lộc",
+      "Xã Vĩnh Xương"
+    ]
+  }
+}
