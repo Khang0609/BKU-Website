@@ -35,8 +35,7 @@ class Identity(Base):
     
     student_parent = relationship("StudentParent", back_populates="identity", uselist=False)
     student_guardian = relationship("StudentGuardian", back_populates="identity", uselist=False)
-    student_contact = relationship("StudentContact", back_populates="identity", uselist=False)
-    student_extra = relationship("StudentExtra", back_populates="identity", uselist=False)
+
 
 class User(Base):
     __tablename__ = "users"
