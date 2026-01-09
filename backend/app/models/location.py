@@ -12,3 +12,9 @@ class Ward(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False) # "phường An Hải"
     province_id = Column(Integer, ForeignKey("provinces.id"))
+
+class Country(Base):
+    __tablename__ = "countries"
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True, nullable=False)
+    nationality_name = Column(String, nullable=False) # e.g. "Vietnamese"

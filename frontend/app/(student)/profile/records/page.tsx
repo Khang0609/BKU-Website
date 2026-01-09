@@ -1,238 +1,340 @@
 "use client";
 
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useEffect, ReactNode, useRef } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
   User,
   Phone,
   Building,
-  BookOpen,
   GraduationCap,
   ChevronDown,
-  AlertCircle,
-  Mail,
-  MapPin,
-  Shield,
-  Briefcase,
-  FileText,
+  Edit2,
   Save,
+  X,
   Users,
   Clock,
   Home,
-  Flag,
   Globe,
+  Camera,
+  Share2,
+  Check,
+  Search,
+  Loader2,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { authFetch } from "@/lib/authFetch";
+import { toast } from "sonner";
 
-// --- Types ---
-interface StudentProfile {
-  personal: {
-    first_name: string;
-    last_name: string;
-    dob: string;
-    gender: string;
-    national_id: string;
-    id_issue_date?: string;
-    id_issue_place?: string;
-    nationality?: string;
-    birthplace?: string;
-    religion?: string;
-    ethnic?: string;
-    priority_area?: string;
-    priority_group?: string;
-    social_insurance?: string;
+// --- Interfaces ---
+
+interface Option {
+  value: string | number;
+  label: string;
+}
+
+interface Personal {
+  first_name: string;
+  last_name: string;
+  dob: string;
+  gender: string;
+  national_id: string;
+  id_issue_date: string;
+  id_issue_place: string;
+  nationality: string;
+  place_of_birth: string;
+  other_birthplace?: string;
+  religion_id?: number;
+  ethnic_id?: number;
+  priority_area?: string;
+  priority_group?: string;
+  union_date?: string;
+  party_date?: string;
+}
+
+interface Address {
+  province_id?: number;
+  ward_id?: number;
+  house_number?: string;
+  province_name?: string;
+  ward_name?: string;
+  full_address?: string;
+}
+
+interface Contact {
+  province_id?: number;
+  ward_id?: number;
+  house_number?: string;
+  province_name?: string;
+  ward_name?: string;
+  full_address?: string;
+  phone?: string;
+  family_phone?: string;
+  dorm_room?: string;
+  personal_email?: string;
+  student_email?: string;
+}
+
+interface Family {
+  parents: {
+    father_name?: string;
+    father_birthday?: string;
+    father_phone?: string;
+    father_job?: string;
+    father_workplace?: string;
+    mother_name?: string;
+    mother_birthday?: string;
+    mother_phone?: string;
+    mother_job?: string;
+    mother_workplace?: string;
   };
-  contact: {
-    email: string;
-    personal_email: string;
-    phone: string;
-    family_phone?: string;
-    address_permanent: string;
-    address_current: string;
-    dormitory_room?: string;
-    secondary_email?: string;
+  guardian: {
+    full_name?: string;
+    relationship?: string;
+    phone_number?: string;
+    email?: string;
+    job?: string;
+    province_id?: number;
+    ward_id?: number;
+    house_number?: string;
+    address?: string; // fallback
   };
-  academic: {
-    student_id: string;
-    faculty: string;
-    major: string;
-    class_code: string;
-    enrollment_year: number;
-    status: string;
-    education_level?: string;
-    training_system?: string;
-  };
-  family?: {
-    parents?: {
-      father_name?: string;
-      father_birthday?: string;
-      father_phone?: string;
-      father_job?: string;
-      father_workplace?: string;
-      mother_name?: string;
-      mother_birthday?: string;
-      mother_phone?: string;
-      mother_job?: string;
-      mother_workplace?: string;
-    };
-    guardian?: {
-      full_name?: string;
-      relationship?: string;
-      phone_number?: string;
-      email?: string;
-      address?: string;
-      job?: string;
-    };
-  };
-  graduation?: {
-    grad_major?: string;
-    grad_year_semester?: string;
-    grad_decision_number?: string;
-    grad_decision_date?: string;
-  };
-  bank?: {
-    bank_account?: string;
-    bank_name?: string;
-    ocb_cif?: string;
-  };
-  other?: {
-    note?: string;
-  };
+}
+
+interface Other {
+  social_media: Record<string, string>;
+  photo_record_note?: string;
+}
+
+interface ProfileData {
+  personal: Personal;
+  permanent_address: Address;
+  contact: Contact;
+  family: Family;
+  others: Other;
   last_updated_at?: string;
 }
 
-interface BlockProps {
-  title: string;
-  icon?: ReactNode;
-  children: ReactNode;
-  className?: string;
-  action?: ReactNode;
-}
-
-interface InputGroupProps {
-  label: string;
-  value?: any;
-  onChange?: (value: string) => void;
-  readOnly?: boolean;
-  type?: string;
-  icon?: ReactNode;
-  className?: string;
-  bold?: boolean;
-  status?: boolean;
-  subtle?: boolean;
-}
-
-interface SelectGroupProps {
-  label: string;
-  value?: any;
-  options: { value: string; label: string }[];
-  onChange: (value: string) => void;
-  icon?: ReactNode;
-}
-
-interface AccordionSectionProps {
-  title: string;
-  icon?: ReactNode;
-  children: ReactNode;
-  isExpanded: boolean;
-  onToggle: () => void;
+// --- Catalogs ---
+interface Catalog {
+  provinces: Option[];
+  countries: Option[];
+  ethnics: Option[];
+  religions: Option[];
+  wards: Record<number, Option[]>;
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
-// --- Constants (Enums for Dropdowns) ---
-const GENDER_OPTIONS = [
-  { value: "MALE", label: "Nam" },
-  { value: "FEMALE", label: "Nữ" },
-  { value: "OTHER", label: "Khác" },
-];
-
-const RELIGION_OPTIONS = [
-  { value: "NONE", label: "Không" },
-  { value: "BUDDHISM", label: "Phật giáo" },
-  { value: "CATHOLICISM", label: "Thiên Chúa giáo" },
-  { value: "CHRISTIANITY", label: "Tin Lành" },
-  { value: "OTHER", label: "Khác" },
-];
-
-const ETHNIC_OPTIONS = [
-  { value: "KINH", label: "Kinh (Việt)" },
-  { value: "HOA", label: "Hoa" },
-  { value: "KHMER", label: "Khmer" },
-  { value: "CHAM", label: "Chăm" },
-  { value: "OTHER", label: "Khác" },
-];
-
-const PRIORITY_AREA_OPTIONS = [
+const PRIORITY_AREAS = [
   { value: "KV1", label: "Khu vực 1" },
   { value: "KV2", label: "Khu vực 2" },
   { value: "KV2_NT", label: "Khu vực 2 - NT" },
   { value: "KV3", label: "Khu vực 3" },
 ];
 
+const PRIORITY_GROUPS = [
+  { value: "UT1", label: "UT1" },
+  { value: "UT2", label: "UT2" },
+  { value: "NONE", label: "Không" },
+];
+
 export default function StudentRecordsPage() {
-  const [profile, setProfile] = useState<StudentProfile | null>(null);
-  const [formData, setFormData] = useState<StudentProfile | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [isDirty, setIsDirty] = useState(false);
-  const [showGuardian, setShowGuardian] = useState(false);
-
-  // Accordion States (Collapsed by default as per requirements)
-  const [expandedSections, setExpandedSections] = useState({
-    graduation: false,
-    bank: false,
-    photos: false,
-    other: false,
+  const [profile, setProfile] = useState<ProfileData | null>(null);
+  const [catalogs, setCatalogs] = useState<Catalog>({
+    provinces: [],
+    countries: [],
+    ethnics: [],
+    religions: [],
+    wards: {},
   });
+  const [loading, setLoading] = useState(true);
+  const [familyTab, setFamilyTab] = useState<"parents" | "guardian">("parents");
 
-  const toggleSection = (section: keyof typeof expandedSections) => {
-    setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
-  };
+  // Edit States
+  const [editMode, setEditMode] = useState<Record<string, boolean>>({});
+  const [formData, setFormData] = useState<ProfileData | null>(null);
+  const [saving, setSaving] = useState<Record<string, boolean>>({});
+
+  // Wards Cache
 
   useEffect(() => {
-    fetchProfile();
+    fetchInitialData();
   }, []);
 
-  useEffect(() => {
-    if (profile && formData) {
-      setIsDirty(JSON.stringify(profile) !== JSON.stringify(formData));
-    }
-  }, [formData, profile]);
-
-  const fetchProfile = async () => {
+  const fetchInitialData = async () => {
     try {
-      const res = await authFetch(`${API_URL}/profile/student/me`);
-      if (!res.ok) throw new Error("Failed to fetch profile data");
-      const data = await res.json();
-      setProfile(data);
-      setFormData(data);
-    } catch (err: any) {
+      const [profRes, provRes, countRes, ethRes, relRes] = await Promise.all([
+        authFetch(`${API_URL}/profile/student/me`),
+        authFetch(`${API_URL}/location/provinces`),
+        authFetch(`${API_URL}/location/countries`),
+        authFetch(`${API_URL}/location/ethnics`),
+        authFetch(`${API_URL}/location/religions`),
+      ]);
+
+      if (!profRes.ok) throw new Error("Failed to load profile");
+
+      const pData = await profRes.json();
+      const provData = await provRes.json();
+      const countData = await countRes.json();
+      const ethData = await ethRes.json();
+      const relData = await relRes.json();
+
+      setProfile(pData);
+      setFormData(pData);
+
+      setCatalogs({
+        provinces: Array.isArray(provData)
+          ? provData.map((p: any) => ({ value: p.id, label: p.name }))
+          : [],
+        countries: Array.isArray(countData)
+          ? countData.map((c: any) => ({ value: c.id, label: c.name }))
+          : [],
+        ethnics: Array.isArray(ethData)
+          ? ethData.map((e: any) => ({ value: e.id, label: e.name }))
+          : [],
+        religions: Array.isArray(relData)
+          ? relData.map((r: any) => ({ value: r.id, label: r.name }))
+          : [],
+        wards: {},
+      });
+    } catch (err) {
       console.error(err);
-      setError(err.message || "Failed to load profile.");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleChange = (
-    section: keyof StudentProfile,
+  const fetchWards = async (provinceId: number) => {
+    if (catalogs.wards[provinceId]) return;
+    try {
+      const res = await authFetch(
+        `${API_URL}/location/provinces/${provinceId}/wards`,
+      );
+      if (res.ok) {
+        const data = await res.json();
+        setCatalogs((prev) => ({
+          ...prev,
+          wards: {
+            ...prev.wards,
+            [provinceId]: Array.isArray(data)
+              ? data.map((w: any) => ({ value: w.id, label: w.name }))
+              : [],
+          },
+        }));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const toggleEdit = (section: string) => {
+    setEditMode((prev) => ({ ...prev, [section]: !prev[section] }));
+    if (!editMode[section]) {
+      // Reset form data for this section on enter edit
+      setFormData((prev) => ({
+        ...prev!,
+        [section]: profile![section as keyof ProfileData],
+      }));
+    }
+  };
+
+  const handleSave = async (section: string) => {
+    setSaving((prev) => ({ ...prev, [section]: true }));
+    // Construct Payload based on section
+    let payload: any = {};
+    const data = formData?.[section as keyof ProfileData];
+
+    // Simple Mapping for demo - production should map carefully
+    if (section === "personal") payload = data;
+    const finalData = data && typeof data !== "string" ? { ...data } : {};
+    if (section === "permanent_address") payload = finalData;
+    if (section === "contact") payload = finalData;
+    if (section === "family") {
+      const fam = data as Family;
+      payload = {
+        ...fam.parents,
+        // Map Guardian fields to match schema
+        guardian_full_name: fam.guardian.full_name,
+        guardian_relationship: fam.guardian.relationship,
+        guardian_phone: fam.guardian.phone_number,
+        guardian_email: fam.guardian.email,
+        guardian_job: fam.guardian.job,
+        guardian_province_id: fam.guardian.province_id,
+        guardian_ward_id: fam.guardian.ward_id,
+        guardian_house_number: fam.guardian.house_number,
+      };
+    }
+    if (section === "others")
+      payload = { social_media: (data as Other).social_media };
+
+    try {
+      // Endpoint mapping
+      let endpoint = section;
+      if (section === "permanent_address") endpoint = "contact"; // Both addresses in contact update or specific? API uses contact endpoint for addresses
+      if (section === "others") endpoint = "extra";
+
+      // Special handling for Address separation in payload if needed
+      // Our API 'contact' endpoint handles both perm and curr addresses.
+      // So if saving 'permanent_address', we send to contact endpoint with perm keys.
+      if (section === "permanent_address") {
+        endpoint = "contact";
+        payload = {
+          permanent_province_id: (data as Address).province_id,
+          permanent_ward_id: (data as Address).ward_id,
+          permanent_house_number: (data as Address).house_number,
+        };
+      }
+      if (section === "contact") {
+        // This is section 3 "Contact" which includes Current Address + Phones
+        payload = {
+          current_province_id: (data as Contact).province_id,
+          current_ward_id: (data as Contact).ward_id,
+          current_house_number: (data as Contact).house_number,
+          phone: (data as Contact).phone,
+          family_phone: (data as Contact).family_phone,
+          dorm_room: (data as Contact).dorm_room,
+          personal_email: (data as Contact).personal_email,
+        };
+      }
+
+      await authFetch(`${API_URL}/profile/student/${endpoint}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      // refetch to sync
+      const res = await authFetch(`${API_URL}/profile/student/me`);
+      const updated = await res.json();
+      setProfile(updated);
+      setEditMode((prev) => ({ ...prev, [section]: false }));
+      toast.success("Info updated successfully");
+    } catch (e) {
+      toast.error("Failed to save changes");
+    } finally {
+      setSaving((prev) => ({ ...prev, [section]: false }));
+    }
+  };
+
+  const updateForm = (
+    section: keyof ProfileData,
     field: string,
     value: any,
-    subkey?: string,
+    sub?: string,
   ) => {
     if (!formData) return;
-
-    setFormData((prev: any) => {
-      if (subkey) {
+    setFormData((prev) => {
+      if (!prev) return null;
+      const secData = prev[section] as any;
+      if (sub && section === "family") {
+        // Handle family nested
         return {
           ...prev,
-          [section]: {
-            ...prev[section],
-            [subkey]: {
-              ...prev[section][subkey],
+          family: {
+            ...prev.family,
+            [sub]: {
+              ...prev.family[sub as keyof Family],
               [field]: value,
             },
           },
@@ -241,41 +343,28 @@ export default function StudentRecordsPage() {
       return {
         ...prev,
         [section]: {
-          ...prev[section],
+          ...secData,
           [field]: value,
         },
       };
     });
   };
 
-  const handleSave = async () => {
-    alert("Changes saved locally! (Backend update implementation pending)");
-    setProfile(formData);
-    setIsDirty(false);
-  };
-
-  if (loading) return <SkeletonLoader />;
-  if (error) return <ErrorDisplay error={error} />;
-
-  // Family Logic
-  const hasParents =
-    formData?.family?.parents?.father_name ||
-    formData?.family?.parents?.mother_name;
-  const hasGuardian = formData?.family?.guardian?.full_name;
-
-  // Helpers
-  const val = (v: any) => v || "";
-  const formatDateTime = (d: string) =>
-    d ? new Date(d).toLocaleString("vi-VN") : "N/A";
+  if (loading || !profile)
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <Loader2 className="animate-spin text-blue-600" />
+      </div>
+    );
 
   return (
-    <div className="relative min-h-full space-y-8 bg-slate-50/50 p-6 pb-24">
+    <div className="min-h-full space-y-8 bg-slate-50/50 p-6 pb-32">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link
             href="/profile"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-slate-500 shadow-sm transition-colors hover:bg-slate-100 hover:text-[#003087]"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-slate-500 shadow-sm hover:text-blue-700"
           >
             <ArrowLeft size={20} />
           </Link>
@@ -283,477 +372,472 @@ export default function StudentRecordsPage() {
             <h1 className="text-2xl font-bold text-[#003087]">
               Student Records
             </h1>
-            <p className="text-sm text-slate-500">
-              Official Profile Information
-            </p>
           </div>
         </div>
-        <div className="hidden items-center gap-2 rounded-full border border-slate-100 bg-white px-3 py-1.5 text-xs text-slate-400 shadow-sm md:flex">
-          <Clock size={12} />
+        <div className="hidden items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs text-slate-400 shadow-sm md:flex">
+          <Clock size={12} />{" "}
           <span>
-            Last updated: {formatDateTime(val(formData?.last_updated_at))}
+            Last updated:{" "}
+            {profile.last_updated_at
+              ? new Date(profile.last_updated_at).toLocaleString()
+              : "N/A"}
           </span>
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {/* Block 1: Personal & Residency */}
-        <Block title="Personal & Residency" icon={<User size={18} />}>
+        {/* 1. Personal */}
+        <Section
+          title="Personal Information"
+          icon={<User size={18} />}
+          isEditing={editMode["personal"]}
+          onEdit={() => toggleEdit("personal")}
+          onSave={() => handleSave("personal")}
+          isSaving={saving["personal"]}
+        >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <InputGroup
-              label="Last Name"
-              value={val(formData?.personal.last_name)}
-              onChange={(v) => handleChange("personal", "last_name", v)}
-            />
-            <InputGroup
-              label="First Name"
-              value={val(formData?.personal.first_name)}
-              onChange={(v) => handleChange("personal", "first_name", v)}
-            />
-            <InputGroup
-              type="date"
-              label="Date of Birth"
-              value={val(formData?.personal.dob)}
-              onChange={(v) => handleChange("personal", "dob", v)}
-            />
-
-            {/* Gender Dropdown */}
-            <SelectGroup
-              label="Gender"
-              value={val(formData?.personal.gender)}
-              options={GENDER_OPTIONS}
-              onChange={(v) => handleChange("personal", "gender", v)}
-            />
-
-            <InputGroup
-              label="National ID"
-              value={val(formData?.personal.national_id)}
-              onChange={(v) => handleChange("personal", "national_id", v)}
-              icon={<Shield size={14} />}
-            />
-            <InputGroup
+            <Field
               label="Nationality"
-              value={val(formData?.personal.nationality) || "Vietnam"}
-              onChange={(v) => handleChange("personal", "nationality", v)}
-              icon={<Globe size={14} />}
+              value={formData?.personal.nationality}
+              isEditing={editMode["personal"]}
+              type="select"
+              options={catalogs.countries}
+              onChange={(v: any) => updateForm("personal", "nationality", v)}
             />
-
-            <div className="grid grid-cols-1 gap-4 md:col-span-2 md:grid-cols-2">
-              <SelectGroup
-                label="Ethnic Group"
-                value={val(formData?.personal.ethnic) || "KINH"}
-                options={ETHNIC_OPTIONS}
-                onChange={(v) => handleChange("personal", "ethnic", v)}
-              />
-              <SelectGroup
-                label="Religion"
-                value={val(formData?.personal.religion) || "NONE"}
-                options={RELIGION_OPTIONS}
-                onChange={(v) => handleChange("personal", "religion", v)}
-              />
-            </div>
-
-            <div className="grid grid-cols-1 gap-4 md:col-span-2 md:grid-cols-2">
-              <SelectGroup
-                label="Priority Area"
-                value={val(formData?.personal.priority_area) || "KV3"}
-                options={PRIORITY_AREA_OPTIONS}
-                onChange={(v) => handleChange("personal", "priority_area", v)}
-              />
-              <InputGroup
-                label="Priority Group"
-                value={val(formData?.personal.priority_group) || "None"}
-                onChange={(v) => handleChange("personal", "priority_group", v)}
-              />
-            </div>
-
-            <InputGroup
-              label="Birthplace"
-              value={val(formData?.personal.birthplace)}
-              onChange={(v) => handleChange("personal", "birthplace", v)}
-              className="md:col-span-2"
-              icon={<MapPin size={14} />}
+            <Field
+              label="Place of Birth"
+              value={formData?.personal.place_of_birth}
+              isEditing={editMode["personal"]}
+              type="select"
+              options={catalogs.provinces}
+              onChange={(v: any) => updateForm("personal", "place_of_birth", v)}
             />
-
-            {/* Sub-text Hidden Fields */}
-            <div className="mt-2 grid grid-cols-2 gap-4 border-t pt-2 text-xs text-slate-400 md:col-span-2">
-              <p>ID Issue Date: {val(formData?.personal.id_issue_date)}</p>
-              <p>ID Issue Place: {val(formData?.personal.id_issue_place)}</p>
-            </div>
-
-            <InputGroup
-              label="Permanent Address"
-              value={val(formData?.contact.address_permanent)}
-              onChange={(v) => handleChange("contact", "address_permanent", v)}
-              icon={<Home size={14} />}
-              className="md:col-span-2"
+            <Field
+              label="Other Birthplace"
+              value={formData?.personal.other_birthplace}
+              isEditing={editMode["personal"]}
+              onChange={(v: any) =>
+                updateForm("personal", "other_birthplace", v)
+              }
+            />
+            <Field
+              label="Religion"
+              value={formData?.personal.religion_id}
+              isEditing={editMode["personal"]}
+              type="select"
+              options={catalogs.religions}
+              onChange={(v: any) => updateForm("personal", "religion_id", v)}
+            />
+            <Field
+              label="Ethnicity"
+              value={formData?.personal.ethnic_id}
+              isEditing={editMode["personal"]}
+              type="select"
+              options={catalogs.ethnics}
+              onChange={(v: any) => updateForm("personal", "ethnic_id", v)}
+            />
+            <Field
+              label="Priority Area"
+              value={formData?.personal.priority_area}
+              isEditing={editMode["personal"]}
+              type="select"
+              options={PRIORITY_AREAS}
+              onChange={(v: any) => updateForm("personal", "priority_area", v)}
+            />
+            <Field
+              label="Priority Group"
+              value={formData?.personal.priority_group}
+              isEditing={editMode["personal"]}
+              type="select"
+              options={PRIORITY_GROUPS}
+              onChange={(v: any) => updateForm("personal", "priority_group", v)}
+            />
+            <Field
+              label="Union Date"
+              value={formData?.personal.union_date}
+              isEditing={editMode["personal"]}
+              type="date"
+              onChange={(v: any) => updateForm("personal", "union_date", v)}
+            />
+            <Field
+              label="Party Date"
+              value={formData?.personal.party_date}
+              isEditing={editMode["personal"]}
+              type="date"
+              onChange={(v: any) => updateForm("personal", "party_date", v)}
             />
           </div>
-        </Block>
+        </Section>
 
-        {/* Block 2: Contact Information */}
-        <Block title="Contact Information" icon={<Phone size={18} />}>
+        {/* 2. Permanent Address */}
+        <Section
+          title="Permanent Address"
+          icon={<Home size={18} />}
+          isEditing={editMode["permanent_address"]}
+          onEdit={() => toggleEdit("permanent_address")}
+          onSave={() => handleSave("permanent_address")}
+          isSaving={saving["permanent_address"]}
+        >
           <div className="grid grid-cols-1 gap-4">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <InputGroup
-                label="Phone Number"
-                value={val(formData?.contact.phone)}
-                onChange={(v) => handleChange("contact", "phone", v)}
-                icon={<Phone size={14} />}
-              />
-              <InputGroup
-                label="Family Phone"
-                value={val(formData?.contact.family_phone)}
-                onChange={(v) => handleChange("contact", "family_phone", v)}
-                icon={<Phone size={14} />}
-              />
-            </div>
-            <InputGroup
-              label="University Email"
-              value={val(formData?.contact.email)}
-              readOnly
-              icon={<Mail size={14} />}
+            <Field
+              label="Province/City"
+              value={formData?.permanent_address.province_id}
+              isEditing={editMode["permanent_address"]}
+              type="select"
+              options={catalogs.provinces}
+              onChange={(v: any) => {
+                updateForm("permanent_address", "province_id", v);
+                fetchWards(v);
+              }}
             />
-            <InputGroup
+            <Field
+              label="Ward/Commune"
+              value={formData?.permanent_address.ward_id}
+              isEditing={editMode["permanent_address"]}
+              type="select"
+              options={
+                catalogs.wards[
+                  formData?.permanent_address.province_id as number
+                ] || []
+              }
+              onChange={(v: any) =>
+                updateForm("permanent_address", "ward_id", v)
+              }
+            />
+            <Field
+              label="House Number / Street"
+              value={formData?.permanent_address.house_number}
+              isEditing={editMode["permanent_address"]}
+              onChange={(v: any) =>
+                updateForm("permanent_address", "house_number", v)
+              }
+            />
+            {!editMode["permanent_address"] && (
+              <div className="mt-2 text-sm italic text-slate-500">
+                {profile.permanent_address.full_address}
+              </div>
+            )}
+          </div>
+        </Section>
+
+        {/* 3. Contact Info */}
+        <Section
+          title="Contact Information"
+          icon={<Phone size={18} />}
+          isEditing={editMode["contact"]}
+          onEdit={() => toggleEdit("contact")}
+          onSave={() => handleSave("contact")}
+          isSaving={saving["contact"]}
+        >
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <Field
+              label="Personal Phone"
+              value={formData?.contact.phone}
+              isEditing={editMode["contact"]}
+              onChange={(v: any) => updateForm("contact", "phone", v)}
+            />
+            <Field
+              label="Family Phone"
+              value={formData?.contact.family_phone}
+              isEditing={editMode["contact"]}
+              onChange={(v: any) => updateForm("contact", "family_phone", v)}
+            />
+            <Field
               label="Personal Email"
-              value={val(formData?.contact.personal_email)}
-              onChange={(v) => handleChange("contact", "personal_email", v)}
-              icon={<Mail size={14} />}
+              value={formData?.contact.personal_email}
+              isEditing={editMode["contact"]}
+              onChange={(v: any) => updateForm("contact", "personal_email", v)}
             />
-            <InputGroup
-              label="Current Address"
-              value={val(formData?.contact.address_current)}
-              onChange={(v) => handleChange("contact", "address_current", v)}
-              icon={<MapPin size={14} />}
+            <Field
+              label="Dorm Room"
+              value={formData?.contact.dorm_room}
+              isEditing={editMode["contact"]}
+              onChange={(v: any) => updateForm("contact", "dorm_room", v)}
             />
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <InputGroup
-                label="Dormitory Room"
-                value={val(formData?.contact.dormitory_room)}
-                onChange={(v) => handleChange("contact", "dormitory_room", v)}
-                icon={<Building size={14} />}
-              />
-              {/* Hidden Secondary Email */}
-              <div className="flex h-full items-center pt-6 text-xs text-slate-400">
-                Backup Email: {val(formData?.contact.secondary_email) || "N/A"}
+
+            <div className="mt-2 border-t pt-4 md:col-span-2">
+              <h4 className="mb-3 text-sm font-semibold text-slate-700">
+                Current Address
+              </h4>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <Field
+                  label="Province/City"
+                  value={formData?.contact.province_id}
+                  isEditing={editMode["contact"]}
+                  type="select"
+                  options={catalogs.provinces}
+                  onChange={(v: any) => {
+                    updateForm("contact", "province_id", v);
+                    fetchWards(v);
+                  }}
+                />
+                <Field
+                  label="Ward/Commune"
+                  value={formData?.contact.ward_id}
+                  isEditing={editMode["contact"]}
+                  type="select"
+                  options={
+                    catalogs.wards[formData?.contact.province_id as number] ||
+                    []
+                  }
+                  onChange={(v: any) => updateForm("contact", "ward_id", v)}
+                />
+                <Field
+                  label="House No"
+                  value={formData?.contact.house_number}
+                  isEditing={editMode["contact"]}
+                  onChange={(v: any) =>
+                    updateForm("contact", "house_number", v)
+                  }
+                  className="md:col-span-2"
+                />
               </div>
             </div>
           </div>
-        </Block>
+        </Section>
 
-        {/* Block 3: Family Information */}
-        <Block
-          title={
-            showGuardian && hasGuardian
-              ? "Guardian Information"
-              : "Family Information"
-          }
+        {/* 4. Relatives */}
+        <Section
+          title="Family Information"
           icon={<Users size={18} />}
+          isEditing={editMode["family"]}
+          onEdit={() => toggleEdit("family")}
+          onSave={() => handleSave("family")}
+          isSaving={saving["family"]}
           className="lg:col-span-2"
-          action={
-            hasParents &&
-            hasGuardian && (
-              <button
-                onClick={() => setShowGuardian(!showGuardian)}
-                className="text-xs font-semibold text-blue-600 hover:underline"
-              >
-                {showGuardian ? "View Parents" : "View Guardian"}
-              </button>
-            )
-          }
         >
-          {showGuardian && hasGuardian ? (
-            // Guardian View
-            <div className="animate-in fade-in grid grid-cols-1 gap-4 md:grid-cols-2">
-              <InputGroup
-                label="Full Name"
-                value={val(formData?.family?.guardian?.full_name)}
-                onChange={(v) =>
-                  handleChange("family", "full_name", v, "guardian")
-                }
-              />
-              <InputGroup
-                label="Relationship"
-                value={val(formData?.family?.guardian?.relationship)}
-                onChange={(v) =>
-                  handleChange("family", "relationship", v, "guardian")
-                }
-              />
-              <InputGroup
-                label="Phone"
-                value={val(formData?.family?.guardian?.phone_number)}
-                onChange={(v) =>
-                  handleChange("family", "phone_number", v, "guardian")
-                }
-              />
-              <InputGroup
-                label="Email"
-                value={val(formData?.family?.guardian?.email)}
-                onChange={(v) => handleChange("family", "email", v, "guardian")}
-              />
-              <InputGroup
-                label="Address"
-                value={val(formData?.family?.guardian?.address)}
-                onChange={(v) =>
-                  handleChange("family", "address", v, "guardian")
-                }
-                className="md:col-span-2"
-              />
-            </div>
-          ) : (
-            // Parents View
-            <div className="animate-in fade-in grid grid-cols-1 gap-8 md:grid-cols-2">
-              {/* Father */}
+          {/* Tabs */}
+          <div className="mb-4 border-b border-gray-200">
+            <nav className="-mb-px flex space-x-8">
+              <button
+                onClick={() => setFamilyTab("parents")}
+                className={`whitespace-nowrap border-b-2 px-1 pb-4 text-sm font-medium ${
+                  familyTab === "parents"
+                    ? "border-blue-500 text-blue-600"
+                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                }`}
+              >
+                Father & Mother
+              </button>
+              <button
+                onClick={() => setFamilyTab("guardian")}
+                className={`whitespace-nowrap border-b-2 px-1 pb-4 text-sm font-medium ${
+                  familyTab === "guardian"
+                    ? "border-blue-500 text-blue-600"
+                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                }`}
+              >
+                Guardian
+              </button>
+            </nav>
+          </div>
+
+          {familyTab === "parents" ? (
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="space-y-4">
-                <h4 className="border-b pb-2 text-sm font-bold uppercase text-slate-700">
+                <h4 className="border-b pb-2 text-xs font-bold uppercase text-slate-700">
                   Father
                 </h4>
-                <InputGroup
+                <Field
                   label="Name"
-                  value={val(formData?.family?.parents?.father_name)}
-                  onChange={(v) =>
-                    handleChange("family", "father_name", v, "parents")
+                  value={formData?.family.parents.father_name}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "father_name", v, "parents")
                   }
                 />
-                <div className="grid grid-cols-2 gap-2">
-                  <InputGroup
-                    label="Year of Birth"
-                    type="date"
-                    value={val(formData?.family?.parents?.father_birthday)}
-                    onChange={(v) =>
-                      handleChange("family", "father_birthday", v, "parents")
-                    }
-                  />
-                  <InputGroup
-                    label="Phone"
-                    value={val(formData?.family?.parents?.father_phone)}
-                    onChange={(v) =>
-                      handleChange("family", "father_phone", v, "parents")
-                    }
-                  />
-                </div>
-                <InputGroup
+                <Field
+                  label="Phone"
+                  value={formData?.family.parents.father_phone}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "father_phone", v, "parents")
+                  }
+                />
+                <Field
                   label="Job"
-                  value={val(formData?.family?.parents?.father_job)}
-                  onChange={(v) =>
-                    handleChange("family", "father_job", v, "parents")
+                  value={formData?.family.parents.father_job}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "father_job", v, "parents")
                   }
                 />
-                <InputGroup
+                <Field
                   label="Workplace"
-                  value={val(formData?.family?.parents?.father_workplace)}
-                  onChange={(v) =>
-                    handleChange("family", "father_workplace", v, "parents")
+                  value={formData?.family.parents.father_workplace}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "father_workplace", v, "parents")
                   }
                 />
               </div>
-              {/* Mother */}
               <div className="space-y-4">
-                <h4 className="border-b pb-2 text-sm font-bold uppercase text-slate-700">
+                <h4 className="border-b pb-2 text-xs font-bold uppercase text-slate-700">
                   Mother
                 </h4>
-                <InputGroup
+                <Field
                   label="Name"
-                  value={val(formData?.family?.parents?.mother_name)}
-                  onChange={(v) =>
-                    handleChange("family", "mother_name", v, "parents")
+                  value={formData?.family.parents.mother_name}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "mother_name", v, "parents")
                   }
                 />
-                <div className="grid grid-cols-2 gap-2">
-                  <InputGroup
-                    label="Year of Birth"
-                    type="date"
-                    value={val(formData?.family?.parents?.mother_birthday)}
-                    onChange={(v) =>
-                      handleChange("family", "mother_birthday", v, "parents")
-                    }
-                  />
-                  <InputGroup
-                    label="Phone"
-                    value={val(formData?.family?.parents?.mother_phone)}
-                    onChange={(v) =>
-                      handleChange("family", "mother_phone", v, "parents")
-                    }
-                  />
-                </div>
-                <InputGroup
+                <Field
+                  label="Phone"
+                  value={formData?.family.parents.mother_phone}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "mother_phone", v, "parents")
+                  }
+                />
+                <Field
                   label="Job"
-                  value={val(formData?.family?.parents?.mother_job)}
-                  onChange={(v) =>
-                    handleChange("family", "mother_job", v, "parents")
+                  value={formData?.family.parents.mother_job}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "mother_job", v, "parents")
                   }
                 />
-                <InputGroup
+                <Field
                   label="Workplace"
-                  value={val(formData?.family?.parents?.mother_workplace)}
-                  onChange={(v) =>
-                    handleChange("family", "mother_workplace", v, "parents")
+                  value={formData?.family.parents.mother_workplace}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "mother_workplace", v, "parents")
+                  }
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div>
+                <h4 className="mb-4 border-b pb-2 text-xs font-bold uppercase text-slate-700">
+                  Guardian Info
+                </h4>
+                <Field
+                  label="Full Name"
+                  value={formData?.family.guardian.full_name}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "full_name", v, "guardian")
+                  }
+                />
+                <Field
+                  label="Relationship"
+                  value={formData?.family.guardian.relationship}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "relationship", v, "guardian")
+                  }
+                />
+                <Field
+                  label="Phone"
+                  value={formData?.family.guardian.phone_number}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "phone_number", v, "guardian")
+                  }
+                />
+                <Field
+                  label="Job"
+                  value={formData?.family.guardian.job}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "job", v, "guardian")
+                  }
+                />
+              </div>
+              <div>
+                <h4 className="mb-4 border-b pb-2 text-xs font-bold uppercase text-slate-700">
+                  Guardian Address
+                </h4>
+                <Field
+                  label="Province/City"
+                  value={formData?.family.guardian.province_id}
+                  isEditing={editMode["family"]}
+                  type="select"
+                  options={catalogs.provinces}
+                  onChange={(v: any) => {
+                    updateForm("family", "province_id", v, "guardian");
+                    fetchWards(v);
+                  }}
+                />
+                <Field
+                  label="Ward"
+                  value={formData?.family.guardian.ward_id}
+                  isEditing={editMode["family"]}
+                  type="select"
+                  options={
+                    catalogs.wards[
+                      formData?.family.guardian.province_id as number
+                    ] || []
+                  }
+                  onChange={(v: any) =>
+                    updateForm("family", "ward_id", v, "guardian")
+                  }
+                />
+                <Field
+                  label="House No"
+                  value={formData?.family.guardian.house_number}
+                  isEditing={editMode["family"]}
+                  onChange={(v: any) =>
+                    updateForm("family", "house_number", v, "guardian")
                   }
                 />
               </div>
             </div>
           )}
-        </Block>
+        </Section>
 
-        {/* Block 4: Academic Information (Read-only) */}
-        <Block
-          title="Academic Information"
-          icon={<GraduationCap size={18} />}
-          className="border-blue-100 bg-blue-50/50 lg:col-span-2"
-        >
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <InputGroup
-              label="Student ID"
-              value={val(formData?.academic.student_id)}
-              readOnly
-              bold
-            />
-            <InputGroup
-              label="Status"
-              value={val(formData?.academic.status)}
-              readOnly
-              status
-            />
-            <InputGroup
-              label="Class Code"
-              value={val(formData?.academic.class_code)}
-              readOnly
-            />
-            <InputGroup
-              label="Faculty"
-              value={val(formData?.academic.faculty)}
-              readOnly
-              icon={<Building size={14} />}
-              className="md:col-span-2"
-            />
-            <InputGroup
-              label="Major"
-              value={val(formData?.academic.major)}
-              readOnly
-              icon={<BookOpen size={14} />}
-            />
-            <InputGroup
-              label="Enrollment Year"
-              value={val(formData?.academic.enrollment_year)}
-              readOnly
-            />
-            <InputGroup
-              label="Education Level"
-              value={val(formData?.academic.education_level)}
-              readOnly
-            />
-            <InputGroup
-              label="Training System"
-              value={val(formData?.academic.training_system)}
-              readOnly
-            />
+        {/* 5. Photo Record */}
+        <Section title="Photo Records" icon={<Camera size={18} />}>
+          <div className="py-6 text-center text-sm text-slate-500">
+            {profile.others.photo_record_note ||
+              "No specific notes on VNeID photo records."}
           </div>
-        </Block>
-      </div>
+        </Section>
 
-      {/* Floating Save Button */}
-      <AnimatePresence>
-        {isDirty && (
-          <motion.button
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            onClick={handleSave}
-            className="fixed bottom-8 right-8 z-50 flex items-center gap-2 rounded-full bg-[#003087] px-6 py-3 text-white shadow-lg transition-transform hover:scale-105 hover:bg-blue-800"
-          >
-            <Save size={20} />
-            <span className="font-bold">Save Changes</span>
-          </motion.button>
-        )}
-      </AnimatePresence>
-
-      {/* Accordion Sections */}
-      <div className="space-y-4 border-t border-slate-200 pt-6">
-        <AccordionSection
-          title="Graduation Information"
-          icon={<GraduationCap size={18} />}
-          isExpanded={expandedSections.graduation}
-          onToggle={() => toggleSection("graduation")}
+        {/* 6. Others */}
+        <Section
+          title="Social Media"
+          icon={<Share2 size={18} />}
+          isEditing={editMode["others"]}
+          onEdit={() => toggleEdit("others")}
+          onSave={() => handleSave("others")}
+          isSaving={saving["others"]}
         >
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <InputGroup
-              label="Major"
-              value={val(formData?.graduation?.grad_major)}
-              onChange={(v) => handleChange("graduation", "grad_major", v)}
-            />
-            <InputGroup
-              label="Year/Semester"
-              value={val(formData?.graduation?.grad_year_semester)}
-              onChange={(v) =>
-                handleChange("graduation", "grad_year_semester", v)
+          <div className="grid grid-cols-1 gap-4">
+            <Field
+              label="Facebook"
+              value={formData?.others.social_media?.facebook}
+              isEditing={editMode["others"]}
+              onChange={(v: any) =>
+                setFormData((prev) => ({
+                  ...prev!,
+                  others: {
+                    ...prev!.others,
+                    social_media: { ...prev!.others.social_media, facebook: v },
+                  },
+                }))
               }
             />
-            <InputGroup
-              label="Decision Number"
-              value={val(formData?.graduation?.grad_decision_number)}
-              onChange={(v) =>
-                handleChange("graduation", "grad_decision_number", v)
-              }
-            />
-            <InputGroup
-              type="date"
-              label="Decision Date"
-              value={val(formData?.graduation?.grad_decision_date)}
-              onChange={(v) =>
-                handleChange("graduation", "grad_decision_date", v)
+            <Field
+              label="LinkedIn"
+              value={formData?.others.social_media?.linkedin}
+              isEditing={editMode["others"]}
+              onChange={(v: any) =>
+                setFormData((prev) => ({
+                  ...prev!,
+                  others: {
+                    ...prev!.others,
+                    social_media: { ...prev!.others.social_media, linkedin: v },
+                  },
+                }))
               }
             />
           </div>
-        </AccordionSection>
-
-        <AccordionSection
-          title="Bank Account"
-          icon={<Briefcase size={18} />}
-          isExpanded={expandedSections.bank}
-          onToggle={() => toggleSection("bank")}
-        >
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <InputGroup
-              label="Bank Name"
-              value={val(formData?.bank?.bank_name)}
-              onChange={(v) => handleChange("bank", "bank_name", v)}
-            />
-            <InputGroup
-              label="Account Number"
-              value={val(formData?.bank?.bank_account)}
-              onChange={(v) => handleChange("bank", "bank_account", v)}
-            />
-            <InputGroup
-              label="OCB CIF"
-              value={val(formData?.bank?.ocb_cif)}
-              onChange={(v) => handleChange("bank", "ocb_cif", v)}
-            />
-          </div>
-        </AccordionSection>
-
-        <AccordionSection
-          title="Photo Records"
-          icon={<FileText size={18} />}
-          isExpanded={expandedSections.photos}
-          onToggle={() => toggleSection("photos")}
-        >
-          <div className="py-4 text-center text-slate-500">
-            No VNeID photo records currently available.
-          </div>
-        </AccordionSection>
-
-        <AccordionSection
-          title="Other Information"
-          icon={<FileText size={18} />}
-          isExpanded={expandedSections.other}
-          onToggle={() => toggleSection("other")}
-        >
-          <InputGroup
-            label="Note"
-            value={val(formData?.other?.note)}
-            onChange={(v) => handleChange("other", "note", v)}
-          />
-        </AccordionSection>
+        </Section>
       </div>
     </div>
   );
@@ -761,144 +845,163 @@ export default function StudentRecordsPage() {
 
 // --- Components ---
 
-function Block({ title, icon, children, className = "", action }: BlockProps) {
+function Section({
+  title,
+  icon,
+  children,
+  isEditing,
+  onEdit,
+  onSave,
+  isSaving,
+  className = "",
+}: any) {
   return (
     <div
-      className={`rounded-xl border border-slate-200 bg-white p-6 shadow-sm ${className}`}
+      className={`overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm ${className}`}
     >
-      <div className="mb-6 flex items-center justify-between border-b border-slate-100 pb-4">
+      <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50/30 px-6 py-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-[#003087]">
-            {icon}
-          </div>
+          <div className="rounded-lg bg-blue-50 p-2 text-blue-700">{icon}</div>
           <h3 className="font-bold text-slate-800">{title}</h3>
         </div>
-        {action}
+        {onEdit && (
+          <button
+            onClick={isEditing ? onSave : onEdit}
+            disabled={isSaving}
+            className={`rounded-full p-2 transition-colors ${
+              isEditing
+                ? "bg-green-100 text-green-700 hover:bg-green-200"
+                : "text-slate-500 hover:bg-slate-100"
+            } ${isSaving ? "cursor-not-allowed opacity-50" : ""}`}
+          >
+            {isSaving ? (
+              <Loader2 size={18} className="animate-spin" />
+            ) : isEditing ? (
+              <Check size={18} />
+            ) : (
+              <Edit2 size={16} />
+            )}
+          </button>
+        )}
       </div>
-      {children}
+      <div className="p-6">{children}</div>
     </div>
   );
 }
 
-function InputGroup({
+function Field({
   label,
   value,
   onChange,
-  readOnly,
+  isEditing,
   type = "text",
-  icon,
+  options,
   className = "",
-  bold,
-  status,
-  subtle,
-}: InputGroupProps) {
+}: any) {
+  // Searchable Select Implementation (Basic)
+  const [isOpen, setIsOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (ref.current && !ref.current.contains(event.target)) setIsOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const displayValue = options
+    ? options.find((o: any) => o.value == value)?.label || value
+    : value;
+
+  // Filter options
+  const filteredOptions = options
+    ? options.filter((o: any) =>
+        o?.label?.toLowerCase().includes(search.toLowerCase()),
+      )
+    : [];
+
+  if (!isEditing) {
+    return (
+      <div className={`flex flex-col gap-1 ${className}`}>
+        <span className="text-xs font-semibold uppercase text-slate-400">
+          {label}
+        </span>
+        <span className="truncate font-medium text-slate-700">
+          {displayValue || "-"}
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div className={`flex flex-col gap-1.5 ${className}`}>
-      <div className="flex items-center gap-2">
-        {icon && <span className="text-slate-400">{icon}</span>}
-        <label
-          className={`text-xs font-semibold uppercase tracking-wide ${subtle ? "text-slate-400" : "text-slate-500"}`}
-        >
-          {label}
-        </label>
-      </div>
-      {readOnly ? (
-        status ? (
-          <span className="inline-flex self-start rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
-            {value}
-          </span>
-        ) : (
+      <span className="text-xs font-semibold uppercase text-slate-500">
+        {label}
+      </span>
+      {type === "select" && options ? (
+        <div className="relative" ref={ref}>
           <div
-            className={`rounded-lg border border-transparent bg-slate-50 px-3 py-2 text-slate-700 ${bold ? "font-bold" : "font-medium"}`}
+            className="flex w-full cursor-pointer items-center justify-between rounded-md border border-slate-300 bg-white px-3 py-2 text-sm"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            {value || "N/A"}
+            <span className={!displayValue ? "text-slate-400" : ""}>
+              {displayValue || "Select..."}
+            </span>
+            <ChevronDown size={14} className="text-slate-400" />
           </div>
-        )
+          {isOpen && (
+            <div className="absolute z-10 mt-1 max-h-60 w-full overflow-y-auto rounded-md border border-slate-200 bg-white p-1 shadow-lg">
+              <div className="sticky top-0 border-b bg-white p-2">
+                <div className="flex items-center gap-2 rounded border px-2 py-1">
+                  <Search size={14} className="text-slate-400" />
+                  <input
+                    autoFocus
+                    type="text"
+                    className="w-full text-xs outline-none"
+                    placeholder="Search..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </div>
+              </div>
+              {filteredOptions.map((opt: any) => (
+                <div
+                  key={opt.value}
+                  className="cursor-pointer rounded px-3 py-2 text-sm hover:bg-blue-50"
+                  onClick={() => {
+                    onChange(opt.value);
+                    setIsOpen(false);
+                    setSearch("");
+                  }}
+                >
+                  {opt.label}
+                </div>
+              ))}
+              {filteredOptions.length === 0 && (
+                <div className="p-2 text-center text-xs text-slate-400">
+                  No results
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      ) : type === "date" ? (
+        <input
+          type="date"
+          value={value || ""}
+          onChange={(e) => onChange(e.target.value)}
+          className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none transition-colors focus:border-blue-500"
+        />
       ) : (
         <input
-          type={type}
+          type="text"
           value={value || ""}
-          onChange={(e) => onChange && onChange(e.target.value)}
-          className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-800 transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
-          placeholder={`Enter ${label.toLowerCase()}`}
+          onChange={(e) => onChange(e.target.value)}
+          className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none transition-colors focus:border-blue-500"
         />
       )}
     </div>
   );
-}
-
-function SelectGroup({
-  label,
-  value,
-  options,
-  onChange,
-  icon,
-}: SelectGroupProps) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <div className="flex items-center gap-2">
-        {icon && <span className="text-slate-400">{icon}</span>}
-        <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-          {label}
-        </label>
-      </div>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-800 transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
-      >
-        {options.map((opt: any) => (
-          <option key={opt.value} value={opt.value}>
-            {opt.label}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-}
-
-function AccordionSection({
-  title,
-  icon,
-  children,
-  isExpanded,
-  onToggle,
-}: AccordionSectionProps) {
-  return (
-    <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-      <button
-        onClick={onToggle}
-        className="flex w-full items-center justify-between bg-white px-6 py-4 transition-colors hover:bg-slate-50"
-      >
-        <div className="flex items-center gap-3">
-          <div className="text-slate-400">{icon}</div>
-          <h3 className="font-semibold text-slate-700">{title}</h3>
-        </div>
-        <ChevronDown
-          size={20}
-          className={`text-slate-400 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
-        />
-      </button>
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            initial={{ height: 0 }}
-            animate={{ height: "auto" }}
-            exit={{ height: 0 }}
-            className="overflow-hidden border-t border-slate-100"
-          >
-            <div className="p-6">{children}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-function SkeletonLoader() {
-  return <div className="p-6">Loading...</div>; // Simplified for brevity
-}
-
-function ErrorDisplay({ error }: { error: string }) {
-  return <div className="p-6 text-red-600">{error}</div>; // Simplified
 }

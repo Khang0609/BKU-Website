@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Listbox, Transition } from "@headlessui/react";
 import degreeExampleImage from "@/components/assets/bang_thpt.png";
+import { ImageWithFallback } from "../ImageWithFallback";
 
 interface DegreeRecord {
   id: number;
@@ -645,7 +646,7 @@ export function DegreeInformationDeclaration() {
                   Your scanned certificate should look similar to this example:
                 </p>
                 <div className="rounded border border-gray-200 bg-white p-2">
-                  <img
+                  <ImageWithFallback
                     src={uploadedFile?.preview || degreeExampleImage.src}
                     alt="Degree Certificate Example"
                     className="h-auto w-full"

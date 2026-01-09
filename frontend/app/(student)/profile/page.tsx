@@ -55,6 +55,7 @@ export default function ProfilePage() {
         if (!res.ok) throw new Error("Failed to fetch profile");
 
         const data = await res.json();
+        console.log(data);
         setProfile({
           first_name: data.personal.first_name || "",
           last_name: data.personal.last_name || "",
@@ -232,14 +233,14 @@ export default function ProfilePage() {
         {/* Header */}
         <motion.div variants={itemAnim} className="mb-8">
           <div className="mb-2 flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary">
-              <User className="text-white" size={24} />
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary md:h-12 md:w-12">
+              <User className="text-white" size={20} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="title-xl font-bold text-gray-900">
                 Student Profile
               </h1>
-              <p className="text-gray-600">
+              <p className="subtitle-xl text-gray-600">
                 Manage your personal information, records, and academic status.
               </p>
             </div>
@@ -277,7 +278,7 @@ export default function ProfilePage() {
                           {initials}
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold text-[#003087]">
+                          <h3 className="text-xl font-bold text-[#003087] md:text-2xl">
                             {fullName}
                           </h3>
                           <p className="font-medium text-slate-500">

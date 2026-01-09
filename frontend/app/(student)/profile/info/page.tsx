@@ -24,6 +24,8 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { authFetch } from "@/lib/authFetch";
 import Image from "next/image";
+import { getApiUrl } from "@/lib/api";
+import { ImageWithFallback } from "@/components/ImageWithFallback";
 
 // --- Types ---
 interface StudentProfile {
@@ -90,7 +92,7 @@ interface StudentProfile {
   last_updated_at?: string;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL = getApiUrl();
 
 export default function StudentDetailedInfoPage() {
   const [profile, setProfile] = useState<StudentProfile | null>(null);
@@ -199,7 +201,7 @@ export default function StudentDetailedInfoPage() {
             <div className="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-2">
               <GridItem
                 label="Student ID"
-                value={val(profile?.academic.student_id)}
+                value={val(profile?.academic?.student_id)}
                 bold
                 large
               />
@@ -320,7 +322,7 @@ export default function StudentDetailedInfoPage() {
               <div className="flex-shrink-0 self-start">
                 <div className="group relative h-32 w-24 overflow-hidden rounded-lg border border-slate-200 bg-slate-50 shadow-sm">
                   {profile?.personal.avatar_url ? (
-                    <Image
+                    <ImageWithFallback
                       src={profile.personal.avatar_url}
                       alt="Student Avatar"
                       width={200}
@@ -431,19 +433,19 @@ export default function StudentDetailedInfoPage() {
           >
             <GridItem
               label="Graduated Major"
-              value={val(profile?.graduation.grad_major)}
+              value={val(profile?.graduation?.grad_major)}
             />
             <GridItem
               label="Year / Semester"
-              value={val(profile?.graduation.grad_year_semester)}
+              value={val(profile?.graduation?.grad_year_semester)}
             />
             <GridItem
               label="Decision Number"
-              value={val(profile?.graduation.grad_decision_number)}
+              value={val(profile?.graduation?.grad_decision_number)}
             />
             <GridItem
               label="Decision Date"
-              value={formatDate(val(profile?.graduation.grad_decision_date))}
+              value={formatDate(val(profile?.graduation?.grad_decision_date))}
             />
           </Accordion>
 
@@ -453,16 +455,16 @@ export default function StudentDetailedInfoPage() {
             isOpen={expandedSections.bank}
             onToggle={() => toggleSection("bank")}
           >
-            <GridItem label="Bank Name" value={val(profile?.bank.bank_name)} />
+            <GridItem label="Bank Name" value={val(profile?.bank?.bank_name)} />
             <GridItem
               label="Account Number"
-              value={val(profile?.bank.bank_account)}
+              value={val(profile?.bank?.bank_account)}
               bold
             />
-            <GridItem label="OCB CIF" value={val(profile?.bank.ocb_cif)} />
+            <GridItem label="OCB CIF" value={val(profile?.bank?.ocb_cif)} />
             <GridItem
               label="BKNet Account"
-              value={val(profile?.bank.bknet_account)}
+              value={val(profile?.bank?.bknet_account)}
             />
           </Accordion>
 
@@ -474,7 +476,7 @@ export default function StudentDetailedInfoPage() {
           >
             <GridItem
               label="Note"
-              value={val(profile?.other.note)}
+              value={val(profile?.other?.note)}
               className="col-span-full"
             />
           </Accordion>

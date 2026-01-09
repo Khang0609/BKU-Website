@@ -77,8 +77,8 @@ export default function FeaturesPage() {
   return (
     <div className="mx-auto max-w-5xl p-8">
       <header className="mb-10">
-        <h1 className="text-3xl font-bold text-gray-800">Feature Control</h1>
-        <p className="mt-1 text-gray-500">
+        <h1 className="title-xl font-bold text-gray-800">Feature Control</h1>
+        <p className="subtitle-xl mt-1 text-gray-500">
           Manage feature flags and system toggles
         </p>
       </header>

@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import axios from "axios";
 import { Loader2, Lock, Mail, AlertCircle } from "lucide-react";
 import logo from "@/components/assets/logo.png";
 import backgroundImage from "@/components/assets/truong.png";
 import { getApiUrl } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
+import { ImageWithFallback } from "@/components/ImageWithFallback";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -64,15 +64,15 @@ export default function LoginPage() {
       >
         <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur-md">
           <div className="mb-8 flex flex-col items-center">
-            <Image
+            <ImageWithFallback
               src={logo}
               alt="HCMUT Logo"
               width={100}
               height={100}
               className="mb-4 drop-shadow-lg"
             />
-            <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
-            <p className="text-blue-200">Sign in to BKU Portal</p>
+            <h1 className="title-xl font-bold text-white">Welcome Back</h1>
+            <p className="subtitle-xl text-blue-200">Sign in to BKU Portal</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">

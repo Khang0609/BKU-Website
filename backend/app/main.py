@@ -5,15 +5,21 @@ from app.database import engine
 from app.routes import all_routers  # Import only auth now
 from app.routes.auth import get_current_active_user # Import dependency from auth, not user
 
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 # Create tables
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="BKUWeb API")
+CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
 
 # CORS Configuration
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    CORS_ORIGINS,
 ]
 
 app.add_middleware(

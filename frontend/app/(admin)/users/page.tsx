@@ -83,8 +83,8 @@ export default function UserManagementPage() {
     <div className="mx-auto max-w-7xl p-8">
       <header className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">User Management</h1>
-          <p className="mt-1 text-gray-500">
+          <h1 className="title-xl font-bold text-gray-800">User Management</h1>
+          <p className="subtitle-xl mt-1 text-gray-500">
             Manage system access and permissions
           </p>
         </div>

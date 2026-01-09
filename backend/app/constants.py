@@ -37,3 +37,14 @@ class EducationalProgram(str, enum.Enum):
 class TeachingFalities(str, enum.Enum):
     BK1 = "ĐHBK Cơ sở 1 - Lý Thường Kiệt, Diên Hồng"
     BK2 = "ĐHBK Cơ sở 2 -  "
+
+class PriorityGroup(str, enum.Enum):
+    UT1 = "UT1"
+    UT2 = "UT2"
+    NONE = "NONE"
+
+class PriorityArea(str, enum.Enum):
+    KV1 = "KV1"
+    KV2 = "KV2"
+    KV2_NT = "KV2_NT"
+    KV3 = "KV3"

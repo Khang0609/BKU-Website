@@ -16,6 +16,7 @@ from seed_academic import seed_academic_data
 from seed_ethnic import seed_ethnic_data
 from seed_religion import seed_religion_data
 from seed_student import seed_student_data
+from seed_country import seed_country_data
 
 import subprocess
 
@@ -150,3 +151,4 @@ if __name__ == "__main__":
     seed_ethnic_data()
     seed_religion_data()
     seed_student_data()
+    seed_country_data()

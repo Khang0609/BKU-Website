@@ -5,7 +5,7 @@ from sqlalchemy import ForeignKey, String, Integer, Date, Enum as SQLAlchemyEnum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base
-from app.constants import Gender # Using existing global constant
+from app.constants import Gender, PriorityGroup, PriorityArea # Using existing global constant
 
 if TYPE_CHECKING:
     from app.models.auth import Identity
@@ -36,6 +36,8 @@ class StudentPersonal(Base):
     student_email: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
     personal_email: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
     backup_email: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    dorm_room: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
+    family_phone: Mapped[Optional[str]] = mapped_column(String(20), nullable=True) # Added to support Section 3
 
     # Profile Info (Section 2)
     nationality: Mapped[Optional[str]] = mapped_column(String(50), default="Vietnam", nullable=True)
@@ -45,8 +47,8 @@ class StudentPersonal(Base):
     religion_id: Mapped[Optional[int]] = mapped_column(ForeignKey("religions.id"), nullable=True)
     ethnic_id: Mapped[Optional[int]] = mapped_column(ForeignKey("ethnics.id"), nullable=True)
     
-    priority_area: Mapped[Optional[str]] = mapped_column(String(50), default="Khu vực 3", nullable=True)
-    priority_object: Mapped[Optional[str]] = mapped_column(String(100), default="Không đối tượng", nullable=True)
+    priority_area: Mapped[Optional[PriorityArea]] = mapped_column(SQLAlchemyEnum(PriorityArea), default=PriorityArea.KV3, nullable=True)
+    priority_group: Mapped[Optional[PriorityGroup]] = mapped_column(SQLAlchemyEnum(PriorityGroup), default=PriorityGroup.NONE, nullable=True)
 
     # Dates
     union_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True) # Ngày vào Đoàn
