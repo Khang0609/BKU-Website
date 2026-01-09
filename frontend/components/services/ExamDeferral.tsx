@@ -1,6 +1,7 @@
 import { useState, Fragment, useRef } from 'react';
 import { Info, Search, FileText, Upload, X, Check, ChevronDown, ExternalLink, AlertTriangle } from 'lucide-react';
 import { Listbox, Transition } from '@headlessui/react';
+import { ImageWithFallback } from '../ImageWithFallback';
 
 interface Course {
   id: string;
@@ -417,7 +418,7 @@ export function ExamDeferral() {
                 >
                   {file.preview ? (
                     <div className="mb-2">
-                      <img
+                      <ImageWithFallback
                         src={file.preview}
                         alt={file.name}
                         className="w-full h-32 object-cover rounded"

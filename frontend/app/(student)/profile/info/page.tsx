@@ -25,6 +25,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { authFetch } from "@/lib/authFetch";
 import Image from "next/image";
 import { getApiUrl } from "@/lib/api";
+import { ImageWithFallback } from "@/components/ImageWithFallback";
 
 // --- Types ---
 interface StudentProfile {
@@ -321,7 +322,7 @@ export default function StudentDetailedInfoPage() {
               <div className="flex-shrink-0 self-start">
                 <div className="group relative h-32 w-24 overflow-hidden rounded-lg border border-slate-200 bg-slate-50 shadow-sm">
                   {profile?.personal.avatar_url ? (
-                    <Image
+                    <ImageWithFallback
                       src={profile.personal.avatar_url}
                       alt="Student Avatar"
                       width={200}

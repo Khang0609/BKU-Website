@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import axios from "axios";
 import { Loader2, Lock, Mail, AlertCircle } from "lucide-react";
 import logo from "@/components/assets/logo.png";
 import backgroundImage from "@/components/assets/truong.png";
 import { getApiUrl } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
+import { ImageWithFallback } from "@/components/ImageWithFallback";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -64,7 +64,7 @@ export default function LoginPage() {
       >
         <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur-md">
           <div className="mb-8 flex flex-col items-center">
-            <Image
+            <ImageWithFallback
               src={logo}
               alt="HCMUT Logo"
               width={100}
