@@ -645,11 +645,11 @@ export function DegreeInformationDeclaration() {
                 <p className="mb-3 text-xs text-gray-600">
                   Your scanned certificate should look similar to this example:
                 </p>
-                <div className="rounded border border-gray-200 bg-white p-2">
+                <div className="relative h-64 w-full rounded border border-gray-200 bg-white p-2">
                   <ImageWithFallback
                     src={uploadedFile?.preview || degreeExampleImage.src}
                     alt="Degree Certificate Example"
-                    className="h-auto w-full"
+                    className="rounded-sm"
                   />
                 </div>
               </div>
