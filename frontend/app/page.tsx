@@ -63,7 +63,7 @@ export default function LoginPage() {
         className="relative z-20 w-full max-w-md p-6"
       >
         <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur-md">
-          <div className="w-100 h-100 relative mb-8 flex flex-col items-center">
+          <div className="relative mb-8 flex flex-col items-center">
             <ImageWithFallback
               src={logo}
               alt="HCMUT Logo"

@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, status, Response, Request
 from fastapi.middleware.cors import CORSMiddleware
 import app.models as models
+from starlette.middleware.proxy_headers import ProxyHeadersMiddleware
 from app.database import engine
 from app.routes import all_routers  # Import only auth now
 from app.routes.auth import get_current_active_user # Import dependency from auth, not user
@@ -13,6 +14,7 @@ load_dotenv()
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="BKUWeb API")
+app.add_middleware(ProxyHeadersMiddleware, trusted_hosts="*")
 CORS_ORIGIN = os.getenv("CORS_ORIGIN", "http://localhost:3000")
 
 # CORS Configuration
@@ -20,6 +22,7 @@ origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     CORS_ORIGIN,
+    CORS_ORIGIN + "/",
 ]
 
 app.add_middleware(
