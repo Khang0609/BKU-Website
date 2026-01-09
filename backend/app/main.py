@@ -13,13 +13,13 @@ load_dotenv()
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="BKUWeb API")
-CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
+CORS_ORIGIN = os.getenv("CORS_ORIGIN", "http://localhost:3000")
 
 # CORS Configuration
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    CORS_ORIGINS,
+    CORS_ORIGIN,
 ]
 
 app.add_middleware(
