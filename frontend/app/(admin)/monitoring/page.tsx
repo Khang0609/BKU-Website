@@ -74,10 +74,10 @@ export default function MonitoringPage() {
     <div className="mx-auto max-w-7xl space-y-8 p-8">
       <header className="mb-8 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">
+          <h1 className="title-xl font-bold text-gray-800">
             System Monitoring
           </h1>
-          <p className="mt-1 text-gray-500">
+          <p className="subtitle-xl mt-1 text-gray-500">
             Real-time infrastructure health and performance metrics
           </p>
         </div>

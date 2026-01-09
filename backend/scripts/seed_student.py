@@ -14,7 +14,7 @@ from app.models.auth import Identity, User
 from app.models.profile.student import StudentAcademic, StudentPersonal, StudentAddress, StudentParent, StudentGuardian
 from app.models.profile.student.address import AddressType
 from app.models.ethnic import Ethnic
-from app.constants import Gender, Status
+from app.constants import Gender, Status, PriorityArea, PriorityGroup
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -118,13 +118,17 @@ def create_specific_student_profile(db, raw_student_id, full_name, user_email):
             phone=fake.phone_number(),
             student_email=user_email,
             personal_email=fake.email(),
+            family_phone=fake.phone_number(), # Added new field
+            dorm_room=f"H{random.randint(1,6)}-{random.randint(100,500)}", # Added new field
             
             nationality="Vietnam",
             place_of_birth=identity.place_of_birth,
             ethnic_id=eth_id,
             religion_id=random.choice([1, 2]),
-            priority_area="Khu vực 3",
-            priority_object="Không đối tượng",
+            priority_area=random.choice(list(PriorityArea)), # Updated to Enum
+            priority_group=random.choice(list(PriorityGroup)), # Updated to Enum
+            
+            union_date=fake.date_between(start_date='-5y', end_date='today'), # Added new field
         )
         db.add(personal)
         db.flush() 
@@ -155,7 +159,13 @@ def create_specific_student_profile(db, raw_student_id, full_name, user_email):
                 job=fake.job(),
                 email=fake.email(),
                 citizen_id=fake.ssn(),
+                
+                # New Address Fields
+                province_id=random.randint(1, 10),
+                ward_id=random.choice([10, 25, 40, 55]),
+                house_number=fake.building_number(),
                 address=fake.address(),
+                
                 is_emergency_contact=True
             )
             db.add(guardian)

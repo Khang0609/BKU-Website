@@ -17,6 +17,10 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  HorizontalCarousel,
+  ServiceCarousel,
+} from "@/components/HorizontalCarousel";
 
 export default function DashboardPage() {
   const quickAccessItems = [
@@ -131,18 +135,20 @@ export default function DashboardPage() {
         transition={{ duration: 0.5 }}
         className="rounded-2xl bg-gradient-to-r from-primary to-secondary p-8 text-white shadow-xl"
       >
-        <h1 className="mb-2 text-3xl font-bold">Welcome to Your Dashboard</h1>
-        <p className="text-white/80">
+        <h1 className="title-xl mb-2 font-bold">Welcome to Your Dashboard</h1>
+        <p className="subtitle-xl text-white/80">
           Control center for all your academic and administrative needs
         </p>
       </motion.div>
 
       {/* Quick Access Grid */}
+      {/* Quick Access Carousel (Mobile) / Grid (Desktop) */}
       <div>
         <h2 className="mb-4 text-xl font-semibold text-gray-800">
           Quick Access
         </h2>
-        <div className="grid auto-rows-fr grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {/* We use a custom Carousel that handles responsiveness internally via CSS classes on children */}
+        <HorizontalCarousel>
           {quickAccessItems.map((item, index) => {
             const Icon = item.icon;
             const content = (
@@ -152,7 +158,7 @@ export default function DashboardPage() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 whileHover={!item.disabled ? { scale: 1.05, y: -5 } : {}}
                 whileTap={!item.disabled ? { scale: 0.95 } : {}}
-                className={`group relative h-full overflow-hidden rounded-xl border border-gray-200 bg-white p-6 text-left shadow-md transition-all duration-300 hover:shadow-xl ${
+                className={`group relative h-full w-full overflow-hidden rounded-xl border border-gray-200 bg-white p-6 text-left shadow-md transition-all duration-300 hover:shadow-xl ${
                   item.disabled
                     ? "cursor-not-allowed opacity-75"
                     : "cursor-pointer"
@@ -182,14 +188,16 @@ export default function DashboardPage() {
             );
 
             return item.disabled ? (
-              <div key={item.id}>{content}</div>
+              <div key={item.id} className="h-full">
+                {content}
+              </div>
             ) : (
-              <Link key={item.id} href={item.href}>
+              <Link key={item.id} href={item.href} className="block h-full">
                 {content}
               </Link>
             );
           })}
-        </div>
+        </HorizontalCarousel>
       </div>
 
       {/* Two Column Layout */}
@@ -210,17 +218,21 @@ export default function DashboardPage() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <ServiceCarousel>
             {recentServices.map((service, index) => {
               const Icon = service.icon;
               return (
-                <Link key={service.id} href={service.href}>
+                <Link
+                  key={service.id}
+                  href={service.href}
+                  className="block h-full w-full"
+                >
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
                     whileHover={{ scale: 1.02 }}
-                    className="group flex cursor-pointer items-center gap-3 rounded-lg border border-gray-200 p-4 transition-all duration-200 hover:border-secondary hover:bg-blue-50"
+                    className="group flex h-full cursor-pointer items-center gap-3 rounded-lg border border-gray-200 p-4 transition-all duration-200 hover:border-secondary hover:bg-blue-50"
                   >
                     <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary">
                       <Icon
@@ -242,7 +254,7 @@ export default function DashboardPage() {
                 </Link>
               );
             })}
-          </div>
+          </ServiceCarousel>
         </motion.div>
 
         {/* Coming Soon Section */}
@@ -303,7 +315,9 @@ export default function DashboardPage() {
             <span className="text-sm text-gray-600">Current Semester</span>
             <Calendar className="text-secondary" size={20} />
           </div>
-          <p className="text-2xl font-bold text-gray-800">Fall 2025</p>
+          <p className="text-xl font-bold text-gray-800 md:text-2xl">
+            Fall 2025
+          </p>
           <p className="mt-1 text-xs text-gray-500">Week 14 of 16</p>
         </div>
 
@@ -312,7 +326,9 @@ export default function DashboardPage() {
             <span className="text-sm text-gray-600">Enrolled Courses</span>
             <BookOpen className="text-secondary" size={20} />
           </div>
-          <p className="text-2xl font-bold text-gray-800">6 Courses</p>
+          <p className="text-xl font-bold text-gray-800 md:text-2xl">
+            6 Courses
+          </p>
           <p className="mt-1 text-xs text-gray-500">18 Credits total</p>
         </div>
 
@@ -321,16 +337,16 @@ export default function DashboardPage() {
             <span className="text-sm text-gray-600">Average GPA</span>
             <TrendingUp className="text-green-500" size={20} />
           </div>
-          <p className="text-2xl font-bold text-gray-800">3.45</p>
+          <p className="text-xl font-bold text-gray-800 md:text-2xl">3.45</p>
           <p className="mt-1 text-xs text-green-600">+0.12 from last sem</p>
         </div>
 
-        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
+        <div className="mb-10 md:mb-0 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-sm text-gray-600">Pending Tasks</span>
             <Clock className="text-orange-500" size={20} />
           </div>
-          <p className="text-2xl font-bold text-gray-800">3 Items</p>
+          <p className="text-xl font-bold text-gray-800 md:text-2xl">3 Items</p>
           <p className="mt-1 text-xs text-orange-600">Due this week</p>
         </div>
       </motion.div>

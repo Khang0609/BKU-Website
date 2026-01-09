@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { Sidebar } from "@/components/Sidebar";
+import { MobileNav } from "@/components/MobileNav";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 
@@ -19,6 +20,7 @@ export default function ClientLayout({
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-100">
+      {showSidebar && <MobileNav />}
       {showSidebar && (
         <Sidebar
           isCollapsed={isSidebarCollapsed}

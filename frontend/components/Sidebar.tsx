@@ -42,7 +42,7 @@ interface MenuItem {
   href: string;
 }
 
-const SIDEBAR_CONFIG: Record<
+export const SIDEBAR_CONFIG: Record<
   UserRole,
   { main: MenuItem[]; services?: MenuItem[] }
 > = {
@@ -208,9 +208,9 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
     <>
       <motion.div
         initial={false}
-        animate={{ width: isCollapsed ? 64 : 256 }}
+        animate={{ width: isCollapsed ? 68 : 256 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="sticky top-0 z-30 flex h-screen shrink-0 flex-col border-r border-secondary/20 bg-primary"
+        className="sticky top-0 z-30 hidden h-screen shrink-0 flex-col border-r border-secondary/20 bg-primary lg:flex"
       >
         {/* Header */}
         <div className="flex h-16 items-center gap-2 border-b border-secondary/20 px-4">

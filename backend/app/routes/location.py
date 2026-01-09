@@ -1,16 +1,28 @@
 from fastapi import APIRouter, Depends
-from app.database import get_db
-from app.models import Province, Ward
 from sqlalchemy.orm import Session
+from app.database import get_db
+from app.models.location import Province, Ward, Country
+from app.models.ethnic import Ethnic
+from app.models.religion import Religion
 
 router = APIRouter(prefix="/location", tags=["Location"])
 
+@router.get("/countries")
+def get_countries(db: Session = Depends(get_db)):
+    return db.query(Country).all()
+
 @router.get("/provinces")
 def get_provinces(db: Session = Depends(get_db)):
-    # Trả về danh sách 34 tỉnh thành để sinh viên chọn mục
     return db.query(Province).all()
 
 @router.get("/provinces/{province_id}/wards")
 def get_wards(province_id: int, db: Session = Depends(get_db)):
-    # Trả về danh sách phường xã dựa trên tỉnh đã chọn
-    return db.query(models.Ward).filter(models.Ward.province_id == province_id).all()
+    return db.query(Ward).filter(Ward.province_id == province_id).all()
+
+@router.get("/ethnics")
+def get_ethnics(db: Session = Depends(get_db)):
+    return db.query(Ethnic).all()
+
+@router.get("/religions")
+def get_religions(db: Session = Depends(get_db)):
+    return db.query(Religion).all()

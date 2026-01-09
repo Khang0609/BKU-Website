@@ -17,3 +17,35 @@
     display: none;
   }
 }
+
+@layer components {
+  /* Title */
+  .title-xl {
+    @apply text-lg;
+    @apply md:text-2xl;
+    @apply lg:text-3xl;
+  }
+  .subtitle-xl {
+    @apply text-xs;
+    @apply lg:text-base;
+  }
+  /* Label */
+  .label-lg {
+    @apply text-xs;
+    @apply lg:text-base;
+  }
+  .label-sm {
+    @apply text-xs;
+    @apply lg:text-base;
+  }
+  /* Content */
+  .content-xl {
+    @apply text-xl;
+    @apply md:text-2xl;
+    @apply lg:text-3xl;
+  }
+  /* Others */
+  .search-bar {
+    @apply text-sm md:text-base;
+  }
+}
