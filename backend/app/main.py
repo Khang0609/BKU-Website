@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, status, Response, Request
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.sessions import SessionMiddleware
 import app.models as models
-from starlette.middleware.proxy_headers import ProxyHeadersMiddleware
 from app.database import engine
 from app.routes import all_routers  # Import only auth now
 from app.routes.auth import get_current_active_user # Import dependency from auth, not user

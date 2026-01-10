@@ -5,11 +5,11 @@ services:
     build: ./backend # Đường dẫn tới folder chứa Dockerfile backend
     ports:
       - "8000:8000" # Nối cổng 8000 của Docker ra 8000 của máy thật
+    env_file:
+      - .env
     environment:
-      # QUAN TRỌNG: Link này phải nằm ở đây để Backend đọc được
-      DATABASE_URL: ${DB_URL}
       IS_DOCKER: true
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --proxy-headers --forwarded-allow-ips='*'
     depends_on:
       db:
         condition: service_healthy
@@ -30,15 +30,16 @@ services:
     image: postgres:15-alpine
     container_name: hcmut-portal-db
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: postgres
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
+    # Remember to change your port here, always keep the 5432 at the end, only change the number before it !
+      - "5434:5432" 
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d hcmut_portal"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
       interval: 5s
       timeout: 15s
       retries: 10

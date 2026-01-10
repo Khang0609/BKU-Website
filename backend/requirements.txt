@@ -12,3 +12,4 @@ python-dotenv
 alembic
 faker
 starlette
+itsdangerous
