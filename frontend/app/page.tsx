@@ -4,11 +4,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { Loader2, Lock, Mail, AlertCircle } from "lucide-react";
-import logo from "@/components/assets/logo.png";
-import backgroundImage from "@/components/assets/truong.png";
-import { getApiUrl } from "@/lib/api";
+import logo from "@/assets/logo.png";
+import backgroundImage from "@/assets/truong.png";
+import { BASE_URL } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
-import { ImageWithFallback } from "@/components/ImageWithFallback";
+import { ImageWithFallback } from "@/components/ui";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -23,8 +23,7 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const baseUrl = getApiUrl();
-      const response = await axios.post(`${baseUrl}/auth/login`, {
+      const response = await axios.post(`${BASE_URL}/auth/login`, {
         email,
         password,
       });
@@ -46,7 +45,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0a1628]">
+    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0a1628] pb-20 lg:pb-0">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 z-10 bg-[#0a1628]/80" />

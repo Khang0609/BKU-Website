@@ -17,12 +17,14 @@ interface AuthContextType {
   login: (role: UserRole, token: string) => void;
   logout: () => void;
   isAuthenticated: boolean;
+  isLoading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [role, setRole] = useState<UserRole | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -31,6 +33,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (storedRole) {
       setRole(storedRole);
     }
+    setIsLoading(false);
   }, []);
 
   const login = (newRole: UserRole, token: string) => {
@@ -60,7 +63,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <AuthContext.Provider
-      value={{ role, login, logout, isAuthenticated: !!role }}
+      value={{ role, login, logout, isAuthenticated: !!role, isLoading }}
     >
       {children}
     </AuthContext.Provider>

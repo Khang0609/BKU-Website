@@ -1,9 +1,7 @@
 "use client";
 
-import { CourseWithdrawal } from "@/components/services/CourseWithdrawal";
+import { CourseWithdrawal } from "@/app/(student)/_components/student-services/CourseWithdrawal";
 
 export default function CourseWithdrawalPage() {
-  return (
-      <CourseWithdrawal />
-  );
+  return <CourseWithdrawal />;
 }

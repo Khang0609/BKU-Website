@@ -1,6 +1,4 @@
-import { getApiUrl } from "./api"; // Assuming you have a helper for getting the API URL
-
-const API_URL = getApiUrl();
+import { BASE_URL } from "@/lib/api";
 
 interface FetchOptions extends RequestInit {
   headers?: Record<string, string>;
@@ -24,7 +22,7 @@ export async function authFetch(url: string, options: FetchOptions = {}) {
   if (response.status === 401) {
     try {
       // Attempt to refresh token using the HttpOnly cookie
-      const refreshRes = await fetch(`${API_URL}/auth/refresh`, {
+      const refreshRes = await fetch(`${BASE_URL}/auth/refresh`, {
         method: "POST",
         // Credentials 'include' is CRITICAL for sending cookies
         credentials: "include",

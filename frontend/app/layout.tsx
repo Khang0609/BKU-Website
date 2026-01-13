@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
-import ClientLayout from "@/components/ClientLayout";
+import { ClientLayout } from "@/components/common";
 import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: {
@@ -61,16 +62,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+import { ToastProvider } from "@/hooks/useToast";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const defaultCollapsed =
+    cookieStore.get("sidebarCollapsed")?.value === "true";
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <AuthProvider>
-          <ClientLayout>{children}</ClientLayout>
+          <ToastProvider>
+            <ClientLayout defaultCollapsed={defaultCollapsed}>
+              {children}
+            </ClientLayout>
+          </ToastProvider>
         </AuthProvider>
         <Toaster richColors position="top-right" />
       </body>

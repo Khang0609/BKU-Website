@@ -1,4 +1,4 @@
-export const getApiUrl = () => {
+const getApiUrl = () => {
   // 1. If running on Server (node), use BACKEND_URL (Docker network access)
   // 2. If running on Client (browser), use NEXT_PUBLIC_API_URL
   if (typeof window === "undefined") {
@@ -7,13 +7,14 @@ export const getApiUrl = () => {
   return process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 };
 
+export const BASE_URL = getApiUrl();
+
 // Helper for making API requests that automatically handles the base URL
 export async function fetchAPI(endpoint: string, options: RequestInit = {}) {
-  const baseUrl = getApiUrl();
   // Ensure endpoint starts with / if not present
   const path = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
 
-  const res = await fetch(`${baseUrl}${path}`, {
+  const res = await fetch(`${BASE_URL}${path}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",

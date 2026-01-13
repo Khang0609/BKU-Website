@@ -1,9 +1,7 @@
 "use client";
 
-import { StudentCardRegistration } from "@/components/services/StudentCardRegistration";
+import { StudentCardRegistration } from "@/app/(student)/_components/student-services/StudentCardRegistration";
 
 export default function CardPrintingPage() {
-  return (  
-      <StudentCardRegistration />
-  );
+  return <StudentCardRegistration />;
 }
