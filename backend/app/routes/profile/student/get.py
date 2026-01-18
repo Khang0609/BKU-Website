@@ -6,8 +6,12 @@ from app.routes.auth import get_current_active_user
 from app.routes.profile.shared.utils import get_address_by_type
 from .schemas import (
     ProfileResponse, PersonalRes, AcademicRes, 
-    AddressRes, ContactRes, FamilyRes, OtherRes
+    AddressRes, ContactRes, FamilyRes, OtherRes,
+    StudentDecisionRes
 )
+from typing import List
+from app.models.profile.student.decision import StudentDecision
+from app.models.adminstrative.decision import Decision, DecisionType
 
 router = APIRouter()
 
@@ -121,3 +125,34 @@ async def read_student_me(
         others=o_res,
         last_updated_at=identity.updated_at or identity.created_at
     )
+
+@router.get("/decision", response_model=List[StudentDecisionRes])
+async def get_student_decisions(
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db)
+):
+    if current_user.role != UserRole.STUDENT:
+        raise HTTPException(status_code=400, detail="Profile available for students only")
+    
+    identity = current_user.identity
+    if not identity:
+        raise HTTPException(status_code=404, detail="Identity not found")
+
+    student_decisions = db.query(StudentDecision).filter(StudentDecision.identity_id == identity.id).join(Decision).all()
+    
+    results = []
+    for sd in student_decisions:
+        decision = sd.decision
+        results.append(StudentDecisionRes(
+            id=sd.id,
+            semester=decision.semester,
+            decision_reason=decision.decision_reason,
+            decision_number=decision.decision_number,
+            decision_content=decision.decision_content,
+            signed_date=decision.signed_date,
+            last_updated=decision.last_updated,
+            decision_type=decision.decision_type,
+            note=sd.note
+        ))
+        
+    return results

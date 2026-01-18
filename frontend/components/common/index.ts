@@ -10,3 +10,4 @@ export * from "./StatCard";
 export * from "./StatusTable";
 export * from "./TopNav";
 export * from "./Toast";
+export * from "./data_table/DataTable";

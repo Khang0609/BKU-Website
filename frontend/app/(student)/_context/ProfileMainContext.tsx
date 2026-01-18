@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import { useProfileMain } from "@/app/(student)/_hooks/profile_main/useProfileMain";
+import { useProfileMain } from "@/app/(student)/_hooks/profile/main/useProfileMain";
 
 // Define the type of the context based on the return type of useProfileMain
 // We can use ReturnType helper to infer it directly from the hook

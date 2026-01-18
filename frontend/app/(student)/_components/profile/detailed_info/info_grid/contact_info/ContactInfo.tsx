@@ -1,0 +1,21 @@
+import React from "react";
+import { Phone } from "lucide-react";
+import { ProfileCard } from "@/app/(student)/_components/profile/detailed_info/common";
+import Show from "@/app/(student)/_components/profile/detailed_info/info_grid/contact_info/Show";
+import Hide from "@/app/(student)/_components/profile/detailed_info/info_grid/contact_info/Hide";
+
+export const ContactInfo = () => {
+  return (
+    <div className="lg:col-span-2">
+      <ProfileCard
+        title="Contact Information"
+        icon={<Phone size={20} />}
+        id="contact"
+      >
+        <Show />
+
+        <Hide />
+      </ProfileCard>
+    </div>
+  );
+};

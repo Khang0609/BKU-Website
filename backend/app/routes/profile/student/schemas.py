@@ -77,3 +77,16 @@ class ProfileResponse(BaseModel):
     family: FamilyRes
     others: OtherRes
     last_updated_at: Optional[datetime] = None
+
+from app.models.adminstrative.decision import DecisionType
+
+class StudentDecisionRes(BaseModel):
+    id: int
+    semester: str
+    decision_reason: str
+    decision_number: str
+    decision_content: str
+    signed_date: str
+    last_updated: str
+    decision_type: DecisionType
+    note: Optional[str] = None

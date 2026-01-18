@@ -11,7 +11,7 @@ import {
   PersonalLegal,
   DynamicClusters,
   RightCol,
-} from "@/app/(student)/_components/profile/bento_grid";
+} from "@/app/(student)/_components/profile/main/bento_grid";
 
 const ProfilePageInner = () => {
   return (

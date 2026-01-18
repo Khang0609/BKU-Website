@@ -1,20 +1,26 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
 import {
-  Users,
-  Camera,
-  Share2,
-  Loader2,
-} from "lucide-react";
-import { RecordProvider, useRecordContext } from "@/app/(student)/_context/RecordContext";
-import { TopHeader, PersonalSection, PermAddressSection, ContactSection, RelativeSection, PhotoSection, OtherSection } from "@/app/(student)/_components/profile.record/sections";
+  RecordProvider,
+  useRecordContext,
+} from "@/app/(student)/_context/RecordContext";
+import {
+  TopHeader,
+  PersonalSection,
+  PermAddressSection,
+  ContactSection,
+  RelativeSection,
+  PhotoSection,
+  OtherSection,
+} from "@/app/(student)/_components/profile/info_record/sections";
 
 export default function StudentRecordsPage() {
-  return(
+  return (
     <RecordProvider>
       <StudentRecordsInner />
     </RecordProvider>
-  )
+  );
 }
 
 const StudentRecordsInner = () => {
