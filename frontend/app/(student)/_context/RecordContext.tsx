@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import { useRecord } from "@/app/(student)/_hooks/record/useRecord"; // Hook lấy dữ liệu cũ của sếp
+import { useRecord } from "@/app/(student)/_hooks/profile/record/useRecord"; // Hook lấy dữ liệu cũ của sếp
 
 // 1. Tạo cái khung chứa dữ liệu
 const RecordContext = createContext<any>(null);

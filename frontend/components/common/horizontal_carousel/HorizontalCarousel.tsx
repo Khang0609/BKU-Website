@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useHorizontalCarousel } from "./useHorizontalCarousel";
+import { useHorizontalCarousel } from "../../../hooks/useHorizontalCarousel";
 
 interface HorizontalCarouselProps {
   children: React.ReactNode;

@@ -9,32 +9,24 @@ class Identity(Base):
 
     # Changed from internal_id (String) to id (Integer, auto-increment) as requested
     id = Column(Integer, primary_key=True, index=True)
-    full_name = Column(String, nullable=False)
-    date_of_birth = Column(Date, nullable=True)
-    gender = Column(Enum(Gender), nullable=True)
+    role = Column(Enum(UserRole), default=UserRole.STUDENT)
 
-    # Identity Info
-    identity_card = Column(String, nullable=True)
-    date_created = Column(Date, nullable=True)
-    place_created = Column(String, nullable=True)
-
-    # Others
-    place_of_birth = Column(String, nullable=True)
-    nationality = Column(String, nullable=True)
-    status = Column(Enum(Status), default=Status.ACTIVE)
+    # Updated fields
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
     
-    # Timestamps
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
-
-    # Quan hệ ngược lại với User
+    # Relationships
     user = relationship("User", back_populates="identity", uselist=False)
+    general_information = relationship("GeneralInformation", back_populates="identity", uselist=False)
+
+    # Relationships linked to Student
     student_academic = relationship("StudentAcademic", back_populates="identity", uselist=False)
     student_personal = relationship("StudentPersonal", back_populates="identity", uselist=False)
-    student_addresses = relationship("StudentAddress", back_populates="identity")
-    
+    addresses = relationship("Address", back_populates="identity")
+
     student_parent = relationship("StudentParent", back_populates="identity", uselist=False)
     student_guardian = relationship("StudentGuardian", back_populates="identity", uselist=False)
+    student_decisions = relationship("StudentDecision", back_populates="identity")
 
 
 class User(Base):
@@ -42,9 +34,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True)
-    full_name = Column(String)
     hashed_password = Column(String)
-    role = Column(Enum(UserRole), default=UserRole.STUDENT)
     is_active = Column(Boolean, default=True)
 
     # Changed FK to Integer to match Identity.id

@@ -15,11 +15,22 @@ def reset_db():
     logger.info("--- Resetting Database ---")
     try:
         with engine.connect() as conn:
-            # Drop schema public and recreate it to wipe all data and tables
-            conn.execute(text("DROP SCHEMA public CASCADE;"))
-            conn.execute(text("CREATE SCHEMA public;"))
-            conn.execute(text("GRANT ALL ON SCHEMA public TO postgres;")) # Adjust user if needed, usually owner has access
-            conn.execute(text("GRANT ALL ON SCHEMA public TO public;")) 
+            conn.execute(text("TRUNCATE users, identities CASCADE;"))
+            # The CASCADE on identities should clear all linked profile tables if Foreign Keys are set up with ON DELETE CASCADE.
+            # If not, we list them explicitly to be safe:
+            conn.execute(text("""
+                TRUNCATE TABLE 
+                    users, 
+                    identities, 
+                    general_informations, 
+                    student_academics, 
+                    student_personals, 
+                    student_addresses, 
+                    student_parents, 
+                    student_guardians, 
+                    student_decisions
+                RESTART IDENTITY CASCADE;
+            """))
             conn.commit()
         logger.info("--- Database Reset Successfully ---")
     except Exception as e:

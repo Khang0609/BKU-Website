@@ -1,6 +1,6 @@
 import React from "react";
 import { Check } from "lucide-react";
-import { SearchableOption } from "./useSearchableDropdown";
+import { SearchableOption } from "../../../hooks/useSearchableDropdown";
 
 interface ResultRenderProps<T> {
   filteredOptions: SearchableOption<T>[];

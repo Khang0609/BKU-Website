@@ -1,36 +1,16 @@
-const getApiUrl = () => {
-  // 1. If running on Server (node), use BACKEND_URL (Docker network access)
-  // 2. If running on Client (browser), use NEXT_PUBLIC_API_URL
-  if (typeof window === "undefined") {
-    return process.env.INTERNAL_API_URL || "http://hcmut-portal-backend:8000";
-  }
-  return process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-};
+import client, { BASE_URL } from "@/lib/client";
 
-export const BASE_URL = getApiUrl();
+export { BASE_URL };
 
-// Helper for making API requests that automatically handles the base URL
-export async function fetchAPI(endpoint: string, options: RequestInit = {}) {
-  // Ensure endpoint starts with / if not present
-  const path = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
-
-  const res = await fetch(`${BASE_URL}${path}`, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-  return res;
-}
+// Helper for making API requests using the new axios client
+// Usage: const res = await getProducts(); (returns data directly)
 
 export async function getProducts() {
-  const res = await fetchAPI("products");
-  return res.json();
+  const res = await client.get("products");
+  return res.data;
 }
 
 export async function getProjects() {
-  const res = await fetchAPI("projects");
-  return res.json();
+  const res = await client.get("projects");
+  return res.data;
 }

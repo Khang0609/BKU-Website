@@ -1,15 +1,19 @@
 "use client";
 
-import { ProfileProvider } from "@/app/(student)/_context/ProfileContext";
-import { useProfileContext } from "@/app/(student)/_context/ProfileContext";
-import { LoadingError } from "@/app/(student)/_components/profile.info/LoadingError";
-import { WebHeaderTitle } from "@/app/(student)/_components/profile/WebHeaderTitle";
-import { AcademicInfo } from "@/app/(student)/_components/profile.info/info_grid/academic_info/AcademicInfo";
-import PersonalInfo from "@/app/(student)/_components/profile.info/info_grid/personal_info/PersonalInfo";
-import ContactInfo from "@/app/(student)/_components/profile.info/info_grid/contact_info/ContactInfo";
-import GradutionInfo from "@/app/(student)/_components/profile.info/info_grid/graduation_info/GradutionInfo";
-import BankAccountInfo from "@/app/(student)/_components/profile.info/info_grid/bank_account/BankAccountInfo";
-import OtherInfo from "@/app/(student)/_components/profile.info/info_grid/other_info/OtherInfo";
+import {
+  ProfileProvider,
+  useProfileContext,
+} from "@/app/(student)/_context/ProfileContext";
+import { LoadingError } from "@/app/(student)/_components/profile/detailed_info/common";
+import { WebHeaderTitle } from "@/app/(student)/_components/profile/shared/";
+import {
+  AcademicInfo,
+  PersonalInfo,
+  ContactInfo,
+  GradutionInfo,
+  BankAccountInfo,
+  OtherInfo,
+} from "@/app/(student)/_components/profile/detailed_info/info_grid";
 
 const StudentDetailedInfoInner = () => {
   const { error } = useProfileContext();

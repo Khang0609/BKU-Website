@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, X, Settings, LogOut } from "lucide-react";
-import { useMobileNav } from "../MobileNavContext";
+import { useMobileNav } from "../../../../context/MobileNavContext";
 
 export const HamburgerButton = () => {
   const { setIsOpen } = useMobileNav();

@@ -44,7 +44,9 @@ frontend/*.md
 backend/__pycache__/
 backend/*.py[cod]
 backend/.venv/
+backend/venv/
 backend/.env
+backend/logs/
 
 # Database
 *.db

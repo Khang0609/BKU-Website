@@ -10,7 +10,10 @@ from app.models import (
     Identity,
     StudentAcademic,
     StudentPersonal,
-    StudentAddress,
+
+    StudentDecision,
+    StudentParent,
+    StudentGuardian,
     Ethnic,
     Religion,
     Province,

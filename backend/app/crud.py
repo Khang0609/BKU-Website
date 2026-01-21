@@ -3,7 +3,7 @@ from app.models import User, Identity, UserRole
 from app.constants import Status
 from app.auth import get_password_hash
 
-def create_student_account(db: Session, email: str, password: str, raw_id: str, full_name: str = "Tên mặc định"):
+def create_student_account(db: Session, email: str, password: str, raw_id: str, first_name: str = "Trần Nguyên", last_name: str = "Khang"):
     # 1. Create Identity (ID Auto Increment)
     new_identity = Identity(
         full_name=full_name,
@@ -26,7 +26,7 @@ def create_student_account(db: Session, email: str, password: str, raw_id: str, 
     db.refresh(new_user)
     return new_user
 
-def create_teacher_account(db: Session, email: str, password: str, raw_id: str, full_name: str = "Giảng viên"):
+def create_teacher_account(db: Session, email: str, password: str, raw_id: str, first_name: str = "Trần Nguyên", last_name: str = "Khang"):
     # 1. Create Identity
     new_identity = Identity(
         full_name=full_name,
