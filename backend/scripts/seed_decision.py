@@ -8,7 +8,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from sqlalchemy.orm import Session
 from sqlalchemy import insert, select
 from app.database import SessionLocal
-from app.models.auth import User, UserRole
+from app.models.auth import Identity, User
+from app.constants import UserRole
 from app.models.adminstrative.decision import Decision, DecisionType
 from app.models.profile.student.decision import StudentDecision
 
@@ -60,10 +61,9 @@ def seed_decision_data():
         # --- Step 2: Link to All Students ---
 
         # Fetch all student identity IDs
-        # We query Users who are STUDENTs and have an identity_id
-        student_query = db.query(User.identity_id).filter(
-            User.role == UserRole.STUDENT,
-            User.identity_id.isnot(None)
+        # We query Identities that have role STUDENT
+        student_query = db.query(Identity.id).filter(
+            Identity.role == UserRole.STUDENT
         )
         student_ids = [row[0] for row in student_query.all()]
         
@@ -97,9 +97,6 @@ def seed_decision_data():
                     count_new += 1
 
         if student_decision_mappings:
-            # Use bulk_insert_mappings for performance
-            # In SQLAlchemy 2.0 this might emit warnings but is still widely supported or use corresponding Insert construct
-            # For pure simple mapping insert:
             db.bulk_insert_mappings(StudentDecision, student_decision_mappings)
             db.commit()
             print(f"[SUCCESS] Successfully linked {len(student_ids)} students to decisions. ({count_new} new records created)")

@@ -22,25 +22,22 @@ def seed_administrative_data():
                     province_name = data["name"]
                     db_province = db.query(models.Province).filter_by(name=province_name).first()
                     
-                    if not db_province:
-                        db_province = models.Province(name=province_name)
-                        db.add(db_province)
-                        db.flush() # Để lấy ID cho bước sau
-                    
+                    if db_province:
+                        print(f"[INFO] Tỉnh {province_name} đã tồn tại. Bỏ qua.")
+                        continue
+
+                    # Nếu chưa có, tạo mới
+                    db_province = models.Province(name=province_name)
+                    db.add(db_province)
+                    db.flush() # Để lấy ID
+
                     # 2. Thêm danh sách Phường/Xã từ key "ward"
-                    # Chúng ta chỉ lấy tên Phường/Xã hiện tại làm danh mục chọn 
                     wards_dict = data.get("ward", {})
                     for ward_name in wards_dict.keys():
-                        # Kiểm tra trùng lặp trước khi thêm
-                        exists = db.query(models.Ward).filter_by(
-                            name=ward_name, 
-                            province_id=db_province.id
-                        ).first()
-                        
-                        if not exists:
-                            new_ward = models.Ward(name=ward_name, province_id=db_province.id)
-                            db.add(new_ward)
-                print(f"[OK] Đã nạp tỉnh {province_name} và {len(wards_dict)} phường xã.")
+                        new_ward = models.Ward(name=ward_name, province_id=db_province.id)
+                        db.add(new_ward)
+                    
+                    print(f"[OK] Đã nạp tỉnh {province_name} và {len(wards_dict)} phường xã.")
         
         db.commit()
         print("[DONE] Đã nạp xong 34 tỉnh và toàn bộ phường xã mới!")

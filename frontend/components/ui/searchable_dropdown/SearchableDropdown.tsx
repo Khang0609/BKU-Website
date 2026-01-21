@@ -3,7 +3,7 @@ import { Search } from "lucide-react";
 import {
   useSearchableDropdown,
   SearchableOption,
-} from "./useSearchableDropdown";
+} from "../../../hooks/useSearchableDropdown";
 import { cn } from "@/lib/utils";
 import { TriggerButton } from "./TriggerButton";
 import { ResultRender } from "./ResultRender";

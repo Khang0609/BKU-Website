@@ -3,9 +3,9 @@
 import React, { useEffect } from "react";
 import { WebHeaderTitle } from "@/app/(student)/_components/profile/shared/StudentHeaderTitle";
 import { useDecision } from "@/hooks/useDecision";
-import { DataTable } from "@/components/common/data_table/DataTable";
+import { DataTable } from "@/components/common";
 import { DecisionProps, DecisionType } from "@/types/decision";
-import { ColumnDef } from "@/components/common/data_table/types";
+import { ColumnDef } from "@/types/components_type/data_table";
 import { useToast } from "@/hooks/useToast";
 
 const DecisionInner = () => {

@@ -1,8 +1,8 @@
 "use client";
 
-import { useClientLayout } from "./useClientLayout";
-import { Sidebar } from "../Sidebar";
-import { MobileNav } from "../mobile_nav/MobileNav";
+import { useClientLayout } from "../../hooks/useClientLayout";
+import { Sidebar } from "./Sidebar";
+import { MobileNav } from "./mobile_nav/MobileNav";
 
 export function ClientLayout({
   children,

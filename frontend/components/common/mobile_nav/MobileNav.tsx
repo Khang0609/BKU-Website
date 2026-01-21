@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useMobileNavLogic } from "./useMobileNav";
-import { MobileNavProvider } from "./MobileNavContext";
+import { useMobileNavLogic } from "@/hooks/useMobileNav";
+import { MobileNavProvider } from "@/context/MobileNavContext";
 import {
   HamburgerButton,
   NavHeader,

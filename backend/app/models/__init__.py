@@ -1,14 +1,16 @@
 from .base import Base
 from .auth import User, Identity, UserRole
-from .academic import Faculty, Major, ManagementUnit
+from .adminstrative.academic import Faculty, Major, ManagementUnit
 from .location import Province, Ward, Country
 from .ethnic import Ethnic
 from .religion import Religion
 from .adminstrative.decision import Decision
-from .profile.student import (
-    StudentAcademic, StudentPersonal, StudentAddress, 
+from .profile import (
+    StudentAcademic, StudentPersonal, 
     StudentParent, StudentGuardian, StudentDecision,
+    GeneralInformation, Address,
 )
+from .audit_log import AuditLog
 
 __all__ = [
     "Base", 
@@ -16,6 +18,8 @@ __all__ = [
     "Province", "Ward", "Country", 
     "Faculty", "Major", "ManagementUnit", 
     "Ethnic", "Religion", "Decision",
-    "StudentAcademic", "StudentPersonal", "StudentAddress", 
+    "GeneralInformation", "Address",
+    "StudentAcademic", "StudentPersonal", 
     "StudentParent", "StudentGuardian", "StudentDecision",
+    "AuditLog",
 ]

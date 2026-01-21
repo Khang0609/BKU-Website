@@ -1,7 +1,7 @@
 import React from "react";
 import { ChevronDown, ChevronUp, ChevronsUpDown, Loader2 } from "lucide-react";
-import { DataTableProps } from "./types";
-import { cn } from "../../../lib/utils";
+import { DataTableProps } from "@/types/components_type/data_table";
+import { cn } from "@/lib/utils";
 
 export const DataTable = <T extends Record<string, any>>({
   columns,

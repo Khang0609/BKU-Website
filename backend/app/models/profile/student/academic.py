@@ -5,13 +5,13 @@ from sqlalchemy import ForeignKey, String, Integer, Date, Enum as SQLAlchemyEnum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base
-from app.models.academic import ManagementUnit  # Assuming this exists or using String if not sure, but text said 'ManageUnit'
+from app.models.adminstrative.academic import ManagementUnit  # Assuming this exists or using String if not sure, but text said 'ManageUnit'
 
 # Circular import handling
 if TYPE_CHECKING:
     from app.models.auth import Identity
-    from app.models.training import Major  # Assuming
-    from app.models.academic import ManagementUnit
+    from app.models.adminstrative.academic import Major  # Assuming
+    from app.models.adminstrative.academic import ManagementUnit
 
 class StudentAcademic(Base):
     __tablename__ = "student_academics"

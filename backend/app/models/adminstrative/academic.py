@@ -27,4 +27,3 @@ class ManagementUnit(Base):
     phone_number = Column(String(20), nullable=True)
     email = Column(String(100), nullable=True)
     website = Column(String(100), nullable=True)
-    management_unit_id = Column(Integer, ForeignKey("management_units.id"))

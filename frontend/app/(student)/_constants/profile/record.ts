@@ -32,7 +32,7 @@ export const getPersonalSchema = (
     label: "Place of Birth",
     name: "place_of_birth",
     id: "personal",
-    type: "select",
+    type: "text",
     optionsKey: "provinces",
   },
   {

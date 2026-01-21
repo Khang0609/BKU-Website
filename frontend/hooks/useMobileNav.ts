@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useAuth, UserRole } from "@/context/AuthContext";
-import { SIDEBAR_CONFIG } from "../Sidebar";
+import { SIDEBAR_CONFIG } from "@/components/common/Sidebar";
 
 export const useMobileNavLogic = () => {
   const [isOpen, setIsOpen] = useState(false);

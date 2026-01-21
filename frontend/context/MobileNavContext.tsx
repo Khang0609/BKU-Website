@@ -1,5 +1,7 @@
+"use client";
+
 import React, { createContext, useContext, ReactNode } from "react";
-import { useMobileNavLogic } from "./useMobileNav";
+import { useMobileNavLogic } from "@/hooks/useMobileNav";
 
 type MobileNavContextType = ReturnType<typeof useMobileNavLogic>;
 

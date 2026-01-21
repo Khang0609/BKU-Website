@@ -1,5 +1,8 @@
 import { useState, useMemo } from "react";
-import { SortConfig, SortOrder } from "./types";
+import {
+  SortConfig,
+  SortOrder,
+} from "@/types/components_type/data_table";
 
 export const useDataTable = <T>(initialData: T[] = []) => {
   const [sortConfig, setSortConfig] = useState<SortConfig>({

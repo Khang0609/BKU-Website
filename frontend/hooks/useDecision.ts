@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { DecisionProps } from "@/types/decision";
-import { BASE_URL } from "@/lib/api";
-import { authFetch } from "@/lib/authFetch";
+import client from "@/lib/client";
 
 export const useDecision = () => {
   const [decisions, setDecisions] = useState<DecisionProps[]>([]);
@@ -12,12 +11,8 @@ export const useDecision = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await authFetch(`${BASE_URL}/profile/student/decision`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch decisions");
-      }
-      const data: DecisionProps[] = await response.json();
-      setDecisions(data);
+      const response = await client.get("/profile/student/decision");
+      setDecisions(response.data);
     } catch (err) {
       console.error(err);
       setError("Failed to load decisions. Please try again later.");

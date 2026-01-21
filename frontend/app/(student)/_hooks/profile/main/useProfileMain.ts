@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { BASE_URL } from "@/lib/api";
-import { authFetch } from "@/lib/authFetch";
-import { StudentDashboardData } from "../../../_types/profile/main";
-import { clusters, personalLegalItems } from "../../../_constants/profile/main";
+import client from "@/lib/client";
+import { StudentDashboardData } from "@/app/(student)/_types/profile/main";
+import { clusters, personalLegalItems } from "@/app/(student)/_constants/profile/main";
 import { useToast } from "@/hooks/useToast";
 
 export const useProfileMain = () => {
@@ -13,11 +12,9 @@ export const useProfileMain = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await authFetch(`${BASE_URL}/profile/student/me`);
+        const res = await client.get("/profile/student/me");
+        const data = res.data;
 
-        if (!res.ok) throw new Error("Failed to fetch profile");
-
-        const data = await res.json();
         setProfile({
           first_name: data.personal.first_name || "",
           last_name: data.personal.last_name || "",

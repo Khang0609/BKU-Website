@@ -11,7 +11,7 @@ class PersonalRes(BaseModel):
     id_issue_date: Optional[date] = None
     id_issue_place: Optional[str] = None
     
-    nationality: Optional[str] = None
+    nationality_id: Optional[int] = None
     place_of_birth: Optional[str] = None
     other_birthplace: Optional[str] = None
     religion_id: Optional[int] = None

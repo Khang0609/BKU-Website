@@ -10,10 +10,15 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
+from app.middleware import AuditMiddleware
+from app.service.listener import register_listeners
+register_listeners()
+
 # Create tables
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="BKUWeb API")
+app.add_middleware(AuditMiddleware)
 # app.add_middleware(ProxyHeadersMiddleware, trusted_hosts="*")
 CORS_ORIGIN = os.getenv("CORS_ORIGIN", "http://localhost:3000")
 

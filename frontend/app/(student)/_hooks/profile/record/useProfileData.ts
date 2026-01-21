@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { Catalog, ProfileData } from "@/app/(student)/_types/profile/record";
-import { BASE_URL } from "@/lib/api";
-import { authFetch } from "@/lib/authFetch";
+import client from "@/lib/client";
 
 export const useProfileData = () => {
+  // #region Data State
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const [catalogs, setCatalogs] = useState<Catalog>({
     provinces: [],
@@ -14,24 +14,23 @@ export const useProfileData = () => {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [familyTab, setFamilyTab] = useState<"parents" | "guardian">("parents");
+  // #endregion
 
   const fetchInitialData = useCallback(async () => {
     try {
       const [profRes, provRes, countRes, ethRes, relRes] = await Promise.all([
-        authFetch(`${BASE_URL}/profile/student/me`),
-        authFetch(`${BASE_URL}/location/provinces`),
-        authFetch(`${BASE_URL}/location/countries`),
-        authFetch(`${BASE_URL}/location/ethnics`),
-        authFetch(`${BASE_URL}/location/religions`),
+        client.get("/profile/student/me"),
+        client.get("/location/provinces"),
+        client.get("/location/countries"),
+        client.get("/location/ethnics"),
+        client.get("/location/religions"),
       ]);
 
-      if (!profRes.ok) throw new Error("Failed to load profile");
-
-      const pData = await profRes.json();
-      const provData = await provRes.json();
-      const countData = await countRes.json();
-      const ethData = await ethRes.json();
-      const relData = await relRes.json();
+      const pData = profRes.data;
+      const provData = provRes.data;
+      const countData = countRes.data;
+      const ethData = ethRes.data;
+      const relData = relRes.data;
 
       setProfile(pData);
 
@@ -70,26 +69,22 @@ export const useProfileData = () => {
   const fetchWards = async (provinceId: number) => {
     if (catalogs.wards[provinceId]) return catalogs.wards[provinceId];
     try {
-      const res = await authFetch(
-        `${BASE_URL}/location/provinces/${provinceId}/wards`,
-      );
-      if (res.ok) {
-        const data = await res.json();
-        const mappedWards = Array.isArray(data)
-          ? data.map((w: any) => ({
-              value: w.id,
-              label: w.name_vi || w.name_en || w.label || w.name || "Unknown",
-            }))
-          : [];
-        setCatalogs((prev) => ({
-          ...prev,
-          wards: {
-            ...prev.wards,
-            [provinceId]: mappedWards,
-          },
-        }));
-        return mappedWards;
-      }
+      const res = await client.get(`/location/provinces/${provinceId}/wards`);
+      const data = res.data;
+      const mappedWards = Array.isArray(data)
+        ? data.map((w: any) => ({
+            value: w.id,
+            label: w.name_vi || w.name_en || w.label || w.name || "Unknown",
+          }))
+        : [];
+      setCatalogs((prev) => ({
+        ...prev,
+        wards: {
+          ...prev.wards,
+          [provinceId]: mappedWards,
+        },
+      }));
+      return mappedWards;
     } catch (e) {
       console.error(e);
     }
@@ -102,11 +97,15 @@ export const useProfileData = () => {
     catalogs,
     isLoading,
     familyTab,
+    // #endregion
+
+    // #region Setters
     setProfile,
     setCatalogs,
     setIsLoading,
     setFamilyTab,
     // #endregion
+
     // #region Function
     fetchInitialData,
     fetchWards,

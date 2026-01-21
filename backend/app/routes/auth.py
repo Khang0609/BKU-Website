@@ -1,10 +1,10 @@
 from fastapi import APIRouter, HTTPException, status, Response, Request, Depends
 from app.database import get_db
-from app.models import User, UserRole
+from app.models import User, UserRole, Identity, GeneralInformation
 from app.constants import Status
-import app.schemas as schemas
+import app.schemas.schemas as schemas
 import app.auth as auth
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload, load_only
 from datetime import timedelta
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
@@ -44,12 +44,19 @@ def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
     
+    db_identity = Identity(role=user.role)
+    db.add(db_identity)
+    db.flush() # Flush to get db_identity.id
+    
+    db_general_info = GeneralInformation(identity_id=db_identity.id)
+    db.add(db_general_info)
+
     hashed_password = auth.get_password_hash(user.password)
     db_user = User(
         email=user.email,
         full_name=user.full_name,
         hashed_password=hashed_password,
-        role=user.role,
+        identity_id=db_identity.id,
         is_active=user.is_active
     )
     db.add(db_user)
@@ -59,7 +66,12 @@ def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
 @router.post("/login", response_model=schemas.Token)
 def login(response: Response, user_credentials: schemas.UserLogin, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.email == user_credentials.email).first()
+    user = db.query(User).options(
+        joinedload(User.identity)
+        .load_only(Identity.role)
+        .joinedload(Identity.general_information)
+        .load_only(GeneralInformation.last_name, GeneralInformation.first_name)
+    ).filter(User.email == user_credentials.email).first()
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -76,12 +88,12 @@ def login(response: Response, user_credentials: schemas.UserLogin, db: Session =
     # Generate tokens
     access_token_expires = timedelta(minutes=auth.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = auth.create_access_token(
-        data={"sub": user.email, "role": user.role}, expires_delta=access_token_expires
+        data={"sub": user.email, "role": user.identity.role, "id": user.identity.id}, expires_delta=access_token_expires
     )
     
     refresh_token_expires = timedelta(minutes=auth.REFRESH_TOKEN_EXPIRE_MINUTES)
     refresh_token = auth.create_refresh_token(
-        data={"sub": user.email}, expires_delta=refresh_token_expires
+        data={"sub": user.email, "id": user.identity.id}, expires_delta=refresh_token_expires
     )
 
     # Set Refresh Token in HttpOnly Cookie
@@ -94,11 +106,18 @@ def login(response: Response, user_credentials: schemas.UserLogin, db: Session =
         max_age=auth.REFRESH_TOKEN_EXPIRE_MINUTES * 60
     )
 
+    general_info = user.identity.general_information
+    full_name_str = "Unknown"
+    if general_info:
+        last = general_info.last_name or ""
+        first = general_info.first_name or ""
+        full_name_str = f"{last} {first}".strip()
+
     return {
         "access_token": access_token, 
         "token_type": "bearer",
-        "role": user.role,
-        "full_name": user.full_name
+        "role": user.identity.role,
+        "full_name": full_name_str
     }
 
 @router.post("/refresh")
@@ -117,14 +136,14 @@ def refresh_token(request: Request, response: Response, db: Session = Depends(ge
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid refresh token")
         
         # Check if user exists and is active
-        user = db.query(User).filter(User.email == email).first()
+        user = db.query(User).options(joinedload(User.identity).joinedload(Identity.general_information)).filter(User.email == email).first()
         if user is None or not user.is_active:
              raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found or inactive")
 
         # Create new access token
         access_token_expires = timedelta(minutes=auth.ACCESS_TOKEN_EXPIRE_MINUTES)
         access_token = auth.create_access_token(
-            data={"sub": user.email, "role": user.role}, expires_delta=access_token_expires
+            data={"sub": user.email, "role": user.identity.role, "id": user.identity.id}, expires_delta=access_token_expires
         )
         
         return {"access_token": access_token, "token_type": "bearer"}

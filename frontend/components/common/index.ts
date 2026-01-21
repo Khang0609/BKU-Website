@@ -1,4 +1,4 @@
-export * from "./client_layout/ClientLayout";
+export * from "./ClientLayout";
 export * from "./CourseCard";
 export * from "./DashboardLayout";
 export * from "./DashboardTitle";
@@ -10,4 +10,4 @@ export * from "./StatCard";
 export * from "./StatusTable";
 export * from "./TopNav";
 export * from "./Toast";
-export * from "./data_table/DataTable";
+export * from "./DataTable";

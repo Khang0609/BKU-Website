@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { StudentProfile } from "@/app/(student)/_types/profile";
-import { authFetch } from "@/lib/authFetch";
-import { BASE_URL } from "@/lib/api";
+import client from "@/lib/client";
 
 export const useProfileShow = () => {
   const [profile, setProfile] = useState<StudentProfile | null>(null);
@@ -14,9 +13,8 @@ export const useProfileShow = () => {
 
   const fetchProfile = async () => {
     try {
-      const res = await authFetch(`${BASE_URL}/profile/student/me`);
-      if (!res.ok) throw new Error("Failed to load profile data");
-      const data = await res.json();
+      const res = await client.get("/profile/student/me");
+      const data = res.data;
       setProfile(data);
     } catch (err: any) {
       console.error(err);

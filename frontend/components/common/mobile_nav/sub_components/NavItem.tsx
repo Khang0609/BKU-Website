@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMobileNav } from "../MobileNavContext";
+import { useMobileNav } from "../../../../context/MobileNavContext";
 
 export default function NavItem() {
   const { currentConfig, pathname, role, isServicesOpen, setIsServicesOpen } =
