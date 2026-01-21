@@ -56,7 +56,37 @@ export const useProfileEdit = (
     setSaving((prev) => ({ ...prev, [section]: true }));
 
     // Prepare Payload
-    const data: any = formData[section as keyof ProfileData];
+    let data: any = formData[section as keyof ProfileData];
+
+    // Payload Transformation
+    if (section === "permanent_address") {
+      data = {
+        permanent_province_id: data.province_id,
+        permanent_ward_id: data.ward_id,
+        permanent_detail: data.house_number,
+      };
+    } else if (section === "contact") {
+      data = {
+        ...data,
+        current_province_id: data.province_id,
+        current_ward_id: data.ward_id,
+        current_detail: data.house_number,
+      };
+      // Remove raw address fields from contact to avoid confusion? Backend ignores extras anyway.
+    } else if (section === "family") {
+      const { parents, guardian } = data as Family;
+      data = {
+        ...parents,
+        guardian_full_name: guardian.full_name,
+        guardian_relationship_to_student: guardian.relationship,
+        guardian_phone_number: guardian.phone_number,
+        guardian_email: guardian.email,
+        guardian_job: guardian.job,
+        guardian_province_id: guardian.province_id,
+        guardian_ward_id: guardian.ward_id,
+        guardian_detail: guardian.house_number,
+      };
+    }
 
     // Endpoint mapping
     let endpoint = `/profile/student/${section}`;

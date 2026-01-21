@@ -10,18 +10,19 @@ export interface Personal {
   last_name: string;
   dob: string;
   gender: string;
-  national_id: string;
-  id_issue_date: string;
-  id_issue_place: string;
-  nationality: string;
+  id_card_number: string;
+  id_card_date: string;
+  id_card_place: string;
+  nationality_id?: number;
   place_of_birth: string;
-  other_birthplace?: string;
+  other_place_of_birth?: string;
   religion_id?: number;
   ethnic_id?: number;
   priority_area?: string;
   priority_group?: string;
   union_date?: string;
   party_date?: string;
+  youth_union_date?: string;
 }
 
 export interface Address {
@@ -123,7 +124,7 @@ export interface FieldSchema {
   optionsKey?: string; // Khóa để lấy data từ catalogs
   options?: Option[]; // Dữ liệu để render select
   className?: string; // Tùy chỉnh layout
-  customOnChange?: (v: any, helpers: any) => void; 
+  customOnChange?: (v: any, helpers: any) => void;
   customOptions?: (catalogs: any, formData: any) => any[];
 }
 

@@ -23,7 +23,7 @@ export const getPersonalSchema = (
 ): FieldSchema[] => [
   {
     label: "Nationality",
-    name: "nationality",
+    name: "nationality_id",
     id: "personal",
     type: "select",
     optionsKey: "countries",
@@ -37,7 +37,7 @@ export const getPersonalSchema = (
   },
   {
     label: "Other Birthplace",
-    name: "other_birthplace",
+    name: "other_place_of_birth",
     id: "personal",
     type: "text",
   },
@@ -54,6 +54,24 @@ export const getPersonalSchema = (
     id: "personal",
     type: "select",
     optionsKey: "ethnics",
+  },
+  {
+    label: "Identity Card Number",
+    name: "id_card_number",
+    id: "personal",
+    type: "text",
+  },
+  {
+    label: "Issue Date",
+    name: "id_card_date",
+    id: "personal",
+    type: "date",
+  },
+  {
+    label: "Issue Place",
+    name: "id_card_place",
+    id: "personal",
+    type: "text",
   },
   {
     label: "Priority Area",
@@ -78,6 +96,12 @@ export const getPersonalSchema = (
   {
     label: "Party Date",
     name: "party_date",
+    id: "personal",
+    type: "date",
+  },
+  {
+    label: "Youth Union Date",
+    name: "youth_union_date",
     id: "personal",
     type: "date",
   },

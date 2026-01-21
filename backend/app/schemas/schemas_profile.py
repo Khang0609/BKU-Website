@@ -12,13 +12,13 @@ class PersonalRes(BaseModel):
     last_name: Optional[str] = Field(None, validation_alias=AliasPath("general_information", "last_name"))
     dob: Optional[date] = Field(None, validation_alias=AliasPath("general_information", "date_of_birth"))
     gender: Optional[Any] = Field(None, validation_alias=AliasPath("general_information", "gender")) # Handle Enum value
-    national_id: Optional[str] = Field(None, validation_alias=AliasPath("general_information", "id_card_number"))
-    id_issue_date: Optional[date] = Field(None, validation_alias=AliasPath("general_information", "id_card_date"))
-    id_issue_place: Optional[str] = Field(None, validation_alias=AliasPath("general_information", "id_card_place"))
+    id_card_number: Optional[str] = Field(None, validation_alias=AliasPath("general_information", "id_card_number"))
+    id_card_date: Optional[date] = Field(None, validation_alias=AliasPath("general_information", "id_card_date"))
+    id_card_place: Optional[str] = Field(None, validation_alias=AliasPath("general_information", "id_card_place"))
     
     nationality_id: Optional[int] = Field(None, validation_alias=AliasPath("general_information", "nationality_id"))
     place_of_birth: Optional[str] = Field(None, validation_alias=AliasPath("general_information", "place_of_birth"))
-    other_birthplace: Optional[str] = Field(None, validation_alias=AliasPath("general_information", "other_place_of_birth"))
+    other_place_of_birth: Optional[str] = Field(None, validation_alias=AliasPath("general_information", "other_place_of_birth"))
     religion_id: Optional[int] = Field(None, validation_alias=AliasPath("general_information", "religion_id"))
     ethnic_id: Optional[int] = Field(None, validation_alias=AliasPath("general_information", "ethnic_id"))
     
