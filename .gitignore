@@ -41,8 +41,9 @@ frontend/*.md
 
 # --------------- BACKEND ---------------
 # Python
-backend/__pycache__/
-backend/*.py[cod]
+**/__pycache__/
+*.py[cod]
+*$py.class
 backend/.venv/
 backend/venv/
 backend/.env
