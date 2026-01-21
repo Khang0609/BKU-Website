@@ -14,8 +14,7 @@ from app.middleware import AuditMiddleware
 from app.service.listener import register_listeners
 register_listeners()
 
-# Create tables
-models.Base.metadata.create_all(bind=engine)
+# Create tables with alembic
 
 app = FastAPI(title="BKUWeb API")
 app.add_middleware(AuditMiddleware)
