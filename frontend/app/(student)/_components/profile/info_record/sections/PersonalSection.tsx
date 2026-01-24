@@ -5,7 +5,7 @@ import {
 } from "@/app/(student)/_components/profile/info_record/common";
 import { User } from "lucide-react";
 import { useRecordContext } from "@/app/(student)/_context/RecordContext";
-import { getPersonalSchema } from "../../../../_constants/profile/record";
+import { getPersonalSchema } from "@/app/(student)/_constants/profile/record";
 
 export const PersonalSection = () => {
   const { catalogs, formData, updateForm } = useRecordContext();

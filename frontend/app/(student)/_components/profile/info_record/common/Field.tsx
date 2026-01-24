@@ -10,7 +10,8 @@ export const Field = ({
   type = "text",
   options,
   className = "",
-}: FieldProps) => {
+  isDirty = false,
+}: FieldProps & { isDirty?: boolean }) => {
   const { editMode, saving } = useRecordContext();
   const isEditing = editMode[id];
   const isSaving = saving[id];
@@ -35,18 +36,21 @@ export const Field = ({
           value={value}
           onChange={(v: any) => onChange(v)}
           options={options}
+          className={isDirty ? "border-amber-400 ring-1 ring-amber-400" : ""}
         />
       ) : type === "date" ? (
         <DateField
           value={value}
           onChange={(v: any) => onChange(v)}
           className={className}
+          isDirty={isDirty}
         />
       ) : (
         <TextField
           value={value}
           onChange={(v: any) => onChange(v)}
           className={className}
+          isDirty={isDirty}
         />
       )}
     </div>
@@ -70,24 +74,28 @@ const ReadOnlyField = ({ label, value, options, className = "" }: any) => {
   );
 };
 
-const DateField = ({ value, onChange, className = "" }: any) => {
+const DateField = ({ value, onChange, className = "", isDirty }: any) => {
   return (
     <input
       type="date"
       value={value || ""}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none transition-colors focus:border-blue-500"
+      className={`w-full rounded-md border px-3 py-2 text-sm outline-none transition-colors focus:border-blue-500 ${
+        isDirty ? "border-amber-400 bg-amber-50/10" : "border-slate-300"
+      } ${className}`}
     />
   );
 };
 
-const TextField = ({ value, onChange, className = "" }: any) => {
+const TextField = ({ value, onChange, className = "", isDirty }: any) => {
   return (
     <input
       type="text"
       value={value || ""}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none transition-colors focus:border-blue-500"
+      className={`w-full rounded-md border px-3 py-2 text-sm outline-none transition-colors focus:border-blue-500 ${
+        isDirty ? "border-amber-400 bg-amber-50/10" : "border-slate-300"
+      } ${className}`}
     />
   );
 };

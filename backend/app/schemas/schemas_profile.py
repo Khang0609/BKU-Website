@@ -58,59 +58,59 @@ class AddressRes(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     country_id: Optional[int] = 1 # Default Vietnam
-    province_id: Optional[int] = None
-    ward_id: Optional[int] = None
-    province_name: Optional[str] = Field(None, validation_alias=AliasPath("province", "name"))
-    ward_name: Optional[str] = Field(None, validation_alias=AliasPath("ward", "name"))
-    house_number: Optional[str] = Field(None, validation_alias="detail")
-    full_address: Optional[str] = None 
+    permanent_province_id: Optional[int] = Field(None, validation_alias="province_id")
+    permanent_ward_id: Optional[int] = Field(None, validation_alias="ward_id")
+    permanent_province_name: Optional[str] = Field(None, validation_alias=AliasPath("province", "name"))
+    permanent_ward_name: Optional[str] = Field(None, validation_alias=AliasPath("ward", "name"))
+    permanent_house_number: Optional[str] = Field(None, validation_alias="detail")
+    permanent_full_address: Optional[str] = Field(None, validation_alias="full_address")
     
     @computed_field
     def computed_full_address(self) -> Optional[str]:
         # Simple reconstruction matching original logic
         parts = []
-        if self.house_number: parts.append(self.house_number)
-        if self.ward_name: parts.append(self.ward_name)
-        if self.province_name: parts.append(self.province_name)
+        if self.permanent_house_number: parts.append(self.permanent_house_number)
+        if self.permanent_ward_name: parts.append(self.permanent_ward_name)
+        if self.permanent_province_name: parts.append(self.permanent_province_name)
         return ", ".join(parts) if parts else None
     
     @model_validator(mode='after')
     def set_full_address(self):
-        if not self.full_address:
-            self.full_address = self.computed_full_address
+        if not self.permanent_full_address:
+            self.permanent_full_address = self.computed_full_address
         return self
 
 class ContactRes(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     
-    # We will pass a specific context object to this model
-    province_id: Optional[int] = Field(None, validation_alias=AliasPath("address", "province_id"))
-    ward_id: Optional[int] = Field(None, validation_alias=AliasPath("address", "ward_id"))
-    province_name: Optional[str] = Field(None, validation_alias=AliasPath("address", "province", "name"))
-    ward_name: Optional[str] = Field(None, validation_alias=AliasPath("address", "ward", "name"))
-    house_number: Optional[str] = Field(None, validation_alias=AliasPath("address", "detail"))
+    # Direct fields populated manually in ProfileResponse
+    current_province_id: Optional[int] = None
+    current_ward_id: Optional[int] = None
+    current_province_name: Optional[str] = None
+    current_ward_name: Optional[str] = None
+    current_house_number: Optional[str] = None
     
-    phone: Optional[str] = Field(None, validation_alias=AliasPath("general_information", "phone"))
-    personal_email: Optional[str] = Field(None, validation_alias=AliasPath("general_information", "personal_email"))
+    phone: Optional[str] = None
+    personal_email: Optional[str] = None
     
-    family_phone: Optional[str] = Field(None, validation_alias=AliasPath("student_personal", "family_phone"))
-    dorm_room: Optional[str] = Field(None, validation_alias=AliasPath("student_personal", "dorm_room"))
-    student_email: Optional[str] = Field(None, validation_alias=AliasPath("student_personal", "student_email"))
+    family_phone: Optional[str] = None
+    dorm_room: Optional[str] = None
+    student_email: Optional[str] = None
 
-    full_address: Optional[str] = None
+    current_full_address: Optional[str] = Field(None, validation_alias="full_address")
     
     @computed_field
     def computed_full_address(self) -> Optional[str]:
         parts = []
-        if self.house_number: parts.append(self.house_number)
-        if self.ward_name: parts.append(self.ward_name)
-        if self.province_name: parts.append(self.province_name)
+        if self.current_house_number: parts.append(self.current_house_number)
+        if self.current_ward_name: parts.append(self.current_ward_name)
+        if self.current_province_name: parts.append(self.current_province_name)
         return ", ".join(parts) if parts else None
         
     @model_validator(mode='after')
     def set_full_address(self):
-        if not self.full_address:
-            self.full_address = self.computed_full_address
+        if not self.current_full_address:
+            self.current_full_address = self.computed_full_address
         return self
 
 class FamilyRes(BaseModel):
@@ -118,9 +118,6 @@ class FamilyRes(BaseModel):
     
     parents: Optional[Dict[str, Any]] = None
     guardian: Optional[Dict[str, Any]] = None
-    
-    # We construct this with custom logic in computed_field of ProfileResponse 
-    # OR we make this smarter. But nested dicts are easiest constructed there.
 
 class OtherRes(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -149,13 +146,6 @@ class ProfileResponse(BaseModel):
 
     @computed_field
     def personal(self) -> PersonalRes:
-        # Pass 'self' (the ProfileResponse instance which has the data) as context?
-        # Actually validation_alias works on the input to model_validate (the ORM object).
-        # But here we are inside the model. 
-        # We need to construct PersonalRes from the SAME ORM object.
-        # But we don't have the ORM object here, we have 'self' which has the fields.
-        # Since 'self' has 'general_information' etc matching the aliases, 
-        # we can just validate 'self' into PersonalRes!
         return PersonalRes.model_validate(self)
 
     @computed_field
@@ -170,13 +160,23 @@ class ProfileResponse(BaseModel):
     @computed_field
     def contact(self) -> ContactRes:
         curr = next((a for a in self.addresses if a.address_type == "CURRENT"), None)
-        # Create a hybrid context object that mimics the structure ContactRes expects
-        context = {
-            "address": curr,
-            "general_information": self.general_information,
-            "student_personal": self.student_personal
-        }
-        return ContactRes.model_validate(context)
+        gen = self.general_information
+        pers = self.student_personal
+        
+        return ContactRes(
+            current_province_id=curr.province_id if curr else None,
+            current_ward_id=curr.ward_id if curr else None,
+            current_province_name=curr.province.name if curr and curr.province else None,
+            current_ward_name=curr.ward.name if curr and curr.ward else None,
+            current_house_number=curr.detail if curr else None,
+            
+            phone=gen.phone if gen else None,
+            personal_email=gen.personal_email if gen else None,
+            
+            family_phone=pers.family_phone if pers else None,
+            dorm_room=pers.dorm_room if pers else None,
+            student_email=pers.student_email if pers else None
+        )
 
     @computed_field
     def family(self) -> FamilyRes:
@@ -202,9 +202,9 @@ class ProfileResponse(BaseModel):
             guardian_data = {
                 "full_name": g.full_name, "relationship": g.relationship_to_student, 
                 "phone_number": g.phone_number, "email": g.email, 
-                "province_id": gua_addr.province_id if gua_addr else None, 
-                "ward_id": gua_addr.ward_id if gua_addr else None, 
-                "house_number": gua_addr.detail if gua_addr else None,
+                "guardian_province_id": gua_addr.province_id if gua_addr else None, 
+                "guardian_ward_id": gua_addr.ward_id if gua_addr else None, 
+                "guardian_house_number": gua_addr.detail if gua_addr else None,
                 "job": g.job
             }
             

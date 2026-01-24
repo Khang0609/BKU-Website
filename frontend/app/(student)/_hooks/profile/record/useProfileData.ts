@@ -34,6 +34,42 @@ export const useProfileData = () => {
 
       setProfile(pData);
 
+      // Pre-fetch wards for existing addresses so "Read Mode" shows names and "Edit Mode" has list ready
+      const provinceIdsToFetch = new Set<number>();
+      
+      // Robust check: Handle both prefixed (e.g., permanent_province_id) and raw (province_id) keys
+      // Permanent
+      const permProv = pData?.permanent_address?.permanent_province_id || (pData?.permanent_address as any)?.province_id;
+      if (permProv) provinceIdsToFetch.add(permProv);
+
+      // Contact
+      const contProv = pData?.contact?.current_province_id || (pData?.contact as any)?.province_id;
+      if (contProv) provinceIdsToFetch.add(contProv);
+
+      // Guardian
+      const guardProv = pData?.family?.guardian?.guardian_province_id || (pData?.family?.guardian as any)?.province_id;
+      if (guardProv) provinceIdsToFetch.add(guardProv);
+
+      const wardMap: Record<number, any> = {};
+
+      await Promise.all(
+        Array.from(provinceIdsToFetch).map(async (pid) => {
+          try {
+            const res = await client.get(`/location/provinces/${pid}/wards`);
+            const data = res.data;
+            wardMap[pid] = Array.isArray(data)
+              ? data.map((w: any) => ({
+                  value: w.id,
+                  label:
+                    w.name_vi || w.name_en || w.label || w.name || "Unknown",
+                }))
+              : [];
+          } catch (e) {
+            console.error(`Failed to fetch wards for province ${pid}`, e);
+          }
+        }),
+      );
+
       setCatalogs({
         provinces: Array.isArray(provData)
           ? provData.map((p: any) => ({ value: p.id, label: p.name }))
@@ -53,7 +89,7 @@ export const useProfileData = () => {
               label: r.name_vi || r.name_en || r.label || "Unknown",
             }))
           : [],
-        wards: {},
+        wards: wardMap,
       });
     } catch (err) {
       console.error(err);

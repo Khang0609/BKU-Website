@@ -25,11 +25,13 @@ def hydrate(
         Tuple[T, bool]: A tuple containing the model instance and a boolean flag (is_new).
                         is_new is True if the instance was created, False if fetched.
     """
-    # Try to fetch the existing record
     instance = db.query(model).filter_by(**filter_criteria).first()
 
     if instance:
+        print(f"DEBUG: hydrate - Found existing {model.__name__} with {filter_criteria}")
         return instance, False
+    
+    print(f"DEBUG: hydrate - No record found for {model.__name__} with {filter_criteria}")
 
     # If not found, prepare data for new instance
     # Start with defaults if provided, then overlay filter_criteria

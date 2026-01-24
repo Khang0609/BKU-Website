@@ -70,3 +70,8 @@ design/
 .env
 docker-compose.override.yml
 .vscode/
+
+# --------------- AI LOG ---------------
+agent/
+.idea/
+.cursorrules

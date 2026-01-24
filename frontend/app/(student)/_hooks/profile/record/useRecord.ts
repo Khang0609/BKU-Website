@@ -33,32 +33,62 @@ export const useRecord = () => {
     handleProvinceChange,
   } = useProfileEdit(profile, fetchInitialData, fetchWards);
 
-  return {
-    // #region State
-    profile,
-    catalogs,
-    isLoading,
-    familyTab,
-    formData,
-    editMode,
-    saving,
-    // #endregion
+  // Fallback: If formData is empty/syncing but we have profile, use profile to prevent UI crashes/blanks
+  const effectiveFormData =
+    formData && Object.keys(formData).length > 0
+      ? formData
+      : profile || formData;
 
-    // #region Setters
-    setFamilyTab,
-    setFormData,
-    setEditMode,
-    setSaving,
-    // #endregion
+  const contextValue = React.useMemo(
+    () => ({
+      // #region State
+      profile,
+      catalogs,
+      isLoading,
+      familyTab,
+      formData: effectiveFormData,
+      editMode,
+      saving,
+      // #endregion
 
-    // #region Functions
-    fetchInitialData,
-    fetchWards,
-    toggleEdit,
-    handleSave,
-    updateForm,
-    resetForm,
-    handleProvinceChange,
-    // #endregion
-  };
+      // #region Setters
+      setFamilyTab,
+      setFormData,
+      setEditMode,
+      setSaving,
+      // #endregion
+
+      // #region Functions
+      fetchInitialData,
+      fetchWards,
+      toggleEdit,
+      handleSave,
+      updateForm,
+      resetForm,
+      handleProvinceChange,
+      // #endregion
+    }),
+    [
+      profile,
+      catalogs,
+      isLoading,
+      familyTab,
+      effectiveFormData,
+      editMode,
+      saving,
+      setFamilyTab,
+      setFormData,
+      setEditMode,
+      setSaving,
+      fetchInitialData,
+      fetchWards,
+      toggleEdit,
+      handleSave,
+      updateForm,
+      resetForm,
+      handleProvinceChange,
+    ],
+  );
+
+  return contextValue;
 };

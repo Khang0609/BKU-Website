@@ -8,7 +8,7 @@ export interface Option {
 export interface Personal {
   first_name: string;
   last_name: string;
-  dob: string;
+  day_of_birth: string;
   gender: string;
   id_card_number: string;
   id_card_date: string;
@@ -25,7 +25,7 @@ export interface Personal {
   youth_union_date?: string;
 }
 
-export interface Address {
+export interface BaseAddress {
   province_id?: number;
   ward_id?: number;
   house_number?: string;
@@ -34,13 +34,15 @@ export interface Address {
   full_address?: string;
 }
 
-export interface Contact {
-  province_id?: number;
-  ward_id?: number;
-  house_number?: string;
-  province_name?: string;
-  ward_name?: string;
-  full_address?: string;
+export type AddressWithPrefix<P extends string> = {
+  [K in keyof BaseAddress as `${P}_${string & K}`]: BaseAddress[K];
+};
+
+export type PermanentAddress = AddressWithPrefix<"permanent">;
+export type CurrentAddress = AddressWithPrefix<"current">;
+export type GuardianAddress = AddressWithPrefix<"guardian">;
+
+export interface Contact extends CurrentAddress {
   phone?: string;
   family_phone?: string;
   dorm_room?: string;
@@ -61,16 +63,17 @@ export interface Family {
     mother_job?: string;
     mother_workplace?: string;
   };
-  guardian: {
+  guardian: GuardianAddress & {
     full_name?: string;
     relationship?: string;
     phone_number?: string;
     email?: string;
     job?: string;
+    // Fallback fields for backward compatibility if needed, though we aim to remove them
     province_id?: number;
     ward_id?: number;
     house_number?: string;
-    address?: string; // fallback
+    address?: string;
   };
 }
 
@@ -81,7 +84,7 @@ export interface Other {
 
 export interface ProfileData {
   personal: Personal;
-  permanent_address: Address;
+  permanent_address: PermanentAddress;
   contact: Contact;
   family: Family;
   others: Other;

@@ -39,6 +39,7 @@ def merge(db_obj: Any, payload: Dict[str, Any], exclude_fields: Optional[Set[str
         # Delta Logic: Only update if strictly different
         # This handles None vs Value, Value vs NewValue, etc.
         if current_value != value:
+            print(f"DEBUG: merge - Change detected for {key}: '{current_value}' -> '{value}' (Type: {type(current_value)} -> {type(value)})")
             setattr(db_obj, key, value)
             has_changes = True
             

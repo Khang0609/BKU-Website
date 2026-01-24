@@ -92,7 +92,7 @@ const GuardianTab = ({ id }: { id: string }) => {
   const { formData, editMode, updateForm, fetchWards } = useRecordContext();
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-      <div>
+      <div className="space-y-4">
         <h4 className="mb-4 border-b pb-2 text-xs font-bold uppercase text-slate-700">
           Guardian Info
         </h4>
@@ -107,7 +107,7 @@ const GuardianTab = ({ id }: { id: string }) => {
           />
         ))}
       </div>
-      <div>
+      <div className="space-y-4">
         <h4 className="mb-4 border-b pb-2 text-xs font-bold uppercase text-slate-700">
           Guardian Address
         </h4>

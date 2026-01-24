@@ -63,7 +63,9 @@ async def read_student_me(
         raise HTTPException(status_code=404, detail="Student profile not found")
 
     # One-line Pydantic Validation & Flattening
-    return ProfileResponse.model_validate(identity)
+    response = ProfileResponse.model_validate(identity)
+    print(f"DEBUG: ProfileResponse Payload: {response.model_dump_json(exclude_none=True)}")
+    return response
 
 @router.get("/decision", response_model=List[StudentDecisionRes])
 async def get_student_decisions(
