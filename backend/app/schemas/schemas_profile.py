@@ -1,7 +1,6 @@
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field, AliasPath, ConfigDict, computed_field, model_validator
 from datetime import date, datetime
-from app.models.adminstrative.decision import DecisionType
 
 # --- Helper Models for nested parts ---
 
@@ -31,9 +30,12 @@ class PersonalRes(BaseModel):
     @model_validator(mode='after')
     def extract_enum_values(self):
         # Enums might be returned as objects, we want values
-        if hasattr(self.gender, 'value'): self.gender = self.gender.value
-        if hasattr(self.priority_area, 'value'): self.priority_area = self.priority_area.value
-        if hasattr(self.priority_group, 'value'): self.priority_group = self.priority_group.value
+        if hasattr(self.gender, 'value'): 
+            self.gender = self.gender.value
+        if hasattr(self.priority_area, 'value'): 
+            self.priority_area = self.priority_area.value
+        if hasattr(self.priority_group, 'value'): 
+            self.priority_group = self.priority_group.value
         return self
 
 class AcademicRes(BaseModel):
@@ -69,9 +71,12 @@ class AddressRes(BaseModel):
     def computed_full_address(self) -> Optional[str]:
         # Simple reconstruction matching original logic
         parts = []
-        if self.permanent_house_number: parts.append(self.permanent_house_number)
-        if self.permanent_ward_name: parts.append(self.permanent_ward_name)
-        if self.permanent_province_name: parts.append(self.permanent_province_name)
+        if self.permanent_house_number: 
+            parts.append(self.permanent_house_number)
+        if self.permanent_ward_name: 
+            parts.append(self.permanent_ward_name)
+        if self.permanent_province_name: 
+            parts.append(self.permanent_province_name)
         return ", ".join(parts) if parts else None
     
     @model_validator(mode='after')
@@ -102,9 +107,12 @@ class ContactRes(BaseModel):
     @computed_field
     def computed_full_address(self) -> Optional[str]:
         parts = []
-        if self.current_house_number: parts.append(self.current_house_number)
-        if self.current_ward_name: parts.append(self.current_ward_name)
-        if self.current_province_name: parts.append(self.current_province_name)
+        if self.current_house_number: 
+            parts.append(self.current_house_number)
+        if self.current_ward_name: 
+            parts.append(self.current_ward_name)
+        if self.current_province_name: 
+            parts.append(self.current_province_name)
         return ", ".join(parts) if parts else None
         
     @model_validator(mode='after')
@@ -213,15 +221,3 @@ class ProfileResponse(BaseModel):
     @computed_field
     def others(self) -> OtherRes:
         return OtherRes.model_validate(self)
-
-# Decision Response 
-class StudentDecisionRes(BaseModel):
-    id: int
-    semester: str
-    decision_reason: str
-    decision_number: str
-    decision_content: str
-    signed_date: str
-    last_updated: str
-    decision_type: DecisionType
-    note: Optional[str] = None

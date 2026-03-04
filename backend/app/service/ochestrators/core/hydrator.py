@@ -28,10 +28,7 @@ def hydrate(
     instance = db.query(model).filter_by(**filter_criteria).first()
 
     if instance:
-        print(f"DEBUG: hydrate - Found existing {model.__name__} with {filter_criteria}")
         return instance, False
-    
-    print(f"DEBUG: hydrate - No record found for {model.__name__} with {filter_criteria}")
 
     # If not found, prepare data for new instance
     # Start with defaults if provided, then overlay filter_criteria

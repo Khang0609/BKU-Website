@@ -10,12 +10,16 @@ from app.models.profile.student.guardian import StudentGuardian
 from app.models.profile.student.personal import StudentPersonal
 from app.models.profile.shared.address import Address
 from app.models.profile.student.decision import StudentDecision
+from app.models.profile.student.training_point import StudentTrainingPoint
+from app.models.profile.student.extra_curricular import StudentExtraCurricular
 from app.models.adminstrative.decision import Decision
+from app.models.adminstrative.extra_curricular import ExtraCurricular
 from app.models.adminstrative.academic import Major, Faculty
 
 from app.routes.auth import get_current_active_user
 from app.service.ochestrators.crud.readers import generic_get
-from app.schemas.schemas_profile import ProfileResponse, StudentDecisionRes
+from app.schemas.schemas_profile import ProfileResponse
+from app.schemas.schemas_student import StudentDecisionRes, TrainingPointRes, ExtraCurricularRes
 
 router = APIRouter()
 
@@ -64,7 +68,6 @@ async def read_student_me(
 
     # One-line Pydantic Validation & Flattening
     response = ProfileResponse.model_validate(identity)
-    print(f"DEBUG: ProfileResponse Payload: {response.model_dump_json(exclude_none=True)}")
     return response
 
 @router.get("/decision", response_model=List[StudentDecisionRes])
@@ -91,6 +94,56 @@ async def get_student_decisions(
             last_updated=decision.last_updated,
             decision_type=decision.decision_type,
             note=sd.note
+        ))
+        
+    return results
+
+@router.get("/training-points", response_model=List[TrainingPointRes])
+async def get_student_training_points(
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db)
+):
+    if not current_user.identity or current_user.identity.role != UserRole.STUDENT:
+        raise HTTPException(status_code=400, detail="Profile available for students only")
+    
+    identity = current_user.identity
+    training_points = db.query(StudentTrainingPoint).filter(StudentTrainingPoint.identity_id == identity.id).all()
+    
+    return [
+        TrainingPointRes(
+            id=tp.id,
+            semester=tp.semester,
+            points=tp.points,
+            rating=tp.rating,
+            updated_at=tp.updated_at
+        ) for tp in training_points
+    ]
+
+@router.get("/extra-curriculars", response_model=List[ExtraCurricularRes])
+async def get_student_extra_curriculars(
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db)
+):
+    if not current_user.identity or current_user.identity.role != UserRole.STUDENT:
+        raise HTTPException(status_code=400, detail="Profile available for students only")
+    
+    identity = current_user.identity
+    student_ec_list = db.query(StudentExtraCurricular).filter(StudentExtraCurricular.identity_id == identity.id).join(ExtraCurricular).all()
+    
+    results = []
+    for sec in student_ec_list:
+        ec = sec.extra_curricular
+        results.append(ExtraCurricularRes(
+            id=sec.id,
+            curricular_id=ec.id,
+            name=ec.name,
+            address=ec.address,
+            day_start=ec.day_start,
+            duration_days=ec.duration_days,
+            has_proof=ec.has_proof,
+            state=ec.state,
+            social_work_days_exchange=sec.social_work_days_exchange,
+            is_verified=sec.is_verified
         ))
         
     return results

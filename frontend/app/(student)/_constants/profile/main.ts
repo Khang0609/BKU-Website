@@ -22,8 +22,8 @@ export const FEATURE_FLAGS = {
   TUITION_FEES: false,
   PAYMENT_HISTORY: false,
   QA_SUPPORT: true,
-  TRAINING_POINTS: false,
-  EXTRA_CURRICULAR: false,
+  TRAINING_POINTS: true,
+  EXTRA_CURRICULAR: true,
   SCHOLARSHIPS: false,
   MEDICAL_INFO: false,
   GRADUATION: true,
@@ -103,13 +103,15 @@ export const clusters: Cluster[] = [
       {
         label: "Training Points",
         icon: Star,
-        href: FEATURE_FLAGS.TRAINING_POINTS ? "/training" : "#",
+        href: FEATURE_FLAGS.TRAINING_POINTS ? "/profile/training-point" : "#",
         desc: "Score: 85/100",
       },
       {
         label: "Extra-curricular",
         icon: Activity,
-        href: FEATURE_FLAGS.EXTRA_CURRICULAR ? "/activity" : "#",
+        href: FEATURE_FLAGS.EXTRA_CURRICULAR
+          ? "/profile/extra-curricular"
+          : "#",
         desc: "View activity log",
       },
       {

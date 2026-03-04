@@ -34,17 +34,10 @@ def generic_patch(
     
     # Logic: Handle DB operations based on state
     if is_new:
-        print(f"DEBUG: generic_patch - Creating NEW record for {model.__name__}")
         db.add(obj)
-    else:
-        print(f"DEBUG: generic_patch - Updating EXISTING record for {model.__name__}")
-        
+    
     # Commit if it's a new record or if there were actual changes to an existing one
     if is_new or has_changes:
-        print(f"DEBUG: generic_patch - Committing changes. is_new={is_new}, has_changes={has_changes}")
         db.commit()
         db.refresh(obj)
-    else:
-        print("DEBUG: generic_patch - No changes to commit.")
-        
     return obj

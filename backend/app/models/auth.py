@@ -27,6 +27,8 @@ class Identity(Base):
     student_parent = relationship("StudentParent", back_populates="identity", uselist=False)
     student_guardian = relationship("StudentGuardian", back_populates="identity", uselist=False)
     student_decisions = relationship("StudentDecision", back_populates="identity")
+    student_training_points = relationship("StudentTrainingPoint", back_populates="identity")
+    student_extra_curriculars = relationship("StudentExtraCurricular", back_populates="identity")
 
 
 class User(Base):

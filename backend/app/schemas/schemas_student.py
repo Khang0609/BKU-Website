@@ -1,7 +1,10 @@
 from typing import Optional, Dict
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from datetime import date
 from app.constants import PriorityGroup, PriorityArea
+from app.models.adminstrative.decision import DecisionType
+from app.models.adminstrative.extra_curricular import ExtraCurricularState
+
 
 class PersonalUpdate(BaseModel):
     priority_area: Optional[PriorityArea] = None
@@ -56,3 +59,37 @@ class FamilyUpdate(BaseModel):
 
 class ExtraUpdate(BaseModel):
     social_media: Optional[Dict[str, str]] = None
+
+
+# Decision Response 
+class StudentDecisionRes(BaseModel):
+    id: int
+    semester: str
+    decision_reason: str
+    decision_number: str
+    decision_content: str
+    signed_date: str
+    last_updated: str
+    decision_type: DecisionType
+    note: Optional[str] = None
+
+class TrainingPointRes(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    semester: str
+    points: int
+    rating: str
+    updated_at: str
+
+class ExtraCurricularRes(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int # bridge table id
+    curricular_id: str # extra_curriculars.id
+    name: str
+    address: str
+    day_start: str
+    duration_days: int
+    has_proof: bool
+    state: ExtraCurricularState
+    social_work_days_exchange: int
+    is_verified: bool

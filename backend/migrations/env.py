@@ -32,9 +32,7 @@ config = context.config
 # This line sets up loggers basically.
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
-
-
-print(f"DEBUG: Detected tables: {Base.metadata.tables.keys()}")
+    
 # add your model's MetaData object here
 target_metadata = Base.metadata
 
@@ -48,7 +46,7 @@ def get_url():
     # Nếu đang chạy ở local (không có biến môi trường DOCKER_RUN)
     # và URL đang chứa tên service 'db', hãy thay nó bằng 'localhost'
     if not os.getenv("IS_DOCKER") and "db:5432" in url:
-        return url.replace("db:5432", "127.0.0.1:5433")
+        return url.replace("db:5432", "127.0.0.1:5434")
     return url
 
 config.set_main_option("sqlalchemy.url", get_url())

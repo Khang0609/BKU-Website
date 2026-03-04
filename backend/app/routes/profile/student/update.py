@@ -27,7 +27,8 @@ async def update_personal(request: Request, data: PersonalUpdate, current_user: 
     warn_schema_mismatch(await request.json(), PersonalUpdate, "PersonalUpdate")
     
     identity = current_user.identity
-    if not identity: raise HTTPException(404, "Identity not found")
+    if not identity: 
+        raise HTTPException(404, "Identity not found")
     
     update_data = data.model_dump(exclude_unset=True)
 
@@ -42,7 +43,8 @@ async def update_family(request: Request, data: FamilyUpdate, current_user: User
     warn_schema_mismatch(await request.json(), FamilyUpdate, "FamilyUpdate")
     
     identity = current_user.identity
-    if not identity: raise HTTPException(404, "Identity not found")
+    if not identity: 
+        raise HTTPException(404, "Identity not found")
     
     update_data = data.model_dump(exclude_unset=True)
     
@@ -65,7 +67,8 @@ async def update_contact(request: Request, data: ContactUpdate, current_user: Us
     warn_schema_mismatch(await request.json(), ContactUpdate, "ContactUpdate")
     
     identity = current_user.identity
-    if not identity: raise HTTPException(404, "Identity not found")
+    if not identity: 
+        raise HTTPException(404, "Identity not found")
     
     update_data = data.model_dump(exclude_unset=True)
     print("Received update data:", update_data)
@@ -94,7 +97,8 @@ async def update_extra(request: Request, data: ExtraUpdate, current_user: User =
     warn_schema_mismatch(await request.json(), ExtraUpdate, "ExtraUpdate")
     
     identity = current_user.identity
-    if not identity: raise HTTPException(404, "Identity not found")
+    if not identity:
+        raise HTTPException(404, "Identity not found")
     
     generic_patch(db, StudentPersonal, {"identity_id": identity.id}, data.model_dump(exclude_unset=True))
     return {"success": True}
