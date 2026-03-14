@@ -3,6 +3,8 @@ services:
   backend:
     container_name: hcmut-portal-backend
     build: ./backend # Đường dẫn tới folder chứa Dockerfile backend
+    volumes:
+      - ./backend:/app
     ports:
       - "8000:8000" # Nối cổng 8000 của Docker ra 8000 của máy thật
     env_file:
