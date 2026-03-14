@@ -22,6 +22,7 @@ class Identity(Base):
     # Relationships linked to Student
     student_academic = relationship("StudentAcademic", back_populates="identity", uselist=False)
     student_personal = relationship("StudentPersonal", back_populates="identity", uselist=False)
+    student_finance = relationship("StudentFinance", back_populates="identity", uselist=False)
     addresses = relationship("Address", back_populates="identity")
 
     student_parent = relationship("StudentParent", back_populates="identity", uselist=False)
@@ -29,6 +30,10 @@ class Identity(Base):
     student_decisions = relationship("StudentDecision", back_populates="identity")
     student_training_points = relationship("StudentTrainingPoint", back_populates="identity")
     student_extra_curriculars = relationship("StudentExtraCurricular", back_populates="identity")
+
+    student_program = relationship("StudentProgram", back_populates="identity", uselist=False)
+    student_timeline = relationship("StudentTimeline", back_populates="identity", uselist=False)
+    student_graduation = relationship("StudentGraduation", back_populates="identity", uselist=False)
 
 
 class User(Base):

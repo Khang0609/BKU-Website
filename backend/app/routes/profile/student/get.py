@@ -8,9 +8,14 @@ from app.models.profile.student.academic import StudentAcademic
 from app.models.profile.student.parent import StudentParent
 from app.models.profile.student.guardian import StudentGuardian
 from app.models.profile.student.personal import StudentPersonal
+from app.models.profile.student.finance import StudentFinance
 from app.models.profile.shared.address import Address
 from app.models.profile.student.decision import StudentDecision
 from app.models.profile.student.training_point import StudentTrainingPoint
+from app.models.profile.student.extra_curricular import StudentExtraCurricular
+from app.models.profile.student.program import StudentProgram
+from app.models.profile.student.timeline import StudentTimeline
+from app.models.profile.student.graduation import StudentGraduation
 from app.models.profile.student.extra_curricular import StudentExtraCurricular
 from app.models.adminstrative.decision import Decision
 from app.models.adminstrative.extra_curricular import ExtraCurricular
@@ -43,10 +48,15 @@ async def read_student_me(
         Identity,
         filter_criteria={"id": current_user.identity.id},
         options=[
+            joinedload(Identity.user),
             joinedload(Identity.general_information),
             joinedload(Identity.student_personal),
+            joinedload(Identity.student_finance),
             # Nested relations for Academic -> Major -> Faculty
             joinedload(Identity.student_academic).joinedload(StudentAcademic.major).joinedload(Major.faculty),
+            joinedload(Identity.student_program),
+            joinedload(Identity.student_timeline),
+            joinedload(Identity.student_graduation),
             # Addresses
             joinedload(Identity.addresses).joinedload(Address.province),
             joinedload(Identity.addresses).joinedload(Address.ward),
@@ -56,8 +66,12 @@ async def read_student_me(
         ],
         ensure_relations={
             "student_personal": (StudentPersonal, {"identity_id": "id"}),
+            "student_finance": (StudentFinance, {"identity_id": "id"}),
             "student_parent": (StudentParent, {"identity_id": "id"}),
             "student_guardian": (StudentGuardian, {"identity_id": "id"}),
+            "student_program": (StudentProgram, {"identity_id": "id"}),
+            "student_timeline": (StudentTimeline, {"identity_id": "id"}),
+            "student_graduation": (StudentGraduation, {"identity_id": "id"}),
             # Note: general_information is assumed to exist for any valid user, 
             # and addresses are a list which generic_get's ensure_relations doesn't target (it targets 1-1/M-1 attrs).
         }

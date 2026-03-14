@@ -16,7 +16,6 @@ class PersonalUpdate(BaseModel):
 class ContactUpdate(BaseModel):
     family_phone: Optional[str] = None
     dorm_room: Optional[str] = None
-    student_email: Optional[str] = None # Added
 
     # Current Address
     current_province_id: Optional[int] = None

@@ -20,8 +20,6 @@ class StudentPersonal(Base):
 
     # Contact Info
 
-    student_email: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
-
     dorm_room: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     family_phone: Mapped[Optional[str]] = mapped_column(String(20), nullable=True) # Added to support Section 3
 

@@ -45,16 +45,42 @@ class AcademicRes(BaseModel):
     class_code: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "class_code"))
     major: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "major", "name"))
     faculty: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "major", "faculty", "name"))
-    enrollment_date: Optional[date] = Field(None, validation_alias=AliasPath("student_academic", "enrollment_date"))
-    student_status: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "student_status"))
-    education_level: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "education_level"))
-    training_system: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "training_system"))
-    campus: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "campus"))
-    entry_semester: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "entry_semester"))
     
-    bank_account: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "bank_account"))
-    bank_name: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "bank_name"))
-    bknet_account: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "bknet_account"))
+    # Timeline fields
+    enrollment_date: Optional[date] = Field(None, validation_alias=AliasPath("student_timeline", "enrollment_date"))
+    curriculum_year: Optional[int] = Field(None, validation_alias=AliasPath("student_timeline", "curriculum_year"))
+    entry_semester: Optional[str] = Field(None, validation_alias=AliasPath("student_timeline", "entry_semester"))
+    study_duration_standard: Optional[str] = Field(None, validation_alias=AliasPath("student_timeline", "study_duration_standard"))
+    extended_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_timeline", "extended_semesters"))
+    reduced_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_timeline", "reduced_semesters"))
+    standard_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_timeline", "standard_semesters"))
+    max_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_timeline", "max_semesters"))
+    expected_graduation_date: Optional[date] = Field(None, validation_alias=AliasPath("student_timeline", "expected_graduation_date"))
+    max_graduation_date: Optional[date] = Field(None, validation_alias=AliasPath("student_timeline", "max_graduation_date"))
+    
+    # Program fields
+    student_status: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "student_status"))
+    education_level: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "education_level"))
+    training_system: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "training_system"))
+    training_type: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "training_type"))
+    program: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "program"))
+    campus: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "campus"))
+    local_training: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "local_training"))
+    training_session: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "training_session"))
+    
+    # Graduation fields
+    grad_major: Optional[str] = Field(None, validation_alias=AliasPath("student_graduation", "grad_major"))
+    grad_year_semester: Optional[str] = Field(None, validation_alias=AliasPath("student_graduation", "grad_year_semester"))
+    grad_decision_number: Optional[str] = Field(None, validation_alias=AliasPath("student_graduation", "grad_decision_number"))
+    grad_decision_date: Optional[date] = Field(None, validation_alias=AliasPath("student_graduation", "grad_decision_date"))
+
+class FinanceRes(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    
+    bank_account: Optional[str] = Field(None, validation_alias=AliasPath("student_finance", "bank_account"))
+    bank_name: Optional[str] = Field(None, validation_alias=AliasPath("student_finance", "bank_name"))
+    bknet_account: Optional[str] = Field(None, validation_alias=AliasPath("student_finance", "bknet_account"))
+    ocb_cif: Optional[str] = Field(None, validation_alias=AliasPath("student_finance", "ocb_cif"))
 
 class AddressRes(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -138,11 +164,16 @@ class ProfileResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     
     # Exclude raw fields from JSON output
+    user: Optional[Any] = Field(None, exclude=True)
     general_information: Optional[Any] = Field(None, exclude=True)
     student_personal: Optional[Any] = Field(None, exclude=True)
     student_academic: Optional[Any] = Field(None, exclude=True)
+    student_finance: Optional[Any] = Field(None, exclude=True)
     student_parent: Optional[Any] = Field(None, exclude=True)
     student_guardian: Optional[Any] = Field(None, exclude=True)
+    student_program: Optional[Any] = Field(None, exclude=True)
+    student_timeline: Optional[Any] = Field(None, exclude=True)
+    student_graduation: Optional[Any] = Field(None, exclude=True)
     addresses: List[Any] = Field(default=[], exclude=True)
     
     updated_at: Optional[datetime] = Field(None, exclude=True)
@@ -161,6 +192,10 @@ class ProfileResponse(BaseModel):
         return AcademicRes.model_validate(self)
 
     @computed_field
+    def finance(self) -> FinanceRes:
+        return FinanceRes.model_validate(self)
+
+    @computed_field
     def permanent_address(self) -> AddressRes:
         perm = next((a for a in self.addresses if a.address_type == "PERMANENT"), None)
         return AddressRes.model_validate(perm) if perm else AddressRes()
@@ -171,6 +206,19 @@ class ProfileResponse(BaseModel):
         gen = self.general_information
         pers = self.student_personal
         
+        # Source of truth for student email is the login account (User table)
+        s_email = self.user.email if hasattr(self, 'user') and self.user else None
+        
+        # Personal email from general information
+        p_email = gen.personal_email if gen else None
+        
+        # HEURISTIC FIX: If the 'personal_email' in DB is actually the student email 
+        # (contains @hcmut.edu.vn or matches login email), we treat it as "wrongly placed" 
+        # and don't show it in the personal slot.
+        if p_email and s_email:
+            if p_email.strip().lower() == s_email.strip().lower() or "@hcmut.edu.vn" in p_email.lower():
+                p_email = None
+
         return ContactRes(
             current_province_id=curr.province_id if curr else None,
             current_ward_id=curr.ward_id if curr else None,
@@ -179,11 +227,11 @@ class ProfileResponse(BaseModel):
             current_house_number=curr.detail if curr else None,
             
             phone=gen.phone if gen else None,
-            personal_email=gen.personal_email if gen else None,
+            personal_email=p_email,
             
             family_phone=pers.family_phone if pers else None,
             dorm_room=pers.dorm_room if pers else None,
-            student_email=pers.student_email if pers else None
+            student_email=s_email
         )
 
     @computed_field
