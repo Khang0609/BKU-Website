@@ -2,7 +2,7 @@ import React from "react";
 import { useProfileData } from "@/app/(student)/_hooks/profile/record/useProfileData";
 import { useProfileEdit } from "@/app/(student)/_hooks/profile/record/useProfileEdit";
 
-export const useRecord = () => {
+export const useRecord = (initialData: any = { profile: null, catalogs: null }) => {
   const {
     // State
     profile,
@@ -17,7 +17,7 @@ export const useRecord = () => {
     // Functions
     fetchInitialData,
     fetchWards,
-  } = useProfileData();
+  } = useProfileData(initialData);
 
   const {
     formData,

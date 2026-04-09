@@ -1,3 +1,3 @@
-export * from "./LoginForm";
-export * from "./LoginHeader";
-export * from "./LoginFooter";
+export * from "./header/LoginHeader";
+export * from "./form/LoginForm";
+export * from "./footer/LoginFooter";

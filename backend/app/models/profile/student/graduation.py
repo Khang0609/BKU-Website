@@ -12,11 +12,11 @@ class StudentGraduation(Base):
     __tablename__ = "student_graduations"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
-    identity_id: Mapped[int] = mapped_column(ForeignKey("identities.id"), unique=True, nullable=False)
+    anchor_id: Mapped[int] = mapped_column(ForeignKey("student_role_anchors.identity_id"), unique=True, nullable=False)
     
     grad_major: Mapped[Optional[str]] = mapped_column(String(150), nullable=True)
     grad_year_semester: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     grad_decision_number: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     grad_decision_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
 
-    identity: Mapped["Identity"] = relationship("Identity", back_populates="student_graduation")
+    anchor: Mapped["StudentRoleAnchor"] = relationship("StudentRoleAnchor", back_populates="student_graduation")

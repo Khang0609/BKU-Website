@@ -11,6 +11,7 @@ from app.models.profile.student.program import StudentProgram
 from app.models.profile.student.timeline import StudentTimeline
 from app.models.profile.student.finance import StudentFinance
 from app.models.profile.student.graduation import StudentGraduation
+from app.models.profile.student.anchor import StudentRoleAnchor
 
 __all__ = [
     "StudentAcademic",
@@ -24,5 +25,7 @@ __all__ = [
     "StudentTimeline",
     "StudentFinance",
     "StudentGraduation",
+    "StudentRoleAnchor",
 ]
+
 

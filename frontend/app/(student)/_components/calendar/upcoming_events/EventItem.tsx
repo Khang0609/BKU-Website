@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { MotionDiv } from "@components/ui/motion";
 import { Clock, MapPin, BookOpen } from "lucide-react";
 import { CalendarEvent, EventType } from "@/app/(student)/_types/calendar";
 import { useCalendar } from "@/app/(student)/_hooks/calendar/calendar";
@@ -12,7 +12,7 @@ export const EventItem = ({ event, index }: EventItemProps) => {
   const { getEventTypeColor } = useCalendar();
 
   return (
-    <motion.div
+    <MotionDiv
       key={event.id}
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
@@ -56,6 +56,6 @@ export const EventItem = ({ event, index }: EventItemProps) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </MotionDiv>
   );
 };

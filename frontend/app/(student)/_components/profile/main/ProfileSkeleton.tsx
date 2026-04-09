@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Skeleton } from "@/components/ui/Skeleton";
+import { Skeleton } from "@/components/ui/visuals/Skeleton";
 import { containerAnimation, itemAnimation } from "@/configs/animation.config";
 
 export const ProfileSkeleton = () => {

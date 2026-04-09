@@ -12,7 +12,7 @@ class StudentTimeline(Base):
     __tablename__ = "student_timelines"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
-    identity_id: Mapped[int] = mapped_column(ForeignKey("identities.id"), unique=True, nullable=False)
+    anchor_id: Mapped[int] = mapped_column(ForeignKey("student_role_anchors.identity_id"), unique=True, nullable=False)
     
     enrollment_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
     curriculum_year: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
@@ -25,4 +25,4 @@ class StudentTimeline(Base):
     expected_graduation_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
     max_graduation_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
 
-    identity: Mapped["Identity"] = relationship("Identity", back_populates="student_timeline")
+    anchor: Mapped["StudentRoleAnchor"] = relationship("StudentRoleAnchor", back_populates="student_timeline")

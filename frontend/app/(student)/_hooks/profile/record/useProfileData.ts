@@ -2,21 +2,38 @@ import { useState, useEffect, useCallback } from "react";
 import { Catalog, ProfileData } from "@/app/(student)/_types/profile/record";
 import client from "@/lib/client";
 
-export const useProfileData = () => {
+export const useProfileData = (initialData: { profile: ProfileData | null; catalogs: any } = { profile: null, catalogs: null }) => {
   // #region Data State
-  const [profile, setProfile] = useState<ProfileData | null>(null);
-  const [catalogs, setCatalogs] = useState<Catalog>({
-    provinces: [],
-    countries: [],
-    ethnics: [],
-    religions: [],
-    wards: {},
+  const [profile, setProfile] = useState<ProfileData | null>(initialData.profile);
+  const [catalogs, setCatalogs] = useState<Catalog>(() => {
+    if (initialData.catalogs) {
+      return {
+        provinces: initialData.catalogs.provinces.map((p: any) => ({ value: p.id, label: p.name })),
+        countries: initialData.catalogs.countries.map((c: any) => ({ value: c.id, label: c.name })),
+        ethnics: initialData.catalogs.ethnics.map((e: any) => ({ value: e.id, label: e.name_vi || e.name_en || e.label || "Unknown" })),
+        religions: initialData.catalogs.religions.map((r: any) => ({ value: r.id, label: r.name_vi || r.name_en || r.label || "Unknown" })),
+        wards: {},
+      };
+    }
+    return {
+      provinces: [],
+      countries: [],
+      ethnics: [],
+      religions: [],
+      wards: {},
+    };
   });
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!initialData.profile);
   const [familyTab, setFamilyTab] = useState<"parents" | "guardian">("parents");
   // #endregion
 
   const fetchInitialData = useCallback(async () => {
+    if (profile && Object.keys(catalogs.provinces).length > 0) {
+        // Data already present from server, but we might want to fetch wards or refresh
+        // For now, let's just finish loading if it wasn't
+        setIsLoading(false);
+        return;
+    }
     try {
       const [profRes, provRes, countRes, ethRes, relRes] = await Promise.all([
         client.get("/profile/student/me"),
@@ -25,6 +42,7 @@ export const useProfileData = () => {
         client.get("/location/ethnics"),
         client.get("/location/religions"),
       ]);
+// ... rest of the fetchInitialData logic remains similar but tớ sẽ để skip nếu đã có data ...
 
       const pData = profRes.data;
       const provData = provRes.data;

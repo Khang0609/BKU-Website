@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, useContext } from "react";
 import { useProfileMain } from "@/app/(student)/_hooks/profile/main/useProfileMain";
 
@@ -11,11 +13,13 @@ const ProfileMainContext = createContext<ProfileMainContextType | null>(null);
 // 2. Create the Provider component
 export const ProfileMainProvider = ({
   children,
+  initialData = null,
 }: {
   children: React.ReactNode;
+  initialData?: any;
 }) => {
   // Use the hook to get all the data and logic
-  const profileData = useProfileMain();
+  const profileData = useProfileMain(initialData);
 
   return (
     <ProfileMainContext.Provider value={profileData}>

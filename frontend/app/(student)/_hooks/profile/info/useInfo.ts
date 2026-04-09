@@ -1,7 +1,8 @@
 import { useProfileShow } from "@/app/(student)/_hooks/profile/info/useProfileShow";
 import { useInfoLayout } from "@/app/(student)/_hooks/profile/info/useInfoLayout";
+import { StudentProfile } from "@/app/(student)/_types/profile";
 
-export const useInfo = () => {
+export const useInfo = (initialData: StudentProfile | null = null) => {
   const {
     profile,
     setProfile,
@@ -13,7 +14,7 @@ export const useInfo = () => {
     val,
     formatDate,
     fullName,
-  } = useProfileShow();
+  } = useProfileShow(initialData);
   const {
     cardExpanded,
     setCardExpanded,

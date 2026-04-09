@@ -48,3 +48,12 @@ class PriorityArea(str, enum.Enum):
     KV2 = "KV2"
     KV2_NT = "KV2_NT"
     KV3 = "KV3"
+
+class RequestStatus(str, enum.Enum):
+    PENDING = "PENDING"
+    APPROVED = "APPROVED"
+    REJECTED = "REJECTED"
+
+class RequestType(str, enum.Enum):
+    HEALTH_INSURANCE = "HEALTH_INSURANCE"
+    GENERAL_INFORMATION = "GENERAL_INFORMATION"

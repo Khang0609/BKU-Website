@@ -8,7 +8,7 @@ from app.models.base import Base
 from app.constants import Gender, PriorityGroup, PriorityArea # Using existing global constant
 
 if TYPE_CHECKING:
-    from app.models.auth import Identity
+    from app.models.profile.student.anchor import StudentRoleAnchor
     from app.models.religion import Religion
     from app.models.ethnic import Ethnic
 
@@ -16,7 +16,7 @@ class StudentPersonal(Base):
     __tablename__ = "student_personals"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
-    identity_id: Mapped[int] = mapped_column(ForeignKey("identities.id"), nullable=False, unique=True)
+    anchor_id: Mapped[int] = mapped_column(ForeignKey("student_role_anchors.identity_id"), nullable=False, unique=True)
 
     # Contact Info
 
@@ -35,7 +35,7 @@ class StudentPersonal(Base):
     youth_union_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True) # Ngày vào Hội thanh niên
 
     # Relationships
-    identity: Mapped["Identity"] = relationship("Identity", back_populates="student_personal")
+    anchor: Mapped["StudentRoleAnchor"] = relationship("StudentRoleAnchor", back_populates="student_personal")
 
 
     # Other

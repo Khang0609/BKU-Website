@@ -21,11 +21,11 @@ class PersonalRes(BaseModel):
     religion_id: Optional[int] = Field(None, validation_alias=AliasPath("general_information", "religion_id"))
     ethnic_id: Optional[int] = Field(None, validation_alias=AliasPath("general_information", "ethnic_id"))
     
-    priority_area: Optional[Any] = Field(None, validation_alias=AliasPath("student_personal", "priority_area"))
-    priority_group: Optional[Any] = Field(None, validation_alias=AliasPath("student_personal", "priority_group"))
+    priority_area: Optional[Any] = Field(None, validation_alias=AliasPath("student_anchor", "student_personal", "priority_area"))
+    priority_group: Optional[Any] = Field(None, validation_alias=AliasPath("student_anchor", "student_personal", "priority_group"))
     
-    union_date: Optional[date] = Field(None, validation_alias=AliasPath("student_personal", "union_date"))
-    party_date: Optional[date] = Field(None, validation_alias=AliasPath("student_personal", "party_date"))
+    union_date: Optional[date] = Field(None, validation_alias=AliasPath("student_anchor", "student_personal", "union_date"))
+    party_date: Optional[date] = Field(None, validation_alias=AliasPath("student_anchor", "student_personal", "party_date"))
 
     @model_validator(mode='after')
     def extract_enum_values(self):
@@ -41,46 +41,46 @@ class PersonalRes(BaseModel):
 class AcademicRes(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     
-    student_id: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "student_code"))
-    class_code: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "class_code"))
-    major: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "major", "name"))
-    faculty: Optional[str] = Field(None, validation_alias=AliasPath("student_academic", "major", "faculty", "name"))
+    student_id: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_code")) # Source of truth is now Anchor
+    class_code: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_academic", "class_code"))
+    major: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "major", "name"))
+    faculty: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "major", "faculty", "name"))
     
     # Timeline fields
-    enrollment_date: Optional[date] = Field(None, validation_alias=AliasPath("student_timeline", "enrollment_date"))
-    curriculum_year: Optional[int] = Field(None, validation_alias=AliasPath("student_timeline", "curriculum_year"))
-    entry_semester: Optional[str] = Field(None, validation_alias=AliasPath("student_timeline", "entry_semester"))
-    study_duration_standard: Optional[str] = Field(None, validation_alias=AliasPath("student_timeline", "study_duration_standard"))
-    extended_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_timeline", "extended_semesters"))
-    reduced_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_timeline", "reduced_semesters"))
-    standard_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_timeline", "standard_semesters"))
-    max_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_timeline", "max_semesters"))
-    expected_graduation_date: Optional[date] = Field(None, validation_alias=AliasPath("student_timeline", "expected_graduation_date"))
-    max_graduation_date: Optional[date] = Field(None, validation_alias=AliasPath("student_timeline", "max_graduation_date"))
+    enrollment_date: Optional[date] = Field(None, validation_alias=AliasPath("student_anchor", "student_timeline", "enrollment_date"))
+    curriculum_year: Optional[int] = Field(None, validation_alias=AliasPath("student_anchor", "student_timeline", "curriculum_year"))
+    entry_semester: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_timeline", "entry_semester"))
+    study_duration_standard: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_timeline", "study_duration_standard"))
+    extended_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_anchor", "student_timeline", "extended_semesters"))
+    reduced_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_anchor", "student_timeline", "reduced_semesters"))
+    standard_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_anchor", "student_timeline", "standard_semesters"))
+    max_semesters: Optional[int] = Field(None, validation_alias=AliasPath("student_anchor", "student_timeline", "max_semesters"))
+    expected_graduation_date: Optional[date] = Field(None, validation_alias=AliasPath("student_anchor", "student_timeline", "expected_graduation_date"))
+    max_graduation_date: Optional[date] = Field(None, validation_alias=AliasPath("student_anchor", "student_timeline", "max_graduation_date"))
     
     # Program fields
-    student_status: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "student_status"))
-    education_level: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "education_level"))
-    training_system: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "training_system"))
-    training_type: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "training_type"))
-    program: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "program"))
-    campus: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "campus"))
-    local_training: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "local_training"))
-    training_session: Optional[str] = Field(None, validation_alias=AliasPath("student_program", "training_session"))
+    student_status: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_status")) # Prioritize Anchor's status
+    education_level: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_program", "education_level"))
+    training_system: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_program", "training_system"))
+    training_type: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_program", "training_type"))
+    program: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_program", "program"))
+    campus: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_program", "campus"))
+    local_training: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_program", "local_training"))
+    training_session: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_program", "training_session"))
     
     # Graduation fields
-    grad_major: Optional[str] = Field(None, validation_alias=AliasPath("student_graduation", "grad_major"))
-    grad_year_semester: Optional[str] = Field(None, validation_alias=AliasPath("student_graduation", "grad_year_semester"))
-    grad_decision_number: Optional[str] = Field(None, validation_alias=AliasPath("student_graduation", "grad_decision_number"))
-    grad_decision_date: Optional[date] = Field(None, validation_alias=AliasPath("student_graduation", "grad_decision_date"))
+    grad_major: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_graduation", "grad_major"))
+    grad_year_semester: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_graduation", "grad_year_semester"))
+    grad_decision_number: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_graduation", "grad_decision_number"))
+    grad_decision_date: Optional[date] = Field(None, validation_alias=AliasPath("student_anchor", "student_graduation", "grad_decision_date"))
 
 class FinanceRes(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     
-    bank_account: Optional[str] = Field(None, validation_alias=AliasPath("student_finance", "bank_account"))
-    bank_name: Optional[str] = Field(None, validation_alias=AliasPath("student_finance", "bank_name"))
-    bknet_account: Optional[str] = Field(None, validation_alias=AliasPath("student_finance", "bknet_account"))
-    ocb_cif: Optional[str] = Field(None, validation_alias=AliasPath("student_finance", "ocb_cif"))
+    bank_account: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_finance", "bank_account"))
+    bank_name: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_finance", "bank_name"))
+    bknet_account: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_finance", "bknet_account"))
+    ocb_cif: Optional[str] = Field(None, validation_alias=AliasPath("student_anchor", "student_finance", "ocb_cif"))
 
 class AddressRes(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -155,7 +155,7 @@ class FamilyRes(BaseModel):
 
 class OtherRes(BaseModel):
     model_config = ConfigDict(from_attributes=True)
-    social_media: Optional[Dict[str, str]] = Field(None, validation_alias=AliasPath("student_personal", "social_media"))
+    social_media: Optional[Dict[str, str]] = Field(None, validation_alias=AliasPath("student_anchor", "student_personal", "social_media"))
     photo_record_note: Optional[str] = None
 
 # --- Main Profile Response ---
@@ -169,8 +169,12 @@ class ProfileResponse(BaseModel):
     student_personal: Optional[Any] = Field(None, exclude=True)
     student_academic: Optional[Any] = Field(None, exclude=True)
     student_finance: Optional[Any] = Field(None, exclude=True)
+    student_anchor: Optional[Any] = Field(None, exclude=True)
+
     student_parent: Optional[Any] = Field(None, exclude=True)
     student_guardian: Optional[Any] = Field(None, exclude=True)
+    
+    # The following are now nested under student_anchor
     student_program: Optional[Any] = Field(None, exclude=True)
     student_timeline: Optional[Any] = Field(None, exclude=True)
     student_graduation: Optional[Any] = Field(None, exclude=True)
@@ -204,7 +208,7 @@ class ProfileResponse(BaseModel):
     def contact(self) -> ContactRes:
         curr = next((a for a in self.addresses if a.address_type == "CURRENT"), None)
         gen = self.general_information
-        pers = self.student_personal
+        pers = self.student_anchor.student_personal if self.student_anchor else None
         
         # Source of truth for student email is the login account (User table)
         s_email = self.user.email if hasattr(self, 'user') and self.user else None
@@ -236,8 +240,9 @@ class ProfileResponse(BaseModel):
 
     @computed_field
     def family(self) -> FamilyRes:
-        p = self.student_parent
-        g = self.student_guardian
+        anchor = self.student_anchor
+        p = anchor.student_parent if anchor else None
+        g = anchor.student_guardian if anchor else None
         
         # Guardian Address must be found from addresses
         gua_addr = next((a for a in self.addresses if a.address_type == "GUARDIAN"), None)

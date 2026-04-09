@@ -30,9 +30,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     // Sync state with Cookie on mount
     const storedRole = Cookies.get("role") as UserRole;
+    const storedToken = Cookies.get("token");
+    const localToken = localStorage.getItem("token");
+
     if (storedRole) {
       setRole(storedRole);
     }
+    
+    // If token is in localStorage but not in Cookie, sync it (for Server Components)
+    if (localToken && !storedToken) {
+        Cookies.set("token", localToken, { secure: true, sameSite: "strict" });
+    }
+
     setIsLoading(false);
   }, []);
 
@@ -40,6 +49,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setRole(newRole);
     // Secure cookie is already set by page or backend, but we ensure consistency here
     Cookies.set("role", newRole, { secure: true, sameSite: "strict" });
+    Cookies.set("token", token, { secure: true, sameSite: "strict" });
 
     // Store token in localStorage as expected by other components
     localStorage.setItem("token", token);
@@ -56,6 +66,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = () => {
     setRole(null);
     Cookies.remove("role");
+    Cookies.remove("token");
     localStorage.removeItem("token");
     // Also call backend logout if needed to clear HttpOnly cookie
     router.push("/");

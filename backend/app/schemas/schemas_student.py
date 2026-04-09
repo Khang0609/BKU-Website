@@ -1,6 +1,6 @@
 from typing import Optional, Dict
 from pydantic import BaseModel, Field, ConfigDict
-from datetime import date
+from datetime import date, datetime
 from app.constants import PriorityGroup, PriorityArea
 from app.models.adminstrative.decision import DecisionType
 from app.models.adminstrative.extra_curricular import ExtraCurricularState
@@ -92,3 +92,30 @@ class ExtraCurricularRes(BaseModel):
     state: ExtraCurricularState
     social_work_days_exchange: int
     is_verified: bool
+
+class ScholarshipRes(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    semester: Optional[str] = None
+    gpa_4: Optional[float] = None
+    gpa_10: Optional[float] = None
+    cpa_4: Optional[float] = None
+    cpa_10: Optional[float] = None
+    credits_earned: Optional[int] = None
+    cumulative_credits: Optional[int] = None
+    training_point: Optional[int] = None
+    eligible: Optional[str] = "Đạt" # Default or logic based
+    scholarship_level: Optional[str] = None
+    amount: Optional[float] = None
+    result: Optional[str] = None
+    created_at: Optional[datetime] = None
+    created_by: Optional[str] = None
+    updated_at: Optional[datetime] = None
+    updated_by: Optional[str] = None
+
+class HealthInsuranceRes(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    medical_book_number: Optional[str] = None
+    health_insurance_number: Optional[str] = None
+    accident_insurance_number: Optional[str] = None

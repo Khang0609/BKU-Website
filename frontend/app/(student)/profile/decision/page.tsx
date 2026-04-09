@@ -1,48 +1,12 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import { WebHeaderTitle } from "@/app/(student)/_components/profile/shared/StudentHeaderTitle";
-import { useDecision } from "@/hooks/useDecision";
-import { DataTable } from "@/components/common";
-import { DecisionProps, DecisionType } from "@/types/decision";
-import { ColumnDef } from "@/types/components_type/data_table";
-import { useToast } from "@/hooks/useToast";
+import { getDecisionsServer } from "@/services/decision.service";
+import { DecisionPageContent } from "./DecisionPageContent";
+import { DecisionProvider } from "@/app/(student)/_context/DecisionContext";
 
-const DecisionInner = () => {
-  const { decisions, isLoading, error } = useDecision();
-
-  const columns: ColumnDef<DecisionProps>[] = [
-    { key: "semester", label: "Semester", sortable: true },
-    { key: "decision_number", label: "Decision Number", sortable: true },
-    { key: "decision_content", label: "Content", sortable: true },
-    {
-      key: "decision_type",
-      label: "Type",
-      sortable: true,
-      render: (value) => (
-        <span
-          className={`rounded-full px-2 py-1 text-xs font-medium ${
-            value === DecisionType.IN
-              ? "bg-green-100 text-green-800"
-              : "bg-blue-100 text-blue-800"
-          }`}
-        >
-          {value === DecisionType.IN ? "Quyết định vào" : "Quyết định khác"}
-        </span>
-      ),
-    },
-    { key: "signed_date", label: "Signed Date", sortable: true },
-    { key: "decision_reason", label: "Reason" },
-    { key: "note", label: "Note" },
-  ];
-
-  const { showToast } = useToast();
-
-  useEffect(() => {
-    if (error) {
-      showToast(error, "error");
-    }
-  }, [error, showToast]);
+export default async function DecisionPage() {
+  // Fetch dữ liệu ngay tại Server!
+  const decisions = await getDecisionsServer();
 
   return (
     <div className="min-h-full space-y-8 bg-slate-50/50 p-6 pb-32">
@@ -51,20 +15,10 @@ const DecisionInner = () => {
         description="View your decisions and status"
       />
 
-      <DataTable
-        columns={columns}
-        data={decisions}
-        isLoading={isLoading}
-        className="rounded-lg bg-white shadow-md"
-      />
-    </div>
-  );
-};
-
-export default function Decision() {
-  return (
-    <div>
-      <DecisionInner />
+      {/* Bọc Provider để truyền data xuống các hook/component con */}
+      <DecisionProvider initialData={decisions}>
+        <DecisionPageContent />
+      </DecisionProvider>
     </div>
   );
 }

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { Listbox, Transition } from "@headlessui/react";
 import degreeExampleImage from "@/assets/bang_thpt.png";
-import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
+import { ImageWithFallback } from "@/components/ui";
 
 interface DegreeRecord {
   id: number;

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CourseCard } from "@/components/common";
+import { CourseCard } from "@/components/data-display";
 import { CourseSectionProps } from "@/app/(student)/_types/course";
 
 export const CourseSection = ({ title, courses }: CourseSectionProps) => {

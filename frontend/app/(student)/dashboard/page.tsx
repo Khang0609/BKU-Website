@@ -1,10 +1,6 @@
-"use client";
-
-import { DashboardTitle } from "@/components/common";
+import { DashboardTitle, ComingSoonSection, StatisticsCard } from "@components/dashboard";
 import { QuickAccess } from "@/app/(student)/_components/dashboard/QuickAccess";
 import { RecentStudentService } from "@/app/(student)/_components/dashboard/RecentStudentService";
-import { ComingSoonSection } from "@/app/(student)/_components/dashboard/ComingSoonSection";
-import { StatisticsCard } from "@/app/(student)/_components/dashboard/StatisticsCard";
 
 export default function DashboardPage() {
   return (

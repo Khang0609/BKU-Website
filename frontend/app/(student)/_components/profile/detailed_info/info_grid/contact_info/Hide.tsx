@@ -4,10 +4,10 @@ import { GridItem } from "@/app/(student)/_components/profile/detailed_info/comm
 import { useProfileContext } from "@/app/(student)/_context/ProfileContext";
 
 const Hide = () => {
-  const { expandedSections, profile, val } = useProfileContext();
+  const { cardExpanded, profile, val } = useProfileContext();
   return (
     <AnimatePresence>
-      {expandedSections.contact && (
+      {cardExpanded.contact && (
         <motion.div
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}
@@ -21,8 +21,18 @@ const Hide = () => {
               subtle
             />
             <GridItem
+              label="Family Phone"
+              value={val(profile?.contact.family_phone)}
+              subtle
+            />
+            <GridItem
+              label="Dorm Room"
+              value={val(profile?.contact.dorm_room)}
+              subtle
+            />
+            <GridItem
               label="Permanent Address"
-              value={val(profile?.contact.address_permanent)}
+              value={val(profile?.permanent_address.permanent_full_address)}
               subtle
               className="md:col-span-2"
             />

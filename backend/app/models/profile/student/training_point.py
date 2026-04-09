@@ -6,13 +6,13 @@ from sqlalchemy.sql import func
 from app.models.base import Base
 
 if TYPE_CHECKING:
-    from app.models.auth import Identity
+    from app.models.profile.student.anchor import StudentRoleAnchor
 
 class StudentTrainingPoint(Base):
     __tablename__ = "student_training_points"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
-    identity_id: Mapped[int] = mapped_column(ForeignKey("identities.id"), nullable=False)
+    anchor_id: Mapped[int] = mapped_column(ForeignKey("student_role_anchors.identity_id"), nullable=False)
     
     semester: Mapped[str] = mapped_column(String, nullable=False)
     points: Mapped[int] = mapped_column(Integer, nullable=False)
@@ -20,4 +20,4 @@ class StudentTrainingPoint(Base):
     updated_at: Mapped[str] = mapped_column(String, nullable=False) # Following the pattern of decision.py where dates are strings
 
     # Relationships
-    identity: Mapped["Identity"] = relationship("Identity", back_populates="student_training_points")
+    anchor: Mapped["StudentRoleAnchor"] = relationship("StudentRoleAnchor", back_populates="student_training_points")

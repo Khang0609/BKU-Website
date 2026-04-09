@@ -30,3 +30,9 @@ class ManagementUnit(Base):
     phone_number = Column(String(20), nullable=True)
     email = Column(String(100), nullable=True)
     website = Column(String(100), nullable=True)
+
+class AcademicBatch(Base):
+    __tablename__ = "academics_batch"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    batch_name: Mapped[str] = mapped_column(String(50), unique=True, nullable=False) # Ví dụ: K2022, K2023
+    admission_year: Mapped[int] = mapped_column(Integer, nullable=False) # Năm nhập học thực tế

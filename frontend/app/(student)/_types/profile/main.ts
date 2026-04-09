@@ -8,7 +8,7 @@ export interface StudentDashboardData {
   major: string;
   class_code: string;
   entry_semester: string;
-  status: string;
+  student_status: string;
 }
 
 export interface ClusterItem {

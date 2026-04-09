@@ -16,6 +16,8 @@ from app.models.profile.student.extra_curricular import StudentExtraCurricular
 from app.models.profile.student.program import StudentProgram
 from app.models.profile.student.timeline import StudentTimeline
 from app.models.profile.student.graduation import StudentGraduation
+from app.models.profile.shared.health_insurance import HealthInsurance
+from app.models.profile.student.anchor import StudentRoleAnchor
 from app.models.profile.student.extra_curricular import StudentExtraCurricular
 from app.models.adminstrative.decision import Decision
 from app.models.adminstrative.extra_curricular import ExtraCurricular
@@ -24,7 +26,10 @@ from app.models.adminstrative.academic import Major, Faculty
 from app.routes.auth import get_current_active_user
 from app.service.ochestrators.crud.readers import generic_get
 from app.schemas.schemas_profile import ProfileResponse
-from app.schemas.schemas_student import StudentDecisionRes, TrainingPointRes, ExtraCurricularRes
+from app.schemas.schemas_student import StudentDecisionRes, TrainingPointRes, ExtraCurricularRes, ScholarshipRes, HealthInsuranceRes
+from app.models.academic_performance import ScholarshipRecipient, ScholarshipStatus
+from app.models.adminstrative.scholarship import Scholarship
+from app.models.adminstrative.semester import Semester
 
 router = APIRouter()
 
@@ -50,28 +55,33 @@ async def read_student_me(
         options=[
             joinedload(Identity.user),
             joinedload(Identity.general_information),
-            joinedload(Identity.student_personal),
-            joinedload(Identity.student_finance),
-            # Nested relations for Academic -> Major -> Faculty
-            joinedload(Identity.student_academic).joinedload(StudentAcademic.major).joinedload(Major.faculty),
-            joinedload(Identity.student_program),
-            joinedload(Identity.student_timeline),
-            joinedload(Identity.student_graduation),
+            # Anchor-based modular relations (Nested Hub)
+            joinedload(Identity.student_anchor).joinedload(StudentRoleAnchor.student_personal),
+            joinedload(Identity.student_anchor).joinedload(StudentRoleAnchor.student_academic),
+            joinedload(Identity.student_anchor).joinedload(StudentRoleAnchor.major).joinedload(Major.faculty),
+            joinedload(Identity.student_anchor).joinedload(StudentRoleAnchor.student_finance),
+            joinedload(Identity.student_anchor).joinedload(StudentRoleAnchor.student_program),
+            joinedload(Identity.student_anchor).joinedload(StudentRoleAnchor.student_timeline),
+            joinedload(Identity.student_anchor).joinedload(StudentRoleAnchor.student_graduation),
+            joinedload(Identity.student_anchor).joinedload(StudentRoleAnchor.student_parent),
+            joinedload(Identity.student_anchor).joinedload(StudentRoleAnchor.student_guardian),
+
             # Addresses
             joinedload(Identity.addresses).joinedload(Address.province),
             joinedload(Identity.addresses).joinedload(Address.ward),
-            # Family
-            joinedload(Identity.student_parent),
-            joinedload(Identity.student_guardian)
         ],
+
         ensure_relations={
-            "student_personal": (StudentPersonal, {"identity_id": "id"}),
-            "student_finance": (StudentFinance, {"identity_id": "id"}),
-            "student_parent": (StudentParent, {"identity_id": "id"}),
-            "student_guardian": (StudentGuardian, {"identity_id": "id"}),
-            "student_program": (StudentProgram, {"identity_id": "id"}),
-            "student_timeline": (StudentTimeline, {"identity_id": "id"}),
-            "student_graduation": (StudentGraduation, {"identity_id": "id"}),
+            # Hydration for Anchor and its nested models
+            "student_anchor": (StudentRoleAnchor, {"identity_id": "id"}),
+            "student_anchor.student_personal": (StudentPersonal, {"anchor_id": "student_anchor.identity_id"}),
+            "student_anchor.student_academic": (StudentAcademic, {"anchor_id": "student_anchor.identity_id"}),
+            "student_anchor.student_finance": (StudentFinance, {"anchor_id": "student_anchor.identity_id"}),
+            "student_anchor.student_parent": (StudentParent, {"anchor_id": "student_anchor.identity_id"}),
+            "student_anchor.student_guardian": (StudentGuardian, {"anchor_id": "student_anchor.identity_id"}),
+            "student_anchor.student_program": (StudentProgram, {"anchor_id": "student_anchor.identity_id"}),
+            "student_anchor.student_timeline": (StudentTimeline, {"anchor_id": "student_anchor.identity_id"}),
+            "student_anchor.student_graduation": (StudentGraduation, {"anchor_id": "student_anchor.identity_id"}),
             # Note: general_information is assumed to exist for any valid user, 
             # and addresses are a list which generic_get's ensure_relations doesn't target (it targets 1-1/M-1 attrs).
         }
@@ -93,7 +103,7 @@ async def get_student_decisions(
         raise HTTPException(status_code=400, detail="Profile available for students only")
     
     identity = current_user.identity
-    student_decisions = db.query(StudentDecision).filter(StudentDecision.identity_id == identity.id).join(Decision).all()
+    student_decisions = db.query(StudentDecision).filter(StudentDecision.anchor_id == identity.id).join(Decision).all()
     
     results = []
     for sd in student_decisions:
@@ -121,7 +131,7 @@ async def get_student_training_points(
         raise HTTPException(status_code=400, detail="Profile available for students only")
     
     identity = current_user.identity
-    training_points = db.query(StudentTrainingPoint).filter(StudentTrainingPoint.identity_id == identity.id).all()
+    training_points = db.query(StudentTrainingPoint).filter(StudentTrainingPoint.anchor_id == identity.id).all()
     
     return [
         TrainingPointRes(
@@ -142,7 +152,7 @@ async def get_student_extra_curriculars(
         raise HTTPException(status_code=400, detail="Profile available for students only")
     
     identity = current_user.identity
-    student_ec_list = db.query(StudentExtraCurricular).filter(StudentExtraCurricular.identity_id == identity.id).join(ExtraCurricular).all()
+    student_ec_list = db.query(StudentExtraCurricular).filter(StudentExtraCurricular.anchor_id == identity.id).join(ExtraCurricular).all()
     
     results = []
     for sec in student_ec_list:
@@ -161,5 +171,63 @@ async def get_student_extra_curriculars(
         ))
         
     return results
+
+
+@router.get("/scholarship", response_model=List[ScholarshipRes])
+async def get_student_scholarships(
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db)
+):
+    if not current_user.identity or current_user.identity.role != UserRole.STUDENT:
+        raise HTTPException(status_code=400, detail="Profile available for students only")
+    
+    identity = current_user.identity
+    scholarship_recipients = (
+        db.query(ScholarshipRecipient)
+        .filter(ScholarshipRecipient.anchor_id == identity.id)
+        .join(Scholarship)
+        .all()
+    )
+    
+    results = []
+    for sr in scholarship_recipients:
+        results.append(ScholarshipRes(
+            id=sr.id,
+            semester=sr.semester_id,
+            gpa_4=sr.gpa_4,
+            gpa_10=sr.gpa_10,
+            cpa_4=sr.cpa_4,
+            cpa_10=sr.cpa_10,
+            credits_earned=sr.credits_earned,
+            cumulative_credits=sr.cumulative_credits,
+            training_point=sr.training_point,
+            eligible="Đạt" if sr.status == ScholarshipStatus.APPROVED else "Đang xét",
+            scholarship_level=sr.scholarship.name,
+            amount=sr.amount,
+            result=sr.result or ("Đạt" if sr.status == ScholarshipStatus.APPROVED else "Đang xét"),
+            created_at=sr.created_at,
+            created_by=sr.created_by,
+            updated_at=sr.updated_at,
+            updated_by=sr.updated_by
+        ))
+        
+    return results
+
+
+@router.get("/health_insurance", response_model=HealthInsuranceRes)
+async def get_student_health_insurance(
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db)
+):
+    if not current_user.identity or current_user.identity.role != UserRole.STUDENT:
+        raise HTTPException(status_code=400, detail="Profile available for students only")
+
+    identity = current_user.identity
+    insurance = db.query(HealthInsurance).filter(HealthInsurance.identity_id == identity.id).first()
+
+    if not insurance:
+        raise HTTPException(status_code=404, detail="Health insurance information not found")
+
+    return insurance
 
 

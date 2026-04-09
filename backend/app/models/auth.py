@@ -20,20 +20,16 @@ class Identity(Base):
     general_information = relationship("GeneralInformation", back_populates="identity", uselist=False)
 
     # Relationships linked to Student
-    student_academic = relationship("StudentAcademic", back_populates="identity", uselist=False)
-    student_personal = relationship("StudentPersonal", back_populates="identity", uselist=False)
-    student_finance = relationship("StudentFinance", back_populates="identity", uselist=False)
     addresses = relationship("Address", back_populates="identity")
 
-    student_parent = relationship("StudentParent", back_populates="identity", uselist=False)
-    student_guardian = relationship("StudentGuardian", back_populates="identity", uselist=False)
-    student_decisions = relationship("StudentDecision", back_populates="identity")
-    student_training_points = relationship("StudentTrainingPoint", back_populates="identity")
-    student_extra_curriculars = relationship("StudentExtraCurricular", back_populates="identity")
+    # New Role-specific Anchor (Hub for Student Role data)
+    student_anchor = relationship("StudentRoleAnchor", back_populates="identity", uselist=False, lazy="joined")
 
-    student_program = relationship("StudentProgram", back_populates="identity", uselist=False)
-    student_timeline = relationship("StudentTimeline", back_populates="identity", uselist=False)
-    student_graduation = relationship("StudentGraduation", back_populates="identity", uselist=False)
+    # Shared profile data
+    health_insurance = relationship("HealthInsurance", back_populates="identity", uselist=False)
+    
+    # Profile update requests
+    profile_requests = relationship("ProfileUpdateRequest", back_populates="identity", foreign_keys="[ProfileUpdateRequest.identity_id]")
 
 
 class User(Base):

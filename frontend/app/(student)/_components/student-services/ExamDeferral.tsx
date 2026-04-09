@@ -11,7 +11,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { Listbox, Transition } from "@headlessui/react";
-import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
+import { ImageWithFallback } from "@components/ui";
 
 interface Course {
   id: string;

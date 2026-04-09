@@ -32,9 +32,8 @@ async def update_personal(request: Request, data: PersonalUpdate, current_user: 
     
     update_data = data.model_dump(exclude_unset=True)
 
-    # Micro CPU: 2 Calls to handle everything (Fetch/Create -> Merge -> Commit)
     # generic_patch(db, GeneralInformation, {"identity_id": identity.id}, update_data)
-    generic_patch(db, StudentPersonal, {"identity_id": identity.id}, update_data)
+    generic_patch(db, StudentPersonal, {"anchor_id": identity.id}, update_data)
         
     return {"success": True}
 
@@ -49,7 +48,7 @@ async def update_family(request: Request, data: FamilyUpdate, current_user: User
     update_data = data.model_dump(exclude_unset=True)
     
     # 1. Update Parents (Direct keys)
-    generic_patch(db, StudentParent, {"identity_id": identity.id}, update_data)
+    generic_patch(db, StudentParent, {"anchor_id": identity.id}, update_data)
     
     # 2. Update Guardian & Guardian Address
     # Dispatch extracts "guardian_*" keys (e.g., "guardian_full_name" -> "full_name")
@@ -57,7 +56,7 @@ async def update_family(request: Request, data: FamilyUpdate, current_user: User
     guardian_payload = dispatch_by_prefix(update_data, "guardian")
     
     if guardian_payload:
-        generic_patch(db, StudentGuardian, {"identity_id": identity.id}, guardian_payload)
+        generic_patch(db, StudentGuardian, {"anchor_id": identity.id}, guardian_payload)
         generic_patch(db, Address, {"identity_id": identity.id, "address_type": AddressType.GUARDIAN}, guardian_payload)
 
     return {"success": True}
@@ -75,7 +74,7 @@ async def update_contact(request: Request, data: ContactUpdate, current_user: Us
     
     # 1. Direct Fields
     # generic_patch(db, GeneralInformation, {"identity_id": identity.id}, update_data)
-    generic_patch(db, StudentPersonal, {"identity_id": identity.id}, update_data)
+    generic_patch(db, StudentPersonal, {"anchor_id": identity.id}, update_data)
 
     # 2. Address Handling - Moved to Shared/General Update
     # Map prefix -> AddressType
@@ -100,5 +99,5 @@ async def update_extra(request: Request, data: ExtraUpdate, current_user: User =
     if not identity:
         raise HTTPException(404, "Identity not found")
     
-    generic_patch(db, StudentPersonal, {"identity_id": identity.id}, data.model_dump(exclude_unset=True))
+    generic_patch(db, StudentPersonal, {"anchor_id": identity.id}, data.model_dump(exclude_unset=True))
     return {"success": True}

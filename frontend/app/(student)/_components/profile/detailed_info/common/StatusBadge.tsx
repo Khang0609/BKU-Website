@@ -7,15 +7,17 @@ export const StatusBadge = ({ status }: { status: string }) => {
   const isStudying = status === "Đang học" || status === "Studying";
 
   return (
-    <div>
-      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-        STATUS
-      </span>
-      <div className="mt-1">
+    <div className="group flex flex-col gap-1">
+      <div className="flex items-center gap-2">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+          STATUS
+        </span>
+      </div>
+      <div>
         <Badge
           variant={isStudying ? "success" : "slate"}
           isLoading={isLoading}
-          className="text-32 px-4 font-bold"
+          className="px-4"
         >
           {status || "Unknown"}
         </Badge>

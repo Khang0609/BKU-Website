@@ -10,7 +10,7 @@ export const QuickStats = () => {
     <div className="grid grid-cols-2 gap-4">
       <div className="rounded-lg bg-slate-50 p-3">
         <p className="text-xs text-slate-500">Academic Status</p>
-        <p className="font-semibold text-green-600">{profile?.status}</p>
+        <p className="font-semibold text-green-600">{profile?.student_status}</p>
       </div>
       <div className="rounded-lg bg-slate-50 p-3">
         <p className="text-xs text-slate-500">Current Class</p>

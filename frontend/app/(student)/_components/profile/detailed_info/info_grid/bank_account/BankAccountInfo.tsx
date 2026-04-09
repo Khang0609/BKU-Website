@@ -11,16 +11,15 @@ export const BankAccountInfo = () => {
   const { val } = useProfileContext();
   return (
     <Accordion title="Bank Account" icon={<Briefcase size={20} />} id="bank">
-      <GridItem label="Bank Name" value={val(profile?.bank?.bank_name)} />
+      <GridItem label="Bank Name" value={val(profile?.finance?.bank_name)} />
       <GridItem
         label="Account Number"
-        value={val(profile?.bank?.bank_account)}
-        bold
+        value={val(profile?.finance?.bank_account)}
       />
-      <GridItem label="OCB CIF" value={val(profile?.bank?.ocb_cif)} />
+      <GridItem label="OCB CIF" value={val(profile?.finance?.ocb_cif)} />
       <GridItem
         label="BKNet Account"
-        value={val(profile?.bank?.bknet_account)}
+        value={val(profile?.finance?.bknet_account)}
       />
     </Accordion>
   );

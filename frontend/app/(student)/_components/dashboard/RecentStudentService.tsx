@@ -1,5 +1,7 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
-import { ServiceCarousel } from "@/components/common";
+import { ServiceCarousel } from "@/components/data-display/horizontal_carousel";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { recentServices } from "@/app/(student)/_types/dashboard";

@@ -1,4 +1,6 @@
-import { HorizontalCarousel } from "@/components/common";
+"use client";
+
+import { HorizontalCarousel } from "@components/data-display/horizontal_carousel";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { quickAccessItems } from "@/app/(student)/_types/dashboard";

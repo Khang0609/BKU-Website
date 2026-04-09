@@ -5,8 +5,14 @@ import { useRecord } from "@/app/(student)/_hooks/profile/record/useRecord"; // 
 const RecordContext = createContext<any>(null);
 
 // 2. Tạo "Router" bọc ngoài trang Info
-export const RecordProvider = ({ children }: { children: React.ReactNode }) => {
-  const pageCore = useRecord(); // Gọi API đúng 1 lần duy nhất tại đây
+export const RecordProvider = ({
+  children,
+  initialData = { profile: null, catalogs: null },
+}: {
+  children: React.ReactNode;
+  initialData?: any;
+}) => {
+  const pageCore = useRecord(initialData); // Gọi API đúng 1 lần duy nhất tại đây
 
   return (
     <RecordContext.Provider value={pageCore}>{children}</RecordContext.Provider>

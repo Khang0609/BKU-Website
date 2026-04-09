@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
-import { ClientLayout } from "@/components/common";
+import { ClientLayout } from "@/components/layout";
 import { Toaster } from "sonner";
+import { ToastProvider } from "@/hooks/useToast";
 
 const inter = Inter({ subsets: ["latin"] });
-import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: {
@@ -62,7 +63,6 @@ export const metadata: Metadata = {
   },
 };
 
-import { ToastProvider } from "@/hooks/useToast";
 
 export default async function RootLayout({
   children,
