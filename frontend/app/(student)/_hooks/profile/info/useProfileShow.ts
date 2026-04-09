@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import { StudentProfile } from "@/app/(student)/_types/profile";
-import client from "@/lib/client";
+import client from "@lib/client";
 
-export const useProfileShow = () => {
-  const [profile, setProfile] = useState<StudentProfile | null>(null);
-  const [isLoading, setLoading] = useState(true);
+export const useProfileShow = (initialData: StudentProfile | null = null) => {
+  const [profile, setProfile] = useState<StudentProfile | null>(initialData);
+  const [isLoading, setLoading] = useState(!initialData);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchProfile();
-  }, []);
+    if (!profile) {
+      fetchProfile();
+    }
+  }, [profile]);
 
   const fetchProfile = async () => {
     try {
+      setLoading(true);
       const res = await client.get("/profile/student/me");
       const data = res.data;
       setProfile(data);

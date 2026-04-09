@@ -9,19 +9,17 @@ const Show = () => {
     <div className="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-2">
       <GridItem
         label="University Email"
-        value={val(profile?.contact.email)}
+        value={val(profile?.contact.student_email)}
         icon={<Mail size={14} />}
-        bold
       />
       <GridItem
         label="Phone Number"
         value={val(profile?.contact.phone)}
         icon={<Phone size={14} />}
-        bold
       />
       <GridItem
         label="Current Address"
-        value={val(profile?.contact.address_current)}
+        value={val(profile?.contact.current_full_address)}
         icon={<MapPin size={14} />}
         className="md:col-span-2"
       />

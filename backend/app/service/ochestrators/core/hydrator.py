@@ -25,7 +25,6 @@ def hydrate(
         Tuple[T, bool]: A tuple containing the model instance and a boolean flag (is_new).
                         is_new is True if the instance was created, False if fetched.
     """
-    # Try to fetch the existing record
     instance = db.query(model).filter_by(**filter_criteria).first()
 
     if instance:

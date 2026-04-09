@@ -1,4 +1,5 @@
 from .shared import GeneralInformation, Address
-from .student import StudentAcademic, StudentPersonal, StudentParent, StudentGuardian, StudentDecision
+from .student import StudentRoleAnchor, StudentAcademic, StudentPersonal, StudentParent, StudentGuardian, StudentDecision
+from .request import ProfileUpdateRequest
 
-__all__ = ["GeneralInformation", "Address", "StudentAcademic", "StudentPersonal", "StudentParent", "StudentGuardian", "StudentDecision"]
+__all__ = ["GeneralInformation", "Address", "StudentRoleAnchor", "StudentAcademic", "StudentPersonal", "StudentParent", "StudentGuardian", "StudentDecision", "ProfileUpdateRequest"]

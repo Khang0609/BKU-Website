@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { mockCourses } from "@/lib/mockData";
 import { FilterStatus } from "@/app/(student)/_types/course";

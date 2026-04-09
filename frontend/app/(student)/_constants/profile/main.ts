@@ -22,10 +22,10 @@ export const FEATURE_FLAGS = {
   TUITION_FEES: false,
   PAYMENT_HISTORY: false,
   QA_SUPPORT: true,
-  TRAINING_POINTS: false,
-  EXTRA_CURRICULAR: false,
-  SCHOLARSHIPS: false,
-  MEDICAL_INFO: false,
+  TRAINING_POINTS: true,
+  EXTRA_CURRICULAR: true,
+  SCHOLARSHIPS: true,
+  MEDICAL_INFO: true,
   GRADUATION: true,
   STUDENT_RECORDS: true,
   DECISION: true,
@@ -103,19 +103,21 @@ export const clusters: Cluster[] = [
       {
         label: "Training Points",
         icon: Star,
-        href: FEATURE_FLAGS.TRAINING_POINTS ? "/training" : "#",
+        href: FEATURE_FLAGS.TRAINING_POINTS ? "/profile/training-point" : "#",
         desc: "Score: 85/100",
       },
       {
         label: "Extra-curricular",
         icon: Activity,
-        href: FEATURE_FLAGS.EXTRA_CURRICULAR ? "/activity" : "#",
+        href: FEATURE_FLAGS.EXTRA_CURRICULAR
+          ? "/profile/extra-curricular"
+          : "#",
         desc: "View activity log",
       },
       {
         label: "Scholarships",
         icon: Gift,
-        href: FEATURE_FLAGS.SCHOLARSHIPS ? "/scholarships" : "#",
+        href: FEATURE_FLAGS.SCHOLARSHIPS ? "/profile/scholarships" : "#",
         desc: "Apply for grants",
       },
     ],
@@ -126,10 +128,10 @@ export const clusters: Cluster[] = [
     icon: Heart,
     items: [
       {
-        label: "Medical Info",
+        label: "Health Insurance",
         icon: Heart,
-        href: FEATURE_FLAGS.MEDICAL_INFO ? "/health" : "#",
-        desc: "Health insurance & records",
+        href: FEATURE_FLAGS.MEDICAL_INFO ? "/profile/health-insurance" : "#",
+        desc: "Insurance card & medical book",
       },
       {
         label: "Graduation",

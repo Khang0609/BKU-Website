@@ -32,7 +32,7 @@ export const ContactSection = () => {
         <h4 className="mb-3 text-sm font-semibold text-slate-700">
           Current Address
         </h4>
-        <AddressSection id="contact" />
+        <AddressSection id="contact" sub="current" />
       </div>
     </Section>
   );

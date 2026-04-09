@@ -9,7 +9,7 @@ import React, {
   useRef,
   ReactNode,
 } from "react";
-import { Toast } from "@/components/common";
+import Toast from "@/components/ui/feedback/Toast";
 import { ToastType } from "@/constants/ui-presets/toast";
 
 interface ToastContextType {

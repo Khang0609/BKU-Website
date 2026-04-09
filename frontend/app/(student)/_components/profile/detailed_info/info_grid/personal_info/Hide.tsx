@@ -18,12 +18,12 @@ const Hide = () => {
           <div className="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-2">
             <GridItem
               label="ID Issue Date"
-              value={formatDate(val(profile?.personal.id_issue_date))}
+              value={formatDate(val(profile?.personal.id_card_date))}
               subtle
             />
             <GridItem
               label="ID Issue Place"
-              value={val(profile?.personal.id_issue_place)}
+              value={val(profile?.personal.id_card_place)}
               subtle
             />
           </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CheckCircle, Upload, Info, AlertCircle, FileText } from "lucide-react";
-import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
+import { ImageWithFallback } from "@components/ui";
 
 interface PhotoRequirement {
   id: number;

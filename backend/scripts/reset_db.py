@@ -25,7 +25,6 @@ def reset_db():
                     general_informations, 
                     student_academics, 
                     student_personals, 
-                    student_addresses, 
                     student_parents, 
                     student_guardians, 
                     student_decisions

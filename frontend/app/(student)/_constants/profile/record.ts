@@ -23,7 +23,7 @@ export const getPersonalSchema = (
 ): FieldSchema[] => [
   {
     label: "Nationality",
-    name: "nationality",
+    name: "nationality_id",
     id: "personal",
     type: "select",
     optionsKey: "countries",
@@ -37,7 +37,7 @@ export const getPersonalSchema = (
   },
   {
     label: "Other Birthplace",
-    name: "other_birthplace",
+    name: "other_place_of_birth",
     id: "personal",
     type: "text",
   },
@@ -54,6 +54,24 @@ export const getPersonalSchema = (
     id: "personal",
     type: "select",
     optionsKey: "ethnics",
+  },
+  {
+    label: "Identity Card Number",
+    name: "id_card_number",
+    id: "personal",
+    type: "text",
+  },
+  {
+    label: "Issue Date",
+    name: "id_card_date",
+    id: "personal",
+    type: "date",
+  },
+  {
+    label: "Issue Place",
+    name: "id_card_place",
+    id: "personal",
+    type: "text",
   },
   {
     label: "Priority Area",
@@ -81,41 +99,74 @@ export const getPersonalSchema = (
     id: "personal",
     type: "date",
   },
+  {
+    label: "Youth Union Date",
+    name: "youth_union_date",
+    id: "personal",
+    type: "date",
+  },
 ];
 
 export const getAddressSchema = (
   updateForm: UpdateFunction,
   handleProvinceChange: any,
   sectionId: string = "permanent_address",
-): FieldSchema[] => [
-  {
-    label: "Province/City",
-    name: "province_id",
-    id: sectionId,
-    type: "select",
-    optionsKey: "provinces",
-    customOnChange: (v, { handleProvinceChange }) => {
-      handleProvinceChange(sectionId, v);
+  sub?: string,
+): FieldSchema[] => {
+  const baseSchema: FieldSchema[] = [
+    {
+      label: "Province/City",
+      name: "province_id",
+      id: sectionId,
+      type: "select",
+      optionsKey: "provinces",
+      customOnChange: (v, { handleProvinceChange }) => {
+        handleProvinceChange(sectionId, v, sub);
+      },
     },
-  },
-  {
-    label: "Ward/Commune",
-    name: "ward_id",
-    id: sectionId,
-    type: "select",
-    optionsKey: "wards",
-    customOptions: (catalogs, formData) => {
-      const provinceId = formData?.[sectionId]?.province_id;
-      return catalogs.wards[provinceId] || [];
+    {
+      label: "Ward/Commune",
+      name: "ward_id",
+      id: sectionId,
+      type: "select",
+      optionsKey: "wards",
+      customOptions: (catalogs, formData) => {
+        const provinceKey = sub ? `${sub}_province_id` : "province_id";
+
+        // 1. Try to get from direct section (e.g. permanent_address.permanent_province_id)
+        let provinceId = formData?.[sectionId]?.[provinceKey];
+
+        // 2. If valid provinceId not found, try nested structure (e.g. family.guardian.guardian_province_id)
+        if (!provinceId && sectionId === "family" && sub === "guardian") {
+          provinceId = formData?.[sectionId]?.[sub]?.[provinceKey];
+
+          // Nested fallback to unprefixed
+          if (!provinceId) {
+            provinceId = formData?.[sectionId]?.[sub]?.["province_id"];
+          }
+        }
+
+        // 3. Fallback to unprefixed in direct section (e.g. contact.province_id)
+        if (!provinceId && sub) {
+          provinceId = formData?.[sectionId]?.["province_id"];
+        }
+
+        return catalogs.wards[provinceId] || [];
+      },
     },
-  },
-  {
-    label: "House Number / Street",
-    name: "house_number",
-    id: sectionId,
-    type: "text",
-  },
-];
+    {
+      label: "House Number / Street",
+      name: "house_number",
+      id: sectionId,
+      type: "text",
+    },
+  ];
+
+  return baseSchema.map((field) => ({
+    ...field,
+    name: sub ? `${sub}_${field.name}` : field.name,
+  }));
+};
 
 export const getContactSchema = (updateForm: UpdateFunction): FieldSchema[] => [
   {

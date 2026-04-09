@@ -2,60 +2,54 @@
 export interface StudentProfile {
   personal: {
     first_name: string;
-    last_name: string; // Used as last_middle_name
+    last_name: string;
     dob: string;
     gender: string;
-    national_id: string;
-    id_issue_date?: string;
-    id_issue_place?: string;
+    id_card_number: string;
+    id_card_date?: string;
+    id_card_place?: string;
     avatar_url?: string;
   };
   contact: {
-    email: string;
+    student_email: string;
     personal_email: string;
     phone: string;
-    address_permanent: string;
-    address_current: string;
+    family_phone?: string;
+    dorm_room?: string;
+    current_full_address: string;
+    address_permanent?: string;
+  };
+  permanent_address: {
+    permanent_full_address: string;
   };
   academic: {
     student_id: string;
     faculty: string;
     major: string;
     class_code: string;
-    enrollment_year: number;
-    study_duration_standard?: string;
-    status: string;
-    entry_semester?: string;
-    max_semesters?: number;
-
-    // Additional fields from student.txt
-    management_unit?: string;
-    enrollment_date?: string;
-    curriculum_year?: number;
-    extended_semesters?: number;
-    reduced_semesters?: number;
-    standard_semesters?: number;
-    expected_graduation_date?: string;
-    max_graduation_date?: string;
+    enrollment_date: string;
+    student_status: string;
     education_level?: string;
     training_system?: string;
-    training_type?: string;
-    program?: string;
     campus?: string;
-    local_training?: string;
-    training_session?: string;
+    entry_semester?: string;
+    
+    // Remaining fields from student.txt
+    management_unit?: string;
+    curriculum_year?: number;
+    expected_graduation_date?: string;
+  };
+  finance: {
+    bank_account?: string;
+    bank_name?: string;
+    bknet_account?: string;
+    ocb_cif?: string;
   };
   graduation: {
     grad_major?: string;
     grad_year_semester?: string;
     grad_decision_number?: string;
     grad_decision_date?: string;
-  };
-  bank: {
-    bank_account?: string;
-    bank_name?: string;
-    ocb_cif?: string;
-    bknet_account?: string;
   };
   other: {
     note?: string;

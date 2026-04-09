@@ -10,7 +10,6 @@ const InfoCol = () => {
       <GridItem
         label="Full Name"
         value={fullName}
-        bold
         large
         className="md:col-span-2"
       />
@@ -21,7 +20,7 @@ const InfoCol = () => {
       <GridItem label="Gender" value={val(profile?.personal.gender)} />
       <GridItem
         label="National ID (CCCD)"
-        value={val(profile?.personal.national_id)}
+        value={val(profile?.personal.id_card_number)}
         icon={<Shield size={14} />}
         className="md:col-span-2"
       />

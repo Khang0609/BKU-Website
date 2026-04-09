@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef, useEffect, useMemo } from "react";
 
 export interface SearchableOption<T> {

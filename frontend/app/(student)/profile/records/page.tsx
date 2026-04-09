@@ -1,61 +1,13 @@
-"use client";
+import { RecordProvider } from "@/app/(student)/_context/RecordContext";
+import { RecordPageContent } from "./RecordPageContent";
+import { getRecordInitialDataServer } from "@/services/records.service";
 
-import { Loader2 } from "lucide-react";
-import {
-  RecordProvider,
-  useRecordContext,
-} from "@/app/(student)/_context/RecordContext";
-import {
-  TopHeader,
-  PersonalSection,
-  PermAddressSection,
-  ContactSection,
-  RelativeSection,
-  PhotoSection,
-  OtherSection,
-} from "@/app/(student)/_components/profile/info_record/sections";
+export default async function StudentRecordsPage() {
+  const initialData = await getRecordInitialDataServer();
 
-export default function StudentRecordsPage() {
   return (
-    <RecordProvider>
-      <StudentRecordsInner />
+    <RecordProvider initialData={initialData}>
+      <RecordPageContent />
     </RecordProvider>
   );
 }
-
-const StudentRecordsInner = () => {
-  const { isLoading, profile } = useRecordContext();
-  if (isLoading || !profile)
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <Loader2 className="animate-spin text-blue-600" />
-      </div>
-    );
-
-  return (
-    <div className="min-h-full space-y-8 bg-slate-50/50 p-6 pb-32">
-      {/* Header */}
-      <TopHeader />
-
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {/* 1. Personal */}
-        <PersonalSection />
-
-        {/* 2. Permanent Address */}
-        <PermAddressSection />
-
-        {/* 3. Contact Info */}
-        <ContactSection />
-
-        {/* 4. Relatives */}
-        <RelativeSection />
-
-        {/* 5. Photo Record */}
-        <PhotoSection />
-
-        {/* 6. Others */}
-        <OtherSection />
-      </div>
-    </div>
-  );
-};

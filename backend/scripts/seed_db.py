@@ -26,6 +26,7 @@ from seed_religion import seed_religion_data
 from seed_student import seed_student_data
 from seed_country import seed_country_data
 from seed_decision import seed_decision_data
+from seed_training_activity import seed_training_activity_data
 
 import subprocess
 
@@ -136,3 +137,6 @@ if __name__ == "__main__":
     
     # 3. Seed Student Details (depends on users)
     seed_student_data()
+    
+    # 4. Seed Training Points & Extra-Curriculars
+    seed_training_activity_data()

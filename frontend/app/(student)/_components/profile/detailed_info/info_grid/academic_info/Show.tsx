@@ -1,6 +1,9 @@
 import React from "react";
 import { Building, BookOpen } from "lucide-react";
-import { GridItem, StatusBadge } from "@/app/(student)/_components/profile/detailed_info/common";
+import {
+  GridItem,
+  StatusBadge,
+} from "@/app/(student)/_components/profile/detailed_info/common";
 import { useProfileContext } from "@/app/(student)/_context/ProfileContext";
 
 export const Show = () => {
@@ -10,10 +13,9 @@ export const Show = () => {
       <GridItem
         label="Student ID"
         value={val(profile?.academic?.student_id)}
-        bold
         large
       />
-      <StatusBadge status={val(profile?.academic.status)} />
+      <StatusBadge status={val(profile?.academic.student_status)} />
 
       <GridItem
         label="Faculty"
@@ -28,15 +30,10 @@ export const Show = () => {
         className="md:col-span-2"
       />
 
-      <GridItem
-        label="Class Code"
-        value={val(profile?.academic.class_code)}
-        bold
-      />
+      <GridItem label="Class Code" value={val(profile?.academic.class_code)} />
       <GridItem
         label="Enrollment Year"
         value={val(profile?.academic.enrollment_year)}
-        bold
       />
     </div>
   );

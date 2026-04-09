@@ -7,13 +7,13 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.models.base import Base
 
 if TYPE_CHECKING:
-    from app.models.auth import Identity
+    from app.models.profile.student.anchor import StudentRoleAnchor
 
 class StudentParent(Base):
     __tablename__ = "student_parents"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
-    identity_id: Mapped[int] = mapped_column(ForeignKey("identities.id"), nullable=False, unique=True)
+    anchor_id: Mapped[int] = mapped_column(ForeignKey("student_role_anchors.identity_id"), nullable=False, unique=True)
 
     # Father Info
     father_name: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
@@ -30,4 +30,4 @@ class StudentParent(Base):
     mother_workplace: Mapped[Optional[str]] = mapped_column(String(255), nullable=True) # "Nơi công tác"
 
     # Relationship
-    identity: Mapped["Identity"] = relationship("Identity", back_populates="student_parent")
+    anchor: Mapped["StudentRoleAnchor"] = relationship("StudentRoleAnchor", back_populates="student_parent")

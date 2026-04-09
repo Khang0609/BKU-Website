@@ -47,22 +47,41 @@ def generic_get(
     if ensure_relations:
         for rel_name, (rel_model, fk_map) in ensure_relations.items():
             
+            # Support nested paths using dot notation (e.g., 'a.b.c')
+            parts = rel_name.split(".")
+            target_obj = obj
+            for part in parts[:-1]:
+                target_obj = getattr(target_obj, part, None)
+                if target_obj is None:
+                    break
+            
+            if target_obj is None:
+                continue
+                
+            last_part = parts[-1]
+            
             # Check if relationship is missing (None)
-            if getattr(obj, rel_name) is None:
+            if getattr(target_obj, last_part) is None:
                 
                 # Build criteria for child based on parent's values
                 # e.g. parent.id -> child.identity_id
                 child_criteria = {}
                 for child_col, parent_col in fk_map.items():
-                    parent_val = getattr(obj, parent_col, None)
-                    if parent_val is not None:
-                        child_criteria[child_col] = parent_val
+                    # Support nested parent_col path
+                    p_parts = parent_col.split(".")
+                    p_target = obj
+                    for p_part in p_parts:
+                        p_target = getattr(p_target, p_part, None)
+                        if p_target is None:
+                            break
+                    
+                    if p_target is not None:
+                        child_criteria[child_col] = p_target
                 
-                # Use Hydrator to get a default instance (usually is_new=True here essentially)
-                # We don't care if it's new or not, we just want the object to display
+                # Use Hydrator to get a default instance
                 rel_instance, _ = hydrate(db, rel_model, child_criteria)
                 
-                # Attach to parent in memory (for Pydantic serialization)
-                setattr(obj, rel_name, rel_instance)
+                # Attach to target object in memory
+                setattr(target_obj, last_part, rel_instance)
                 
     return obj

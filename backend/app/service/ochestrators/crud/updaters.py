@@ -35,10 +35,9 @@ def generic_patch(
     # Logic: Handle DB operations based on state
     if is_new:
         db.add(obj)
-        
+    
     # Commit if it's a new record or if there were actual changes to an existing one
     if is_new or has_changes:
         db.commit()
         db.refresh(obj)
-        
     return obj

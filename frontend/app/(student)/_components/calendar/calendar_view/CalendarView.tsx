@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import { MotionDiv } from "@/components/ui/motion";
 import { CalendarGrid } from "./CalendarGrid";
 
 export const CalendarView = () => {
   return (
-    <motion.div
+    <MotionDiv
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.1 }}
@@ -26,6 +26,6 @@ export const CalendarView = () => {
 
       {/* Simple Calendar Grid - Placeholder */}
       <CalendarGrid />
-    </motion.div>
+    </MotionDiv>
   );
 };

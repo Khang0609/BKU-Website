@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship, Mapped, mapped_column
 from app.models.base import Base
 
 if TYPE_CHECKING:
-    from app.models.auth import Identity
+    from app.models.profile.student.anchor import StudentRoleAnchor
     from app.models.adminstrative.decision import Decision
 
 class StudentDecision(Base):
@@ -16,11 +16,11 @@ class StudentDecision(Base):
     
     # Foreign Keys
     decision_id: Mapped[int] = mapped_column(ForeignKey("decisions.id"), nullable=False)
-    identity_id: Mapped[int] = mapped_column(ForeignKey("identities.id"), nullable=False)
+    anchor_id: Mapped[int] = mapped_column(ForeignKey("student_role_anchors.identity_id"), nullable=False)
     
     # Extra data
     note: Mapped[str] = mapped_column(String, nullable=True)
 
     # Relationships
     decision: Mapped["Decision"] = relationship("Decision")
-    identity: Mapped["Identity"] = relationship("Identity", back_populates="student_decisions")
+    anchor: Mapped["StudentRoleAnchor"] = relationship("StudentRoleAnchor", back_populates="student_decisions")

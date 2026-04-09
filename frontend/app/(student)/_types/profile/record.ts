@@ -8,23 +8,24 @@ export interface Option {
 export interface Personal {
   first_name: string;
   last_name: string;
-  dob: string;
+  day_of_birth: string;
   gender: string;
-  national_id: string;
-  id_issue_date: string;
-  id_issue_place: string;
-  nationality: string;
+  id_card_number: string;
+  id_card_date: string;
+  id_card_place: string;
+  nationality_id?: number;
   place_of_birth: string;
-  other_birthplace?: string;
+  other_place_of_birth?: string;
   religion_id?: number;
   ethnic_id?: number;
   priority_area?: string;
   priority_group?: string;
   union_date?: string;
   party_date?: string;
+  youth_union_date?: string;
 }
 
-export interface Address {
+export interface BaseAddress {
   province_id?: number;
   ward_id?: number;
   house_number?: string;
@@ -33,13 +34,15 @@ export interface Address {
   full_address?: string;
 }
 
-export interface Contact {
-  province_id?: number;
-  ward_id?: number;
-  house_number?: string;
-  province_name?: string;
-  ward_name?: string;
-  full_address?: string;
+export type AddressWithPrefix<P extends string> = {
+  [K in keyof BaseAddress as `${P}_${string & K}`]: BaseAddress[K];
+};
+
+export type PermanentAddress = AddressWithPrefix<"permanent">;
+export type CurrentAddress = AddressWithPrefix<"current">;
+export type GuardianAddress = AddressWithPrefix<"guardian">;
+
+export interface Contact extends CurrentAddress {
   phone?: string;
   family_phone?: string;
   dorm_room?: string;
@@ -60,16 +63,17 @@ export interface Family {
     mother_job?: string;
     mother_workplace?: string;
   };
-  guardian: {
+  guardian: GuardianAddress & {
     full_name?: string;
     relationship?: string;
     phone_number?: string;
     email?: string;
     job?: string;
+    // Fallback fields for backward compatibility if needed, though we aim to remove them
     province_id?: number;
     ward_id?: number;
     house_number?: string;
-    address?: string; // fallback
+    address?: string;
   };
 }
 
@@ -80,7 +84,7 @@ export interface Other {
 
 export interface ProfileData {
   personal: Personal;
-  permanent_address: Address;
+  permanent_address: PermanentAddress;
   contact: Contact;
   family: Family;
   others: Other;
@@ -123,7 +127,7 @@ export interface FieldSchema {
   optionsKey?: string; // Khóa để lấy data từ catalogs
   options?: Option[]; // Dữ liệu để render select
   className?: string; // Tùy chỉnh layout
-  customOnChange?: (v: any, helpers: any) => void; 
+  customOnChange?: (v: any, helpers: any) => void;
   customOptions?: (catalogs: any, formData: any) => any[];
 }
 

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, useContext } from "react";
 import { useInfo } from "@/app/(student)/_hooks/profile/info/useInfo"; // Hook lấy dữ liệu cũ của sếp
 
@@ -7,10 +9,12 @@ const ProfileContext = createContext<any>(null);
 // 2. Tạo "Router" bọc ngoài trang Info
 export const ProfileProvider = ({
   children,
+  initialData = null,
 }: {
   children: React.ReactNode;
+  initialData?: any;
 }) => {
-  const pageCore = useInfo(); // Gọi API đúng 1 lần duy nhất tại đây
+  const pageCore = useInfo(initialData); // Gọi API đúng 1 lần duy nhất tại đây
 
   return (
     <ProfileContext.Provider value={pageCore}>

@@ -1,7 +1,6 @@
-"use client";
 
 import { Calendar as CalendarIcon } from "lucide-react";
-import { PageTitle } from "@/components/ui";
+import { PageTitle } from "@/components/ui/navigation/PageTitle";
 import { CalendarView } from "@/app/(student)/_components/calendar/calendar_view";
 import { UpcomingEvents } from "@/app/(student)/_components/calendar/upcoming_events";
 

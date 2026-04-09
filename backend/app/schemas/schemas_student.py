@@ -1,42 +1,31 @@
 from typing import Optional, Dict
-from pydantic import BaseModel
-from datetime import date
-from app.constants import Gender, PriorityGroup, PriorityArea
+from pydantic import BaseModel, Field, ConfigDict
+from datetime import date, datetime
+from app.constants import PriorityGroup, PriorityArea
+from app.models.adminstrative.decision import DecisionType
+from app.models.adminstrative.extra_curricular import ExtraCurricularState
+
 
 class PersonalUpdate(BaseModel):
-    nationality_id: Optional[int] = None
-    place_of_birth: Optional[str] = None
-    other_place_of_birth: Optional[str] = None # Renamed from other_birthplace
-    religion_id: Optional[int] = None
-    ethnic_id: Optional[int] = None
     priority_area: Optional[PriorityArea] = None
     priority_group: Optional[PriorityGroup] = None
     union_date: Optional[date] = None
     party_date: Optional[date] = None
     youth_union_date: Optional[date] = None # Added
-    
-    # ID Card
-    id_card_number: Optional[str] = None
-    id_card_date: Optional[date] = None
-    id_card_place: Optional[str] = None
 
 class ContactUpdate(BaseModel):
+    family_phone: Optional[str] = None
+    dorm_room: Optional[str] = None
+
+    # Current Address
+    current_province_id: Optional[int] = None
+    current_ward_id: Optional[int] = None
+    current_detail: Optional[str] = Field(None, alias="current_house_number")
+
     # Permanent Address
     permanent_province_id: Optional[int] = None
     permanent_ward_id: Optional[int] = None
-    permanent_detail: Optional[str] = None # Renamed from house_number
-    
-    # Current Address / Contact
-    current_province_id: Optional[int] = None
-    current_ward_id: Optional[int] = None
-    current_detail: Optional[str] = None # Renamed from house_number
-    
-    phone: Optional[str] = None
-    family_phone: Optional[str] = None
-    dorm_room: Optional[str] = None
-    personal_email: Optional[str] = None
-    student_email: Optional[str] = None # Added
-    backup_email: Optional[str] = None # Added
+    permanent_detail: Optional[str] = Field(None, alias="permanent_house_number")
 
 class FamilyUpdate(BaseModel):
     # Parents (Father)
@@ -65,7 +54,68 @@ class FamilyUpdate(BaseModel):
     # Guardian Address
     guardian_province_id: Optional[int] = None
     guardian_ward_id: Optional[int] = None
-    guardian_detail: Optional[str] = None # Renamed from house_number
+    guardian_detail: Optional[str] = Field(None, alias="guardian_house_number") # Renamed from house_number
 
 class ExtraUpdate(BaseModel):
     social_media: Optional[Dict[str, str]] = None
+
+
+# Decision Response 
+class StudentDecisionRes(BaseModel):
+    id: int
+    semester: str
+    decision_reason: str
+    decision_number: str
+    decision_content: str
+    signed_date: str
+    last_updated: str
+    decision_type: DecisionType
+    note: Optional[str] = None
+
+class TrainingPointRes(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    semester: str
+    points: int
+    rating: str
+    updated_at: str
+
+class ExtraCurricularRes(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int # bridge table id
+    curricular_id: str # extra_curriculars.id
+    name: str
+    address: str
+    day_start: str
+    duration_days: int
+    has_proof: bool
+    state: ExtraCurricularState
+    social_work_days_exchange: int
+    is_verified: bool
+
+class ScholarshipRes(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    semester: Optional[str] = None
+    gpa_4: Optional[float] = None
+    gpa_10: Optional[float] = None
+    cpa_4: Optional[float] = None
+    cpa_10: Optional[float] = None
+    credits_earned: Optional[int] = None
+    cumulative_credits: Optional[int] = None
+    training_point: Optional[int] = None
+    eligible: Optional[str] = "Đạt" # Default or logic based
+    scholarship_level: Optional[str] = None
+    amount: Optional[float] = None
+    result: Optional[str] = None
+    created_at: Optional[datetime] = None
+    created_by: Optional[str] = None
+    updated_at: Optional[datetime] = None
+    updated_by: Optional[str] = None
+
+class HealthInsuranceRes(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    medical_book_number: Optional[str] = None
+    health_insurance_number: Optional[str] = None
+    accident_insurance_number: Optional[str] = None
